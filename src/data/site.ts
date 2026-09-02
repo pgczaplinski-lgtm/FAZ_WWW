@@ -165,10 +165,10 @@ export const activeProjects: Project[] = [
 export const stories: Story[] = [
 	{
 		name: 'Pan Jacek',
-		before: 'W pracowni ceramicznej trudność sprawiały mu koncentracja i tempo wykonywania zadań.',
-		process: 'Stałe, powtarzalne obowiązki pozwoliły rozpoznać zasoby i spokojnie ćwiczyć zawodowy rytm.',
-		outcome: 'Pracuje od 2014 roku, a jego produkcja wzrosła o około 50%.',
-		insight: 'Powtarzalne doświadczenie może zamienić ograniczenie w świadomie rozwijaną kompetencję.',
+		before: 'Brak słuchu, mowy, czytania i pisania przesłaniał otoczeniu jego rzeczywiste możliwości zawodowe.',
+		process: 'Diagnoza w realnym zadaniu ujawniła wyjątkową koncentrację, tempo i konsekwencję w pracach przy ceramice.',
+		outcome: 'Pracuje od 2014 roku, a po jego zatrudnieniu produkcja zakładu wzrosła o około połowę.',
+		insight: 'Dopiero diagnoza funkcjonalna pozwala zobaczyć zasoby, których nie pokazuje lista deficytów.',
 	},
 	{
 		name: 'Pan Łukasz',

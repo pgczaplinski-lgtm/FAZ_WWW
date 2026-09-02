@@ -1,0 +1,123 @@
+---
+import MethodDiagram from '../components/MethodDiagram.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+	title="Jak działamy — metoda Fundacji Aktywności Zawodowej"
+	description="Poznaj praktyczną metodę FAZ: od zaufania i diagnozy funkcjonalnej, przez doświadczenie, do trwałej tożsamości zawodowej."
+>
+	<div class="container page-top">
+		<nav class="breadcrumb" aria-label="Okruszki">
+			<a href="/">Strona główna</a><span aria-hidden="true">/</span><span aria-current="page">Jak działamy</span>
+		</nav>
+	</div>
+
+	<section class="detail-hero">
+		<div class="container hero-copy">
+			<p class="eyebrow">Metoda FAZ</p>
+			<h1>Tożsamość zawodowa powstaje w działaniu</h1>
+			<p class="hero-intro">Nie jest hasłem ani jednorazowym efektem szkolenia. To praktyczny warunek trwałej aktywizacji: człowiek zna swoje zasoby, rozumie sposób pracy, bierze odpowiedzialność za uzgodnienia i potrafi opisać siebie w roli zawodowej.</p>
+		</div>
+	</section>
+
+	<section class="section method-section" aria-labelledby="foundations-title">
+		<div class="container">
+			<div class="section-intro">
+				<p class="eyebrow">Proces długofalowy</p>
+				<h2 id="foundations-title">Od fundamentów do zawodowej sprawczości</h2>
+				<p>Zaufanie oraz uczciwa akceptacja zasobów i deficytów otwierają drogę do doświadczeń, które można powtarzać, omawiać i stopniowo przenosić do realnego środowiska pracy.</p>
+			</div>
+			<MethodDiagram />
+		</div>
+	</section>
+
+	<section class="section" aria-labelledby="practice-title">
+		<div class="container two-columns">
+			<div>
+				<p class="eyebrow">Odpowiedzialność i rutyna</p>
+				<h2 id="practice-title">Jedna droga, wiele powtórzeń</h2>
+			</div>
+			<div class="prose">
+				<p>Jasny kontrakt określa, co robi osoba uczestnicząca, a za co odpowiada osoba wspierająca. Dzięki temu pomoc nie zastępuje decyzji, lecz wzmacnia dorosłość i odpowiedzialność.</p>
+				<p>Pracujemy długofalowo w jednym uzgodnionym kierunku zawodowym. Powtarzanie podobnych zadań pozwala odróżnić przypadkowe powodzenie od kompetencji, na której można się oprzeć.</p>
+				<p>Małe, osiągalne sukcesy budują gotowość do kolejnego kroku. Informacja zwrotna dotyczy zachowania i efektu pracy: dokładności, tempa, samodzielności, współpracy czy sposobu reagowania na instrukcję. To język zawodowy, nie ocena człowieka.</p>
+				<blockquote>„Dobrze radzę sobie z…, najlepiej pracuję, gdy…, a jeszcze uczę się…”</blockquote>
+			</div>
+		</div>
+	</section>
+
+	<section class="section continuum-section" aria-labelledby="continuum-title">
+		<div class="container">
+			<div class="section-intro">
+				<p class="eyebrow">Kontinuum doświadczenia</p>
+				<h2 id="continuum-title">Od bezpiecznej próby do realnego miejsca pracy</h2>
+				<p>Kolejne środowiska zwiększają realizm zadania i pozwalają sprawdzić zarówno kompetencje, jak i potrzebne warunki wsparcia.</p>
+			</div>
+			<ol class="continuum-list">
+				<li><strong>Wewnętrzna próbka pracy</strong><span>Pojedyncze zadanie pozwala obserwować sposób działania.</span></li>
+				<li><strong>Praktyka wewnętrzna</strong><span>Powtarzalna rola uczy rytmu, odpowiedzialności i współpracy.</span></li>
+				<li><strong>Spotkanie z pracodawcą lub wizyta studyjna</strong><span>Poznanie miejsca i zadań pomaga skonfrontować wyobrażenia z praktyką.</span></li>
+				<li><strong>Próbka pracy, praktyka lub staż w miejscu pracy</strong><span>Realne środowisko ujawnia kompetencje i potrzebne dostosowania.</span></li>
+				<li><strong>Zatrudnienie</strong><span>Wsparcie może być kontynuowane także podczas wdrażania do pracy.</span></li>
+			</ol>
+			<p class="outcomes-note"><strong>Rezultat jest indywidualny.</strong> Może nim być zatrudnienie na rynku otwartym lub chronionym, praca w ZAZ albo przedsiębiorstwie społecznym, wolontariat czy większa samodzielność. Nie każda droga kończy się zatrudnieniem i nie składamy takiej obietnicy.</p>
+		</div>
+	</section>
+
+	<section class="section resource-section" aria-labelledby="resource-title">
+		<div class="container resource-grid">
+			<div>
+				<p class="eyebrow">Publikacja metodyczna</p>
+				<h2 id="resource-title">Przeczytaj pełną metodologię FAZ</h2>
+				<p>Dokument rozwija założenia pracy nad tożsamością zawodową i pokazuje ich praktyczne zastosowanie.</p>
+			</div>
+			<a class="download-link" href="/downloads/metodologia-faz.pdf" type="application/pdf">Pobierz metodologię FAZ <span>PDF, około 92 KB</span></a>
+		</div>
+	</section>
+
+	<section class="contact-band" aria-labelledby="cta-title">
+		<div class="container contact-band-grid">
+			<div>
+				<p class="eyebrow">Pierwszy krok</p>
+				<h2 id="cta-title">Sprawdź, jak ta metoda może pracować dla Ciebie</h2>
+				<p>Zobacz drogę wsparcia osoby z niepełnosprawnością albo porozmawiaj z nami o współpracy.</p>
+			</div>
+			<div class="button-row">
+				<a class="button button-primary" href="/dla-ciebie/">Zobacz wsparcie dla Ciebie</a>
+				<a class="button button-secondary cta-secondary" href="/kontakt/">Skontaktuj się z FAZ</a>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-top { padding-top: 1.25rem; }
+	.breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: center; color: var(--color-muted); font-size: .9rem; }
+	.detail-hero { padding-block: clamp(2.5rem, 7vw, 6.5rem); }
+	.hero-copy { max-width: 68rem; }
+	.hero-copy h1 { max-width: 15ch; }
+	.hero-intro { max-width: 50rem; margin-top: 1.5rem; color: var(--color-muted); font-size: clamp(1.12rem, 2vw, 1.4rem); }
+	.two-columns, .resource-grid { display: grid; gap: 2rem clamp(2rem, 8vw, 7rem); }
+	.prose { max-width: 48rem; }
+	.prose p + p { margin-top: 1.15rem; }
+	blockquote { margin: 2rem 0 0; padding: 1.4rem; border-left: 4px solid var(--color-blue); background: var(--color-blue-pale); color: var(--color-navy); font-size: clamp(1.15rem, 2vw, 1.4rem); font-weight: 700; }
+	.continuum-section { background: var(--color-green-pale); }
+	.continuum-list { display: grid; gap: 1rem; list-style: none; counter-reset: steps; }
+	.continuum-list li { position: relative; padding: 1.4rem 1.4rem 1.4rem 4.2rem; border: 1px solid #bdccbf; border-radius: var(--radius-sm); background: rgb(255 255 255 / .72); counter-increment: steps; }
+	.continuum-list li::before { position: absolute; left: 1.3rem; top: 1.25rem; content: counter(steps); display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; background: var(--color-blue-dark); color: white; font-weight: 800; }
+	.continuum-list strong, .continuum-list span { display: block; }
+	.continuum-list span { margin-top: .35rem; color: var(--color-muted); }
+	.outcomes-note { max-width: 58rem; margin-top: 2rem; padding: 1.4rem; border-left: 4px solid var(--color-blue-dark); background: white; }
+	.resource-section { background: var(--color-white); }
+	.resource-grid { align-items: center; }
+	.resource-grid p:last-child { max-width: 42rem; margin-top: 1rem; color: var(--color-muted); }
+	.cta-secondary { border-color: white; color: white; }
+	.cta-secondary:hover { background: white; color: var(--color-blue-dark); }
+	@media (min-width: 50rem) {
+		.two-columns, .resource-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+		.continuum-list { grid-template-columns: repeat(5, minmax(0, 1fr)); }
+		.continuum-list li { padding: 4.2rem 1.2rem 1.3rem; }
+		.continuum-list li::before { left: 1.2rem; }
+	}
+</style>
