@@ -1,0 +1,136 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const steps = [
+	{
+		title: 'Rozmowa o zadaniu i potrzebie firmy',
+		description: 'Najpierw poznajemy pracę: jej cel, rytm, warunki, odpowiedzialność oraz to, czego zespół naprawdę potrzebuje.',
+	},
+	{
+		title: 'Dopasowanie zakresu i warunków',
+		description: 'Ustalamy konkretne czynności, sposób przekazywania instrukcji, możliwe dostosowania i osobę odpowiedzialną za wdrożenie.',
+	},
+	{
+		title: 'Bezpieczne poznanie pracy',
+		description: 'Kandydat może poznać firmę podczas spotkania lub wizyty, a kompetencje sprawdzić w uzgodnionym, praktycznym zadaniu.',
+	},
+	{
+		title: 'Wdrożenie i wsparcie',
+		description: 'Po rozpoczęciu pracy jasne instrukcje, regularna informacja zwrotna i wsparcie trenera pracy pomagają obu stronom reagować na trudności.',
+	},
+];
+---
+
+<BaseLayout
+	title="Dla pracodawców — współpraca i dostępne wdrożenie | FAZ"
+	description="FAZ wspiera pracodawców w określeniu zadań, dopasowaniu kandydata i dostępnym wdrożeniu z pomocą trenera pracy."
+>
+	<div class="container page-top">
+		<nav class="breadcrumb" aria-label="Okruszki">
+			<a href="/">Strona główna</a><span aria-hidden="true">/</span><span aria-current="page">Dla pracodawców</span>
+		</nav>
+	</div>
+
+	<section class="detail-hero">
+		<div class="container hero-grid">
+			<div>
+				<p class="eyebrow">Współpraca z pracodawcą</p>
+				<h1>Zaczynamy od zadania, które ma znaczenie dla firmy</h1>
+				<p class="hero-intro">Dobre dopasowanie nie polega na tworzeniu przypadkowego stanowiska. Wspólnie nazywamy realną potrzebę biznesową, konkretne czynności i warunki, w których pracownik może wykonać je dobrze.</p>
+				<a class="button button-primary" href="/kontakt/">Porozmawiaj o potrzebie firmy</a>
+			</div>
+			<aside class="support-note" aria-labelledby="support-title">
+				<h2 id="support-title">Nie zostajesz sam z wdrożeniem</h2>
+				<p>Trener pracy może pomóc przygotować zadania, instrukcje i sposób udzielania informacji zwrotnej, a następnie wspierać pracownika i zespół w pierwszym okresie współpracy.</p>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section steps-section" aria-labelledby="steps-title">
+		<div class="container">
+			<div class="section-intro">
+				<p class="eyebrow">Kolejne kroki</p>
+				<h2 id="steps-title">Od potrzeby biznesowej do wspieranego wdrożenia</h2>
+				<p>Proces jest konkretny i czytelny dla firmy, kandydata oraz osób wspierających.</p>
+			</div>
+			<ol class="steps-list">
+				{steps.map((step) => (
+					<li>
+						<h3>{step.title}</h3>
+						<p>{step.description}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<section class="section conditions-section" aria-labelledby="conditions-title">
+		<div class="container conditions-grid">
+			<div>
+				<p class="eyebrow">Warunki dobrej współpracy</p>
+				<h2 id="conditions-title">Dostępność zaczyna się od jasności</h2>
+			</div>
+			<div class="condition-cards">
+				<article>
+					<h3>Konkretne instrukcje</h3>
+					<p>Jednoznaczny zakres zadania, pokazanie oczekiwanego efektu i możliwość powtórzenia instrukcji zmniejszają niepewność.</p>
+				</article>
+				<article>
+					<h3>Rozsądne dostosowania</h3>
+					<p>Sposób komunikacji, organizacja stanowiska, tempo wdrożenia lub podział zadania mogą być dopasowane do potrzeb osoby i firmy.</p>
+				</article>
+				<article>
+					<h3>Informacja zwrotna</h3>
+					<p>Mówimy o zachowaniu i rezultacie pracy: co zostało wykonane dobrze, co należy poprawić i jak ma wyglądać następna próba.</p>
+				</article>
+			</div>
+		</div>
+	</section>
+
+	<section class="section privacy-section" aria-labelledby="privacy-title">
+		<div class="container privacy-grid">
+			<div>
+				<p class="eyebrow">Szacunek i prywatność</p>
+				<h2 id="privacy-title">Rozmawiamy o pracy, nie o diagnozie</h2>
+			</div>
+			<p>Pracodawca potrzebuje informacji istotnych dla bezpiecznego wykonania zadania i wdrożenia. Dane o zdrowiu i niepełnosprawności nie powinny zastępować rozmowy o kompetencjach. Zakres informacji omawiamy z kandydatem i dbamy o jego świadomy udział w decyzjach.</p>
+		</div>
+	</section>
+
+	<section class="contact-band" aria-labelledby="cta-title">
+		<div class="container contact-band-grid">
+			<div>
+				<p class="eyebrow">Pierwsza rozmowa</p>
+				<h2 id="cta-title">Masz zadanie lub potrzebę w zespole?</h2>
+				<p>Opisz je nam. Zaczniemy od sprawdzenia, czy możemy wspólnie zbudować dobre dopasowanie.</p>
+			</div>
+			<a class="button button-primary" href="/kontakt/">Skontaktuj się z FAZ</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-top { padding-top: 1.25rem; }
+	.breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: center; color: var(--color-muted); font-size: .9rem; }
+	.detail-hero { padding-block: clamp(2.5rem, 7vw, 6.5rem); }
+	.hero-grid, .conditions-grid, .privacy-grid { display: grid; gap: 2.5rem clamp(2rem, 8vw, 7rem); align-items: center; }
+	.hero-intro { max-width: 50rem; margin-block: 1.5rem 2rem; color: var(--color-muted); font-size: clamp(1.12rem, 2vw, 1.4rem); }
+	.support-note { padding: clamp(1.4rem, 4vw, 2.2rem); border-left: 5px solid var(--color-blue); border-radius: 0 var(--radius-md) var(--radius-md) 0; background: var(--color-blue-pale); }
+	.support-note h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+	.support-note p { margin-top: 1rem; color: var(--color-muted); }
+	.steps-section { background: var(--color-white); }
+	.steps-list { display: grid; gap: 1rem; list-style: none; counter-reset: steps; }
+	.steps-list li { position: relative; padding: 4rem 1.4rem 1.5rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-paper); counter-increment: steps; }
+	.steps-list li::before { position: absolute; left: 1.4rem; top: 1.2rem; content: '0' counter(steps); color: var(--color-blue-dark); font-size: .82rem; font-weight: 850; letter-spacing: .12em; }
+	.steps-list p, .condition-cards p { margin-top: .75rem; color: var(--color-muted); }
+	.conditions-section { background: var(--color-green-pale); }
+	.condition-cards { display: grid; gap: 1rem; }
+	.condition-cards article { padding: 1.4rem; border-radius: var(--radius-sm); background: rgb(255 255 255 / .75); }
+	.privacy-section { background: var(--color-paper); }
+	.privacy-grid > p { max-width: 48rem; padding: 1.4rem; border-left: 4px solid var(--color-blue-dark); background: var(--color-white); }
+	@media (min-width: 48rem) {
+		.hero-grid, .conditions-grid, .privacy-grid { grid-template-columns: minmax(0, 1.1fr) minmax(18rem, .9fr); }
+		.steps-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+	@media (min-width: 68rem) { .steps-list { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+</style>

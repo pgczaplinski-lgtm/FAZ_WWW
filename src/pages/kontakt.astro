@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const offices = [
+	{ city: 'Gdańsk', address: 'ul. Romana Dmowskiego 12/3.12', phones: [{ display: '736 858 551', href: '+48736858551' }, { display: '791 002 412', href: '+48791002412' }], email: 'biuro@faz.org.pl' },
+	{ city: 'Katowice', address: 'ul. Opolska 17, lok. 218', phones: [{ display: '737 303 140', href: '+48737303140' }], email: 'katowice@faz.org.pl' },
+	{ city: 'Człuchów', address: 'ul. Zamkowa 15a/6', phones: [], email: 'czluchow@faz.org.pl', emailDisplay: 'człuchow@faz.org.pl' },
+	{ city: 'Olsztyn', address: 'ul. Marka Kotańskiego 1', phones: [], email: 'olsztyn@faz.org.pl' },
+];
+---
+
+<BaseLayout title="Kontakt — Fundacja Aktywności Zawodowej" description="Dane biur FAZ w Gdańsku, Katowicach, Człuchowie i Olsztynie oraz dostępny formularz kontaktowy.">
+	<section class="section">
+		<div class="container">
+			<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> Kontakt</nav>
+			<div class="section-intro"><p class="eyebrow">Porozmawiajmy</p><h1>Kontakt</h1><p>Opisz, czego potrzebujesz, albo skontaktuj się z najbliższym biurem. Biura są czynne w dni robocze od 8:00 do 16:00.</p></div>
+			<section aria-labelledby="offices-title">
+				<h2 id="offices-title">Biura Fundacji</h2>
+				<div class="office-grid">
+					{offices.map((office) => <article><h3>{office.city}</h3><address>{office.address}<br />{office.phones.map((phone) => <><a href={`tel:${phone.href}`}>{phone.display}</a><br /></>)}<a href={`mailto:${office.email}`}>{office.emailDisplay ?? office.email}</a></address><p>Dni robocze, 8:00–16:00</p></article>)}
+				</div>
+			</section>
+		</div>
+	</section>
+
+	<section class="section form-section" aria-labelledby="form-title">
+		<div class="container form-wrap">
+			<div><p class="eyebrow">Napisz do nas</p><h2 id="form-title">Formularz kontaktowy</h2><p>Pola oznaczone „(wymagane)” trzeba wypełnić. Dane z formularza są przekazywane FAZ wyłącznie po to, aby odpowiedzieć na wiadomość. Będą przechowywane tylko tak długo, jak jest to potrzebne do obsługi kontaktu i obowiązków związanych z korespondencją. <a href="/polityka-prywatnosci/">Przeczytaj politykę prywatności</a>.</p></div>
+			<form id="contact-form" novalidate>
+				<div id="form-errors" class="error-summary" role="alert" tabindex="-1" hidden></div>
+				<div class="field"><label for="name">Imię i nazwisko <span>(wymagane)</span></label><input id="name" name="name" type="text" autocomplete="name" required aria-required="true" aria-describedby="name-error" /><p class="field-error" id="name-error"></p></div>
+				<div class="field"><label for="email">Adres e-mail <span>(wymagane)</span></label><input id="email" name="email" type="email" autocomplete="email" required aria-required="true" aria-describedby="email-error" /><p class="field-error" id="email-error"></p></div>
+				<div class="field"><label for="subject">Temat wiadomości <span>(wymagane)</span></label><input id="subject" name="subject" type="text" required aria-required="true" aria-describedby="subject-error" /><p class="field-error" id="subject-error"></p></div>
+				<div class="field"><label for="message">Treść wiadomości <span>(wymagane)</span></label><textarea id="message" name="message" rows="7" required aria-required="true" aria-describedby="message-error"></textarea><p class="field-error" id="message-error"></p></div>
+				<div class="honeypot" aria-hidden="true"><label for="website">Strona internetowa — pozostaw puste</label><input id="website" name="website" type="text" autocomplete="off" tabindex="-1" /></div>
+				<div class="field consent-field"><input id="consent" name="consent" type="checkbox" required aria-required="true" aria-describedby="consent-error" /><label for="consent">Zgadzam się na użycie podanych danych w celu udzielenia odpowiedzi <span>(wymagane)</span></label><p class="field-error" id="consent-error"></p></div>
+				<button class="button button-primary" type="submit">Wyślij wiadomość</button>
+				<p id="form-status" class="status" aria-live="polite"></p>
+			</form>
+		</div>
+	</section>
+
+	<section class="contact-band" aria-labelledby="alternative-title"><div class="container contact-band-grid"><div><h2 id="alternative-title">Wolisz zadzwonić?</h2><p>Zadzwoń do biura w Gdańsku w godzinach pracy.</p></div><a class="button button-primary" href="tel:+48736858551">Zadzwoń: 736 858 551</a></div></section>
+
+	<script>
+		const form = document.querySelector<HTMLFormElement>('#contact-form');
+		const summary = document.querySelector<HTMLElement>('#form-errors');
+		const status = document.querySelector<HTMLElement>('#form-status');
+		const labels: Record<string, string> = { name: 'Imię i nazwisko', email: 'Adres e-mail', subject: 'Temat wiadomości', message: 'Treść wiadomości', consent: 'Zgoda na kontakt' };
+		const showErrors = (errors: Record<string, string>) => {
+			for (const name of Object.keys(labels)) {
+				const input = form?.elements.namedItem(name) as HTMLInputElement | HTMLTextAreaElement | null;
+				const error = document.querySelector<HTMLElement>(`#${name}-error`);
+				const message = errors[name] ?? '';
+				if (error) error.textContent = message;
+				input?.setAttribute('aria-invalid', message ? 'true' : 'false');
+			}
+			if (!summary) return;
+			const entries = Object.entries(errors).filter(([name]) => name in labels);
+			if (!entries.length) { summary.hidden = true; summary.replaceChildren(); return; }
+			const heading = document.createElement('h3'); heading.textContent = 'Popraw następujące pola:';
+			const list = document.createElement('ul');
+			for (const [name, message] of entries) {
+				const item = document.createElement('li'); const link = document.createElement('a');
+				link.href = `#${name}`; link.textContent = `${labels[name]}: ${message}`; item.append(link); list.append(item);
+			}
+			summary.replaceChildren(heading, list); summary.hidden = false; summary.focus();
+		};
+		form?.addEventListener('submit', async (event) => {
+			event.preventDefault();
+			const data = new FormData(form);
+			const values = { name: String(data.get('name') ?? '').trim(), email: String(data.get('email') ?? '').trim(), subject: String(data.get('subject') ?? '').trim(), message: String(data.get('message') ?? '').trim(), consent: data.get('consent') === 'on', website: String(data.get('website') ?? '') };
+			const errors: Record<string, string> = {};
+			if (!values.name) errors.name = 'Wpisz imię i nazwisko.';
+			if (!values.email) errors.email = 'Wpisz adres e-mail.'; else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) errors.email = 'Wpisz poprawny adres e-mail.';
+			if (!values.subject) errors.subject = 'Wpisz temat wiadomości.';
+			if (!values.message) errors.message = 'Wpisz treść wiadomości.';
+			if (!values.consent) errors.consent = 'Zaznacz zgodę, aby wysłać wiadomość.';
+			showErrors(errors);
+			if (Object.keys(errors).length) return;
+			const button = form.querySelector<HTMLButtonElement>('button[type="submit"]');
+			if (button) { button.disabled = true; button.textContent = 'Wysyłanie…'; }
+			if (status) status.textContent = 'Wysyłamy wiadomość.';
+			try {
+				const response = await fetch('/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(values) });
+				const result = await response.json() as { ok: boolean; message: string; errors?: Record<string, string> };
+				if (!response.ok || !result.ok) { showErrors(result.errors ?? {}); if (status) status.textContent = result.message || 'Nie udało się wysłać wiadomości. Spróbuj ponownie.'; return; }
+				showErrors({}); form.reset(); if (status) status.textContent = result.message || 'Wiadomość została wysłana. Dziękujemy.';
+			} catch { if (status) status.textContent = 'Nie udało się połączyć z formularzem. Spróbuj ponownie później lub napisz e-mail.'; }
+			finally { if (button) { button.disabled = false; button.textContent = 'Wyślij wiadomość'; } }
+		});
+	</script>
+</BaseLayout>
+
+<style>
+	.office-grid { display: grid; gap: 1rem; margin-top: 2rem; }
+	.office-grid article { padding: 1.5rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-white); }
+	.office-grid address { margin-top: 1rem; font-style: normal; }
+	.office-grid p { margin-top: .8rem; color: var(--color-muted); }
+	.form-section { background: var(--color-blue-pale); }
+	.form-wrap { display: grid; gap: 2rem 5rem; }
+	.form-wrap > div > p:last-child { max-width: 38rem; margin-top: 1.2rem; }
+	form { max-width: 42rem; }
+	.field + .field, .field + .honeypot, .honeypot + .field { margin-top: 1.2rem; }
+	.field label { display: block; margin-bottom: .4rem; font-weight: 750; }
+	.field label span { font-size: .85rem; font-weight: 600; }
+	.field input[type="text"], .field input[type="email"], textarea { width: 100%; padding: .75rem; border: 2px solid var(--color-line); border-radius: .4rem; background: var(--color-white); font: inherit; }
+	.consent-field { display: grid; grid-template-columns: 1.4rem 1fr; gap: .4rem .7rem; }
+	.consent-field input { width: 1.3rem; height: 1.3rem; margin-top: .2rem; }
+	.consent-field label { margin: 0; }
+	.consent-field .field-error { grid-column: 2; }
+	.field-error { min-height: 1.4rem; color: #8e0f41; font-weight: 700; }
+	.error-summary { margin-bottom: 1.5rem; padding: 1rem; border: 3px solid #8e0f41; background: #fff; }
+	.error-summary h3 { font-size: 1.15rem; }
+	.error-summary ul { margin: .5rem 0 0 1.2rem; }
+	.honeypot { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+	form button { margin-top: 1.2rem; border: 0; cursor: pointer; }
+	form button:disabled { opacity: .65; cursor: wait; }
+	.status { min-height: 1.5rem; margin-top: 1rem; font-weight: 700; }
+	@media (min-width: 45rem) { .office-grid { grid-template-columns: repeat(2, 1fr); } }
+	@media (min-width: 60rem) { .form-wrap { grid-template-columns: 1fr 1.1fr; } }
+</style>

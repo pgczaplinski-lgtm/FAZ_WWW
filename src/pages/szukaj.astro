@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { activeProjects } from '../data/site';
+
+const searchIndex = [
+	{ title: 'Strona główna', href: '/', description: 'Najważniejsze informacje o działaniach i metodzie Fundacji.', keywords: 'FAZ fundacja aktywność zawodowa tożsamość' },
+	{ title: 'Jak działamy', href: '/jak-dzialamy/', description: 'Metoda budowania tożsamości zawodowej przez doświadczenie.', keywords: 'tożsamość zawodowa fundamenty rutyna proaktywność diagnoza funkcjonalna' },
+	{ title: 'Wsparcie dla Ciebie', href: '/dla-ciebie/', description: 'Droga wsparcia dla osób szukających zatrudnienia.', keywords: 'osoby niepełnosprawności praca pomoc zatrudnienie' },
+	{ title: 'Wsparcie dla instytucji', href: '/dla-instytucji/', description: 'Szkolenia i współpraca dla WTZ oraz instytucji.', keywords: 'WTZ warsztaty szkolenia instytucje' },
+	{ title: 'Wsparcie dla pracodawców', href: '/dla-pracodawcow/', description: 'Współpraca przy tworzeniu dostępnego miejsca pracy.', keywords: 'firma pracodawca stanowisko zatrudnienie dostępność' },
+	{ title: 'Projekty', href: '/projekty/', description: 'Lista sześciu aktywnych projektów FAZ.', keywords: 'programy aktywne rekrutacja PFRON' },
+	...activeProjects.map((project) => ({ title: project.title, href: project.href, description: project.summary, keywords: `${project.audience} ${project.location} ${project.period}` })),
+	{ title: 'Historie zmiany', href: '/historie-zmiany/', description: 'Przykłady zmiany oparte na praktyce Fundacji.', keywords: 'praktyka zatrudnienie doświadczenie' },
+	{ title: 'Wiedza', href: '/wiedza/', description: 'Publikacje, materiały oraz pytania i odpowiedzi.', keywords: 'biblioteka artykuły zasoby' },
+	{ title: 'WTZ w dobrych rękach', href: '/wiedza/publikacje/wtz-w-dobrych-rekach/', description: 'Dostępny opis publikacji i rozdziałów o tożsamości zawodowej.', keywords: 'publikacja książka PDF Paweł Czapliński Michał Czapiewski rozdział tożsamość' },
+	{ title: 'Pytania i odpowiedzi', href: '/wiedza/pytania-i-odpowiedzi/', description: 'Proste odpowiedzi o tożsamości zawodowej i diagnozie funkcjonalnej.', keywords: 'tożsamość kierunek porażka diagnoza funkcjonalna pracodawca' },
+	{ title: 'O Fundacji', href: '/o-fundacji/', description: 'Informacje o Fundacji Aktywności Zawodowej.', keywords: 'zespół fundacja misja' },
+	{ title: 'Sprawozdania Fundacji', href: '/o-fundacji/sprawozdania/', description: 'Informacje o sprawozdaniach za lata 2021–2024.', keywords: 'dokumenty raporty lata' },
+	{ title: 'Kontakt', href: '/kontakt/', description: 'Biura, telefony, adresy e-mail i formularz kontaktowy.', keywords: 'Gdańsk Katowice Człuchów Olsztyn telefon email biuro' },
+	{ title: 'Wesprzyj Fundację', href: '/wspieram/', description: 'Dane do przelewu darowizny na rzecz FAZ.', keywords: 'darowizna konto bank BNP Paribas OPP' },
+	{ title: 'Deklaracja dostępności', href: '/deklaracja-dostepnosci/', description: 'Informacja o dostępności nowej strony FAZ.', keywords: 'dostępność cyfrowa skarga PJM architektoniczna' },
+	{ title: 'Polityka prywatności', href: '/polityka-prywatnosci/', description: 'Informacje o danych przesyłanych przez formularz.', keywords: 'dane osobowe prywatność formularz prawa' },
+	{ title: 'Statut Fundacji', href: '/statut-fundacji/', description: 'Sposób uzyskania oficjalnego statutu.', keywords: 'dokument oficjalny' },
+	{ title: 'Mapa strony', href: '/mapa-strony/', description: 'Lista głównych i szczegółowych stron serwisu.', keywords: 'nawigacja wszystkie strony' },
+];
+---
+
+<BaseLayout title="Szukaj — Fundacja Aktywności Zawodowej" description="Wyszukiwarka treści nowej strony Fundacji Aktywności Zawodowej.">
+	<section class="section">
+		<div class="container search-page">
+			<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> Szukaj</nav>
+			<div class="section-intro"><p class="eyebrow">Znajdź informację</p><h1>Wyszukiwarka</h1><p>Wpisz nazwę projektu, temat albo szukane pojęcie.</p></div>
+			<form id="page-search" action="/szukaj/" method="get" role="search">
+				<label for="query">Szukaj w serwisie</label>
+				<div><input id="query" name="q" type="search" autocomplete="off" /><button class="button button-primary" type="submit">Szukaj</button></div>
+			</form>
+			<p id="search-status" class="status" aria-live="polite">Wpisz szukane słowo, aby zobaczyć wyniki.</p>
+			<div id="search-results"></div>
+			<noscript><p>Wyszukiwanie wymaga obsługi JavaScript. Możesz skorzystać z <a href="/mapa-strony/">mapy strony</a>.</p></noscript>
+			<p class="final"><a class="text-link" href="/kontakt/">Nie możesz znaleźć informacji? Napisz do Fundacji</a></p>
+		</div>
+	</section>
+	<script id="search-data" type="application/json" set:html={JSON.stringify(searchIndex)}></script>
+	<script>
+		interface SearchItem { title: string; href: string; description: string; keywords: string; }
+		const dataNode = document.querySelector('#search-data');
+		const index: SearchItem[] = dataNode?.textContent ? JSON.parse(dataNode.textContent) : [];
+		const form = document.querySelector<HTMLFormElement>('#page-search');
+		const input = document.querySelector<HTMLInputElement>('#query');
+		const status = document.querySelector<HTMLElement>('#search-status');
+		const results = document.querySelector<HTMLElement>('#search-results');
+		const normalize = (value: string) => value.toLocaleLowerCase('pl').normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim();
+		const render = (query: string, updateAddress = false) => {
+			if (!results || !status) return;
+			const normalizedQuery = normalize(query);
+			results.replaceChildren();
+			if (updateAddress) {
+				const url = new URL(window.location.href);
+				if (query.trim()) url.searchParams.set('q', query.trim()); else url.searchParams.delete('q');
+				window.history.replaceState({}, '', url);
+			}
+			if (!normalizedQuery) { status.textContent = 'Wpisz szukane słowo, aby zobaczyć wyniki.'; return; }
+			const terms = normalizedQuery.split(/\s+/);
+			const matches = index.filter((item) => {
+				const haystack = normalize(`${item.title} ${item.description} ${item.keywords}`);
+				return terms.every((term) => haystack.includes(term));
+			});
+			status.textContent = matches.length === 1 ? 'Znaleziono 1 wynik.' : `Znaleziono ${matches.length} wyników.`;
+			if (!matches.length) { const empty = document.createElement('p'); empty.textContent = 'Nie znaleziono pasujących stron. Spróbuj krótszego lub innego hasła.'; results.append(empty); return; }
+			const list = document.createElement('ol');
+			for (const item of matches) { const li = document.createElement('li'); const heading = document.createElement('h2'); const link = document.createElement('a'); const description = document.createElement('p'); link.href = item.href; link.textContent = item.title; description.textContent = item.description; heading.append(link); li.append(heading, description); list.append(li); }
+			results.append(list);
+		};
+		const initialQuery = new URLSearchParams(window.location.search).get('q') ?? '';
+		if (input) input.value = initialQuery;
+		render(initialQuery);
+		form?.addEventListener('submit', (event) => { event.preventDefault(); render(input?.value ?? '', true); });
+		input?.addEventListener('input', () => render(input.value, true));
+	</script>
+</BaseLayout>
+
+<style>
+	.search-page { max-width: 64rem; }
+	#page-search label { display: block; margin-bottom: .5rem; font-weight: 800; }
+	#page-search > div { display: flex; gap: .5rem; }
+	#page-search input { min-width: 0; min-height: 3rem; flex: 1; padding: .7rem; border: 2px solid var(--color-line); border-radius: .4rem; }
+	#page-search button { border: 0; cursor: pointer; }
+	.status { margin-block: 1.5rem; font-weight: 750; }
+	#search-results ol { list-style-position: inside; }
+	#search-results li { padding-block: 1.2rem; border-top: 1px solid var(--color-line); }
+	#search-results h2 { display: inline; font-size: 1.4rem; }
+	#search-results p { margin-top: .4rem; color: var(--color-muted); }
+	.final { margin-top: 3rem; }
+</style>

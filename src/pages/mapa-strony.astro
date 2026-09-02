@@ -1,0 +1,30 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { activeProjects } from '../data/site';
+---
+
+<BaseLayout title="Mapa strony — Fundacja Aktywności Zawodowej" description="Druga ścieżka nawigacji do wszystkich głównych, szczegółowych i prawnych stron serwisu FAZ.">
+	<section class="section">
+		<div class="container sitemap">
+			<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> Mapa strony</nav>
+			<div class="section-intro"><p class="eyebrow">Nawigacja</p><h1>Mapa strony</h1><p>Pełna lista najważniejszych stron nowego serwisu Fundacji.</p></div>
+			<div class="sitemap-grid">
+				<section aria-labelledby="main-pages"><h2 id="main-pages">Główne strony</h2><ul><li><a href="/">Strona główna</a></li><li><a href="/jak-dzialamy/">Jak działamy</a></li><li><a href="/dla-ciebie/">Wsparcie dla Ciebie</a></li><li><a href="/dla-instytucji/">Wsparcie dla instytucji</a></li><li><a href="/dla-pracodawcow/">Wsparcie dla pracodawców</a></li><li><a href="/historie-zmiany/">Historie zmiany</a></li><li><a href="/o-fundacji/">O Fundacji</a></li><li><a href="/kontakt/">Kontakt i biura</a></li><li><a href="/wspieram/">Wesprzyj Fundację</a></li><li><a href="/szukaj/">Wyszukiwarka</a></li></ul></section>
+				<section aria-labelledby="projects-pages"><h2 id="projects-pages"><a href="/projekty/">Projekty</a></h2><ul>{activeProjects.map((project) => <li><a href={project.href}>{project.title}</a></li>)}</ul></section>
+				<section aria-labelledby="knowledge-pages"><h2 id="knowledge-pages"><a href="/wiedza/">Wiedza</a></h2><ul><li><a href="/wiedza/publikacje/wtz-w-dobrych-rekach/">Publikacja „WTZ w dobrych rękach”</a></li><li><a href="/wiedza/pytania-i-odpowiedzi/">Pytania i odpowiedzi</a></li></ul></section>
+				<section aria-labelledby="foundation-pages"><h2 id="foundation-pages">Dokumenty i informacje prawne</h2><ul><li><a href="/o-fundacji/sprawozdania/">Sprawozdania Fundacji</a></li><li><a href="/deklaracja-dostepnosci/">Deklaracja dostępności</a></li><li><a href="/polityka-prywatnosci/">Polityka prywatności</a></li><li><a href="/statut-fundacji/">Statut Fundacji</a></li></ul></section>
+			</div>
+			<p class="final"><a class="button button-primary" href="/kontakt/">Zgłoś problem ze znalezieniem informacji</a></p>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.sitemap { max-width: 68rem; }
+	.sitemap-grid { display: grid; gap: 3rem; }
+	.sitemap-grid h2 { margin-bottom: 1rem; font-size: 1.8rem; }
+	.sitemap-grid ul { margin-left: 1.3rem; }
+	.sitemap-grid li + li { margin-top: .55rem; }
+	.final { margin-top: 4rem; }
+	@media (min-width: 48rem) { .sitemap-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

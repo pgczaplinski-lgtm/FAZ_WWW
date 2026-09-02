@@ -1,0 +1,134 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { stories } from '../data/site';
+---
+
+<BaseLayout
+	title="Historie zmiany — praktyka FAZ"
+	description="Trzy zanonimizowane historie praktyki FAZ pokazujące drogę od diagnozy funkcjonalnej do trwałej zmiany zawodowej."
+>
+	<div class="container page-top">
+		<nav class="breadcrumb" aria-label="Okruszki">
+			<a href="/">Strona główna</a><span aria-hidden="true">/</span><span aria-current="page">Historie zmiany</span>
+		</nav>
+	</div>
+
+	<section class="detail-hero">
+		<div class="container hero-copy">
+			<p class="eyebrow">Historie praktyki</p>
+			<h1>Zmiana zaczyna się od zobaczenia możliwości</h1>
+			<p class="hero-intro">Poniższe trzy historie pokazują, jak realne zadanie, uważna obserwacja i zmiana warunków mogą otworzyć drogę do pracy. Każda ma inny punkt wyjścia, ale w każdej decyzje wynikają z praktycznego doświadczenia.</p>
+			<p class="source-note">Są to zanonimizowane historie praktyki opublikowane przez Fundację Aktywności Zawodowej w publikacji „WTZ w dobrych rękach”. Nie są bezpośrednimi cytatami ani testimonialami uczestników.</p>
+		</div>
+	</section>
+
+	<section class="section stories-section" aria-labelledby="stories-title">
+		<div class="container">
+			<div class="section-intro">
+				<p class="eyebrow">Przed → proces → rezultat → wniosek</p>
+				<h2 id="stories-title">Trzy drogi, trzy ważne lekcje</h2>
+				<p>Opisy zachowują fakty zawarte w materiale źródłowym. Dodany układ pomaga zobaczyć, co uruchomiło zmianę i jakie znaczenie ma ona dla praktyki.</p>
+			</div>
+			<div class="stories-list">
+				{stories.map((story, index) => (
+					<article class="story">
+						<header>
+							<p class="story-index" aria-hidden="true">0{index + 1}</p>
+							<h3>{story.name}</h3>
+						</header>
+						<dl>
+							<div>
+								<dt>Punkt wyjścia</dt>
+								<dd>{story.before}</dd>
+							</div>
+							<div>
+								<dt>Proces</dt>
+								<dd>{story.process}</dd>
+							</div>
+							<div>
+								<dt>Rezultat</dt>
+								<dd>{story.outcome}</dd>
+							</div>
+							<div class="insight">
+								<dt>Wniosek dla praktyki</dt>
+								<dd>{story.insight}</dd>
+							</div>
+						</dl>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section context-section" aria-labelledby="context-title">
+		<div class="container context-grid">
+			<div>
+				<p class="eyebrow">Co łączy te historie</p>
+				<h2 id="context-title">Najpierw zadanie i warunki, potem wniosek</h2>
+			</div>
+			<div>
+				<p>Lista trudności nie pokazuje, jak człowiek pracuje. Dopiero konkretne działanie pozwala zobaczyć tempo, sprawność, koncentrację, konsekwencję i potrzebny sposób wsparcia.</p>
+				<p>Zmiana nie zawsze wymaga „naprawiania” osoby. Czasem właściwym krokiem jest dopasowanie zadania, organizacji pracy albo otoczenia — tak jak w historii, w której przeszkodą był transport.</p>
+			</div>
+		</div>
+	</section>
+
+	<section class="section publication-section" aria-labelledby="publication-title">
+		<div class="container publication-grid">
+			<img src="/images/wtz-w-dobrych-rekach.png" alt="Okładka publikacji WTZ w dobrych rękach" width="300" height="300" loading="lazy" />
+			<div>
+				<p class="eyebrow">Źródło historii</p>
+				<h2 id="publication-title">Poznaj publikację „WTZ w dobrych rękach”</h2>
+				<p>Książka rozwija praktyczne podejście do aktywizacji zawodowej i budowania tożsamości zawodowej w pracy WTZ.</p>
+				<a class="button button-secondary" href="/wiedza/publikacje/wtz-w-dobrych-rekach/">Przejdź do opisu publikacji</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-band" aria-labelledby="cta-title">
+		<div class="container contact-band-grid">
+			<div>
+				<p class="eyebrow">Od historii do własnej drogi</p>
+				<h2 id="cta-title">Chcesz porozmawiać o praktycznym wsparciu?</h2>
+				<p>Skontaktuj się z zespołem FAZ i opowiedz nam o swojej sytuacji albo potrzebach instytucji.</p>
+			</div>
+			<a class="button button-primary" href="/kontakt/">Skontaktuj się z Fundacją</a>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-top { padding-top: 1.25rem; }
+	.breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: center; color: var(--color-muted); font-size: .9rem; }
+	.detail-hero { padding-block: clamp(2.5rem, 7vw, 6.5rem); }
+	.hero-copy { max-width: 68rem; }
+	.hero-intro { max-width: 52rem; margin-top: 1.5rem; color: var(--color-muted); font-size: clamp(1.12rem, 2vw, 1.4rem); }
+	.detail-hero .source-note { max-width: 50rem; margin-top: 1.5rem; padding: 1.2rem; border-left: 4px solid var(--color-blue); background: var(--color-blue-pale); color: var(--color-ink); font-size: .95rem; }
+	.stories-section { background: var(--color-green-pale); }
+	.stories-list { display: grid; gap: 1.5rem; }
+	.story { overflow: hidden; border: 1px solid #bdccbf; border-radius: var(--radius-md); background: rgb(255 255 255 / .8); }
+	.story header { display: flex; gap: 1rem; align-items: center; padding: 1.4rem; border-bottom: 1px solid #c7d4c8; }
+	.story-index { color: var(--color-blue-dark); font-size: .8rem; font-weight: 850; letter-spacing: .12em; }
+	.story dl { display: grid; }
+	.story dl > div { position: relative; padding: 1.4rem; }
+	.story dl > div + div { border-top: 1px solid #c7d4c8; }
+	.story dt { color: var(--color-blue-dark); font-size: .75rem; font-weight: 850; letter-spacing: .1em; text-transform: uppercase; }
+	.story dd { margin-top: .5rem; color: var(--color-muted); }
+	.story .insight { background: var(--color-blue-pale); }
+	.story .insight dd { color: var(--color-ink); font-weight: 700; }
+	.context-section { background: var(--color-white); }
+	.context-grid, .publication-grid { display: grid; gap: 2.5rem clamp(2rem, 8vw, 7rem); align-items: center; }
+	.context-grid > div:last-child { max-width: 48rem; }
+	.context-grid > div:last-child p + p { margin-top: 1.15rem; }
+	.publication-section { background: var(--color-paper); }
+	.publication-grid img { width: min(100%, 20rem); margin-inline: auto; filter: drop-shadow(0 18px 24px rgb(24 35 58 / .18)); }
+	.publication-grid p:not(.eyebrow) { max-width: 42rem; margin-block: 1.2rem 1.7rem; color: var(--color-muted); }
+	@media (min-width: 48rem) {
+		.story dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+		.story dl > div + div { border-top: 0; }
+		.story dl > div:nth-child(even) { border-left: 1px solid #c7d4c8; }
+		.story dl > div:nth-child(n+3) { border-top: 1px solid #c7d4c8; }
+		.context-grid { grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); }
+		.publication-grid { grid-template-columns: minmax(14rem, .65fr) minmax(0, 1.35fr); }
+	}
+</style>
