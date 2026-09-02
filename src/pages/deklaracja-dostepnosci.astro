@@ -1,0 +1,25 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Deklaracja dostępności — Fundacja Aktywności Zawodowej" description="Informacja o dostępności nowej wersji strony internetowej Fundacji Aktywności Zawodowej.">
+	<section class="section"><div class="container declaration">
+		<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> Deklaracja dostępności</nav>
+		<div class="section-intro"><p class="eyebrow">Dostępność</p><h1>Deklaracja dostępności</h1><p>Fundacja Aktywności Zawodowej dokłada starań, aby nowa wersja strony internetowej była możliwa do używania przez jak najszerszą grupę osób. Przed niezależnym audytem nie deklarujemy pełnej zgodności z wymaganiami prawnymi.</p></div>
+
+		<section aria-labelledby="website-title"><h2 id="website-title">Informacje o stronie i deklaracji</h2><dl><div><dt>Nazwa podmiotu</dt><dd>Fundacja Aktywności Zawodowej (FAZ)</dd></div><div><dt>Strona</dt><dd>Nowa wersja serwisu internetowego Fundacji Aktywności Zawodowej</dd></div><div><dt>Data publikacji nowej wersji</dt><dd>9 września 2026</dd></div><div><dt>Data przygotowania deklaracji</dt><dd>9 września 2026</dd></div><div><dt>Data ostatniego przeglądu</dt><dd>9 września 2026</dd></div><div><dt>Metoda oceny</dt><dd>Samoocena wykonana przez twórcę nowej wersji strony</dd></div></dl></section>
+
+		<section aria-labelledby="status-title"><h2 id="status-title">Stan dostępności cyfrowej</h2><p>W nowej wersji zastosowano między innymi semantyczne nagłówki, widoczne etykiety pól, obsługę klawiaturą, odnośnik do pominięcia nawigacji, opisy obrazów i tekstowe komunikaty formularzy. Serwis nie został jeszcze oceniony w niezależnym audycie, dlatego nie składamy oświadczenia o pełnej zgodności. Ewentualne bariery można zgłaszać na podane niżej dane.</p><p>Niezweryfikowane dokumenty z poprzedniej strony nie są ponownie publikowane; można poprosić Fundację o dostępną kopię.</p></section>
+
+		<section aria-labelledby="feedback-title"><h2 id="feedback-title">Zgłaszanie problemów i wniosek o dostępną informację</h2><p>Jeśli nie możesz skorzystać z treści lub funkcji strony, napisz na <a href="mailto:biuro@faz.org.pl">biuro@faz.org.pl</a> albo zadzwoń pod numer <a href="tel:+48736858551">736 858 551</a>. Opisz stronę lub element, który sprawia trudność, oraz preferowany sposób przekazania informacji.</p><p>Tym samym kanałem możesz złożyć wniosek o udostępnienie informacji w alternatywnej formie. Fundacja powinna odpowiedzieć, wskazując możliwy sposób i termin realizacji albo wyjaśnienie, jeśli spełnienie prośby nie jest możliwe.</p></section>
+
+		<section aria-labelledby="complaint-title"><h2 id="complaint-title">Skarga</h2><p>Jeśli odpowiedź na zgłoszenie lub wniosek nie rozwiązuje problemu, możesz złożyć skargę do Fundacji, korzystając z adresu <a href="mailto:biuro@faz.org.pl?subject=Skarga%20dotycz%C4%85ca%20dost%C4%99pno%C5%9Bci">biuro@faz.org.pl</a> albo danych na stronie kontaktowej. W wiadomości oznacz, że jest to skarga dotycząca dostępności, i opisz wcześniejsze zgłoszenie.</p><p>Możesz również zapoznać się z informacjami na stronie <a href="https://bip.brpo.gov.pl/" rel="external">Rzecznika Praw Obywatelskich</a>.</p></section>
+
+		<section class="confirmation" aria-labelledby="confirmation-title"><p class="eyebrow">Informacje wymagające potwierdzenia przed publikacją produkcyjną</p><h2 id="confirmation-title">Dostępność biur i komunikacja PJM</h2><ul><li><strong>Dostępność architektoniczna:</strong> warunki wejścia, poruszania się, toalety, parking i inne udogodnienia dla każdego biura trzeba potwierdzić z Fundacją przed wizytą.</li><li><strong>Polski Język Migowy (PJM):</strong> dostępność tłumacza PJM lub innych form komunikacji trzeba potwierdzić z Fundacją przed wizytą albo spotkaniem.</li></ul><p>Te dwa punkty są celowo oznaczone jako informacje wymagające potwierdzenia przed produkcyjną publikacją serwisu. Nie opisujemy nieznanych warunków jako zapewnionych.</p></section>
+
+		<p class="final"><a class="button button-primary" href="/kontakt/">Skontaktuj się w sprawie dostępności</a></p>
+	</div></section>
+</BaseLayout>
+<style>
+	.declaration{max-width:66rem}.declaration section+section{margin-top:3.5rem}.declaration h2{margin-bottom:1rem}.declaration section p+p{margin-top:1rem}.declaration dl{border-top:1px solid var(--color-line)}.declaration dl div{padding-block:1rem;border-bottom:1px solid var(--color-line)}.declaration dt{font-weight:800}.declaration dd{margin-top:.25rem}.confirmation{padding:2rem;border:3px solid var(--color-blue-dark);background:var(--color-blue-pale)}.confirmation ul{margin-left:1.3rem}.confirmation li+li{margin-top:1rem}.confirmation ul+p{margin-top:1.2rem}.final{margin-top:3rem}
+</style>

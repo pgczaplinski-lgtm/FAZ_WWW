@@ -21,11 +21,11 @@ const details: Record<string, ProjectDetails> = {
 	},
 	'inspiratorium-wspolpracy': {
 		facts: ['Celem projektu jest zatrudnienie co najmniej 55 osób.', 'Zaplanowano 48 staży.', 'Rekrutacja jest prowadzona w sposób ciągły.'],
-		audience: 'Osoby przygotowujące się do wejścia na rynek pracy', location: 'Lokalizację wsparcia potwierdza zespół projektu', period: '2026–2029', nextStep: 'Skontaktuj się z zespołem, aby potwierdzić możliwość udziału w trwającej rekrutacji.',
+		audience: 'Uczestnicy projektu', location: 'Lokalizację wsparcia potwierdza zespół projektu', period: '2026–2029', nextStep: 'Skontaktuj się z zespołem, aby potwierdzić możliwość udziału w trwającej rekrutacji.',
 	},
 	'wtz-w-dobrych-rekach': {
 		facts: ['192 osoby mają ukończyć szkolenie, kurs lub warsztat.', 'Projekt jest współfinansowany ze środków PFRON.'],
-		audience: 'Osoby związane z działalnością warsztatów terapii zajęciowej', location: 'Lokalizację działań potwierdza zespół projektu', period: '2026–2027', nextStep: 'O grupy objęte poszczególnymi działaniami i zasady udziału zapytaj zespół projektu.',
+		audience: '192 osoby uczestniczące w szkoleniach', location: 'Lokalizację działań potwierdza zespół projektu', period: '2026–2027', nextStep: 'O grupy objęte poszczególnymi działaniami i zasady udziału zapytaj zespół projektu.',
 	},
 	'dyrektywa-eaa': {
 		facts: ['Projekt obejmuje szkolenia i doradztwo dotyczące prawnych wymagań dostępności cyfrowej.', 'Działania są kierowane do personelu firm.', 'Zakładana grupa odbiorców to 1300 pracowników.'],
@@ -33,19 +33,21 @@ const details: Record<string, ProjectDetails> = {
 	},
 	'dostep-do-wiedzy-iii': {
 		facts: ['Projekt zapewnia szkolenia z dostępności i projektowania uniwersalnego.', 'W razie potrzeby szkolenia uzupełnia indywidualne doradztwo.'],
-		audience: 'Osoby i organizacje zainteresowane dostępnością oraz projektowaniem uniwersalnym', location: 'Formę i miejsce udziału potwierdza zespół projektu', period: 'Trzecia edycja; daty potwierdza zespół projektu', nextStep: 'O odbiorców, terminy i zasady udziału zapytaj zespół projektu.',
+		audience: 'Odbiorców projektu potwierdza zespół', location: 'Formę i miejsce udziału potwierdza zespół projektu', period: 'Trzecia edycja; daty potwierdza zespół projektu', nextStep: 'O odbiorców, terminy i zasady udziału zapytaj zespół projektu.',
 	},
 };
 
 export function getStaticPaths() {
 	return activeProjects.map((project) => {
 		const slug = project.href.split('/').filter(Boolean).at(-1)!;
-		return { params: { slug }, props: { project, projectDetails: details[slug] } };
+		return { params: { slug }, props: { project } };
 	});
 }
 
-interface Props { project: Project; projectDetails: ProjectDetails; }
-const { project, projectDetails } = Astro.props;
+interface Props { project: Project; }
+const { project } = Astro.props;
+const slug = project.href.split('/').filter(Boolean).at(-1)!;
+const projectDetails = details[slug];
 ---
 
 <BaseLayout title={`${project.title} — projekty FAZ`} description={project.summary}>

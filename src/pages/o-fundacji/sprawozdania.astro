@@ -1,0 +1,14 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const years = ['2024', '2023', '2022', '2021'];
+---
+
+<BaseLayout title="Sprawozdania Fundacji — FAZ" description="Informacja o dostępie do sprawozdań Fundacji Aktywności Zawodowej za lata 2021–2024.">
+	<section class="section"><div class="container reports">
+		<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> <a href="/o-fundacji/">O Fundacji</a> <span aria-hidden="true">/</span> Sprawozdania</nav>
+		<div class="section-intro"><p class="eyebrow">Dokumenty</p><h1>Sprawozdania Fundacji</h1><p>Dokumenty z poprzedniej strony muszą zostać sprawdzone pod kątem dostępności przed ponowną publikacją. Nie udostępniamy tutaj niezweryfikowanych skanów.</p></div>
+		<section aria-labelledby="years-title"><h2 id="years-title">Sprawozdania za lata 2021–2024</h2><ul>{years.map((year) => <li><strong>{year}</strong> — poproś Fundację o dostępny egzemplarz dokumentu.</li>)}</ul></section>
+		<section aria-labelledby="copy-title"><h2 id="copy-title">Poproś o dostępną kopię</h2><p>W wiadomości podaj rok i format, który będzie dla Ciebie dostępny. Zespół potwierdzi możliwość przygotowania dokumentu.</p><div class="button-row"><a class="button button-primary" href="mailto:biuro@faz.org.pl?subject=Pro%C5%9Bba%20o%20dost%C4%99pne%20sprawozdanie">Napisz w sprawie sprawozdania</a><a class="text-link" href="/kontakt/">Zobacz dane biur FAZ</a></div></section>
+	</div></section>
+</BaseLayout>
+<style>.reports{max-width:62rem}.reports section+section{margin-top:3rem}.reports h2{margin-bottom:1rem}.reports ul{margin-left:1.3rem}.reports li+li{margin-top:.7rem}.reports section p{margin-bottom:1.4rem}</style>
