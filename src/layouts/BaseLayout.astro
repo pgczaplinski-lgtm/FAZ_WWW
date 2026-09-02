@@ -60,7 +60,7 @@ const organization = {
 		<meta property="og:url" content={canonical} />
 		<meta property="og:image" content={socialImage} />
 		<meta name="twitter:card" content="summary_large_image" />
-		<script type="application/ld+json" set:html={JSON.stringify(organization)}></script>
+		<script is:inline type="application/ld+json" set:html={JSON.stringify(organization)}></script>
 		<title>{title}</title>
 	</head>
 	<body>
