@@ -1,0 +1,21 @@
+---
+import { stats } from '../data/site';
+---
+
+<section class="stat-band" aria-labelledby="results-title">
+	<div class="container">
+		<div class="stat-heading">
+			<p class="eyebrow">Doświadczenie w liczbach</p>
+			<h2 id="results-title">Praktyka, którą można policzyć</h2>
+		</div>
+		<dl class="stat-grid">
+			{stats.map((stat) => (
+				<div>
+					<dt>{stat.label}</dt>
+					<dd>{stat.value}</dd>
+				</div>
+			))}
+		</dl>
+		<p class="source-note"><strong>Zakres danych:</strong> {stats[0].source}</p>
+	</div>
+</section>

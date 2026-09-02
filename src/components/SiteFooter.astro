@@ -1,0 +1,52 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+	<div class="container footer-grid">
+		<div class="footer-lead">
+			<img src="/images/logo-faz.svg" alt="Fundacja Aktywności Zawodowej" width="354" height="198" loading="lazy" />
+			<p>Budujemy tożsamość zawodową przez doświadczenie, odpowiedzialność i praktykę.</p>
+		</div>
+
+		<section aria-labelledby="footer-contact">
+			<h2 id="footer-contact">Kontakt w Gdańsku</h2>
+			<address>
+				ul. Romana Dmowskiego 12/3.12<br />
+				80-264 Gdańsk<br />
+				<a href="mailto:biuro@faz.org.pl">biuro@faz.org.pl</a><br />
+				<a href="tel:+48736858551">736 858 551</a><br />
+				<a href="tel:+48730840050">730 840 050</a>
+			</address>
+			<p>Biuro jest dostępne w dni robocze od 8:00 do 16:00.</p>
+		</section>
+
+		<section aria-labelledby="footer-search">
+			<h2 id="footer-search">Znajdź na stronie</h2>
+			<form class="search-form" action="/szukaj/" method="get" role="search">
+				<label for="site-search">Szukaj w serwisie</label>
+				<div>
+					<input id="site-search" name="q" type="search" autocomplete="off" />
+					<button type="submit">Szukaj</button>
+				</div>
+			</form>
+			<ul class="social-links" aria-label="Media społecznościowe">
+				<li><a href="https://www.instagram.com/fundacja_faz/">Instagram</a></li>
+				<li><a href="https://www.facebook.com/FundacjaAktywnosciZawodowej/">Facebook</a></li>
+				<li><a href="https://www.linkedin.com/company/fundacja-aktywnosci-zawodowej/">LinkedIn</a></li>
+			</ul>
+		</section>
+	</div>
+
+	<div class="container footer-meta">
+		<p>KRS: 0000314083 · REGON: 220679576 · NIP: 583 305 54 18</p>
+		<nav aria-label="Informacje prawne">
+			<ul>
+				<li><a href="/deklaracja-dostepnosci/">Deklaracja dostępności</a></li>
+				<li><a href="/polityka-prywatnosci/">Polityka prywatności</a></li>
+				<li><a href="/statut-fundacji/">Statut Fundacji</a></li>
+			</ul>
+		</nav>
+		<p>© {year} Fundacja Aktywności Zawodowej</p>
+	</div>
+</footer>

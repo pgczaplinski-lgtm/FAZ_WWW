@@ -1,0 +1,25 @@
+---
+import type { Project } from '../data/site';
+
+interface Props {
+	project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card">
+	<p class="project-period">{project.period}</p>
+	<h3><a href={project.href}>{project.title}</a></h3>
+	<p>{project.summary}</p>
+	<dl>
+		<div>
+			<dt>Dla kogo</dt>
+			<dd>{project.audience}</dd>
+		</div>
+		<div>
+			<dt>Gdzie</dt>
+			<dd>{project.location}</dd>
+		</div>
+	</dl>
+</article>

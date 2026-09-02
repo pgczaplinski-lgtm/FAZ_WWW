@@ -1,0 +1,20 @@
+---
+import { methodStages } from '../data/site';
+---
+
+<div class="method-diagram">
+	<ol>
+		{methodStages.map((stage, index) => (
+			<li class={`method-stage method-stage-${index + 1}`}>
+				<p class="method-number" aria-hidden="true">0{index + 1}</p>
+				<h3>{stage.title}</h3>
+				<p>{stage.description}</p>
+				{stage.outcomes && (
+					<ul>
+						{stage.outcomes.map((outcome) => <li>{outcome}</li>)}
+					</ul>
+				)}
+			</li>
+		))}
+	</ol>
+</div>
