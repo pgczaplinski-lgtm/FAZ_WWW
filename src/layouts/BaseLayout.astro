@@ -13,6 +13,33 @@ const { title, description, image = '/images/praca-z-uczestnikami.jpg' } = Astro
 const siteOrigin = Astro.site ?? new URL('https://www.faz.org.pl');
 const canonical = new URL(Astro.url.pathname, siteOrigin);
 const socialImage = new URL(image, siteOrigin);
+const organization = {
+	'@context': 'https://schema.org',
+	'@type': 'NGO',
+	name: 'Fundacja Aktywności Zawodowej',
+	alternateName: 'FAZ',
+	url: siteOrigin.href,
+	logo: new URL('/images/logo-faz.svg', siteOrigin).href,
+	email: 'biuro@faz.org.pl',
+	telephone: '+48 736 858 551',
+	identifier: [
+		{ '@type': 'PropertyValue', propertyID: 'KRS', value: '0000314083' },
+		{ '@type': 'PropertyValue', propertyID: 'NIP', value: '5833055418' },
+		{ '@type': 'PropertyValue', propertyID: 'REGON', value: '220679576' },
+	],
+	address: {
+		'@type': 'PostalAddress',
+		streetAddress: 'ul. Romana Dmowskiego 12/3.12',
+		postalCode: '80-264',
+		addressLocality: 'Gdańsk',
+		addressCountry: 'PL',
+	},
+	sameAs: [
+		'https://www.facebook.com/FundacjaAktywnosciZawodowej/',
+		'https://www.instagram.com/fundacja_faz/',
+		'https://www.linkedin.com/company/fundacja-aktywnosci-zawodowej/',
+	],
+};
 ---
 
 <!doctype html>
@@ -33,6 +60,7 @@ const socialImage = new URL(image, siteOrigin);
 		<meta property="og:url" content={canonical} />
 		<meta property="og:image" content={socialImage} />
 		<meta name="twitter:card" content="summary_large_image" />
+		<script type="application/ld+json" set:html={JSON.stringify(organization)}></script>
 		<title>{title}</title>
 	</head>
 	<body>

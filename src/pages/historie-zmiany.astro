@@ -75,7 +75,10 @@ import { stories } from '../data/site';
 
 	<section class="section publication-section" aria-labelledby="publication-title">
 		<div class="container publication-grid">
-			<img src="/images/wtz-w-dobrych-rekach.png" alt="Okładka publikacji WTZ w dobrych rękach" width="300" height="300" loading="lazy" />
+			<div class="book-tile" aria-hidden="true">
+				<img src="/images/logo-faz.svg" alt="" width="354" height="198" loading="lazy" />
+				<p><span>Praktyczny przewodnik</span>WTZ w dobrych rękach</p>
+			</div>
 			<div>
 				<p class="eyebrow">Źródło historii</p>
 				<h2 id="publication-title">Poznaj publikację „WTZ w dobrych rękach”</h2>
@@ -121,7 +124,7 @@ import { stories } from '../data/site';
 	.context-grid > div:last-child { max-width: 48rem; }
 	.context-grid > div:last-child p + p { margin-top: 1.15rem; }
 	.publication-section { background: var(--color-paper); }
-	.publication-grid img { width: min(100%, 20rem); margin-inline: auto; filter: drop-shadow(0 18px 24px rgb(24 35 58 / .18)); }
+	.publication-grid .book-tile { min-height: 23rem; }
 	.publication-grid p:not(.eyebrow) { max-width: 42rem; margin-block: 1.2rem 1.7rem; color: var(--color-muted); }
 	@media (min-width: 48rem) {
 		.story dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
