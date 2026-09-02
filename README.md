@@ -1,43 +1,33 @@
-# Astro Starter Kit: Minimal
+# Fundacja Aktywności Zawodowej
+
+Statyczna witryna FAZ zbudowana w Astro. Serwis przedstawia metodę budowania tożsamości zawodowej, projekty, historie praktyki, publikacje oraz dostępne drogi kontaktu.
+
+## Uruchomienie
 
 ```sh
-npm create astro@latest -- --template minimal
+npm ci
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Aplikacja lokalna jest dostępna domyślnie pod `http://localhost:4321`.
 
-## 🚀 Project Structure
+## Sprawdzenie jakości
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+npm run check
+npm run build
+node --test worker/contact.test.mjs
+npm test
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Testy przeglądarkowe używają systemowej przeglądarki Chrome i sprawdzają strukturę dokumentów, dostępność axe, linki wewnętrzne, widok 320 px, formularz oraz wyszukiwarkę.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Formularz kontaktowy
 
-Any static assets, like images, can be placed in the `public/` directory.
+Backend znajduje się w `worker/` i działa pod `/api/contact`. Wymaga skonfigurowania sekretów wdrożenia:
 
-## 🧞 Commands
+- `RESEND_API_KEY`
+- `CONTACT_RECIPIENT`
+- `CONTACT_FROM`
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Bez kompletu wartości formularz kończy działanie bez wysłania wiadomości i zwraca informację o niedostępności. Treść strony oraz bezpośrednie dane telefoniczne i e-mailowe działają niezależnie od workera.
