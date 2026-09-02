@@ -8,10 +8,10 @@
   --ink: #16263d;
   --muted: #596777;
   --cream: #fffdf8;
-  --coral: #f26b4b;
-  --coral-dark: #c94b31;
+  --blue: #3D65A6;
+  --blue-dark: #2d4d80;
+  --blue-soft: #dcecf4;
   --mint: #ddf1e8;
-  --blue: #dcecf4;
   --line: #d8dedf;
 }
 * { box-sizing: border-box; }
