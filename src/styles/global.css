@@ -823,6 +823,10 @@
 		padding-bottom: 3.5rem;
 	}
 
+	.footer-grid > * {
+		min-width: 0;
+	}
+
 	.footer-lead img {
 		width: 10.5rem;
 		padding: 0.65rem;
