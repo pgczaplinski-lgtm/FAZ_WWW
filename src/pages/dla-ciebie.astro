@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const steps = [
+	{
+		title: 'Pierwsza rozmowa',
+		description: 'Zaczynamy od Twojej sytuacji, pytań i tego, co jest dla Ciebie ważne. Możesz przyjść samodzielnie albo z bliską osobą.',
+	},
+	{
+		title: 'Diagnoza funkcjonalna',
+		description: 'Patrzymy, jak wykonujesz konkretne zadania: co już jest Twoją mocną stroną, jakich warunków potrzebujesz i czego warto się uczyć.',
+	},
+	{
+		title: 'Wybór kierunku',
+		description: 'Wspólnie wybieramy jeden zawodowy kierunek do sprawdzenia. Decyzja uwzględnia Twoje zainteresowania, możliwości i realne zadania.',
+	},
+	{
+		title: 'Próbki pracy',
+		description: 'Ćwiczysz w praktyce, powtarzasz zadania i dostajesz konkretną informację zwrotną o sposobie oraz efekcie pracy.',
+	},
+	{
+		title: 'Kontakt z pracodawcą',
+		description: 'Kolejnym krokiem może być spotkanie, wizyta studyjna, próbka pracy, praktyka albo staż u pracodawcy.',
+	},
+	{
+		title: 'Wsparcie po rozpoczęciu pracy',
+		description: 'Po zatrudnieniu ważne jest spokojne wdrożenie, jasne instrukcje i rozmowa o tym, co działa, a co wymaga zmiany.',
+	},
+];
+---
+
+<BaseLayout
+	title="Dla Ciebie — wsparcie w drodze zawodowej | FAZ"
+	description="Zobacz, jak FAZ wspiera osoby z niepełnosprawnościami i ich bliskich: od pierwszej rozmowy po doświadczenie u pracodawcy."
+>
+	<div class="container page-top">
+		<nav class="breadcrumb" aria-label="Okruszki">
+			<a href="/">Strona główna</a><span aria-hidden="true">/</span><span aria-current="page">Dla Ciebie</span>
+		</nav>
+	</div>
+
+	<section class="detail-hero">
+		<div class="container hero-grid">
+			<div>
+				<p class="eyebrow">Wsparcie dla osoby z niepełnosprawnością i rodziny</p>
+				<h1>Twoja droga zawodowa należy do Ciebie</h1>
+				<p class="hero-intro">Nie musisz od razu wiedzieć, jaka praca będzie właściwa. Zaczynamy od rozmowy, a potem sprawdzamy możliwości w działaniu — bez odbierania Ci prawa do decyzji, błędu i zmiany zdania.</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/kontakt/">Umów pierwszą rozmowę</a>
+					<a class="button button-secondary" href="/projekty/">Zobacz aktualne projekty</a>
+				</div>
+			</div>
+			<aside class="agency-note" aria-labelledby="agency-title">
+				<h2 id="agency-title">Wsparcie nie oznacza decydowania za Ciebie</h2>
+				<p>Traktujemy Cię jak dorosłą osobę. Ustalenia są jasne, cele omawiamy wspólnie, a rodzina lub inni bliscy mogą wspierać proces z poszanowaniem Twojego głosu.</p>
+			</aside>
+		</div>
+	</section>
+
+	<section class="section journey-section" aria-labelledby="journey-title">
+		<div class="container">
+			<div class="section-intro">
+				<p class="eyebrow">Jak może wyglądać współpraca</p>
+				<h2 id="journey-title">Od rozmowy do sprawdzenia się w pracy</h2>
+				<p>Każda osoba przechodzi tę drogę we własnym tempie. Kolejne kroki wynikają z jej sytuacji i doświadczeń, a nie z gotowej oceny przy biurku.</p>
+			</div>
+			<ol class="journey-list">
+				{steps.map((step) => (
+					<li>
+						<h3>{step.title}</h3>
+						<p>{step.description}</p>
+					</li>
+				))}
+			</ol>
+		</div>
+	</section>
+
+	<section class="section questions-section" aria-labelledby="questions-title">
+		<div class="container questions-grid">
+			<div>
+				<p class="eyebrow">Przed kontaktem</p>
+				<h2 id="questions-title">Co warto nam powiedzieć</h2>
+				<p>Do pierwszej rozmowy nie trzeba przygotowywać gotowego planu zawodowego. Pomocne będzie kilka podstawowych informacji.</p>
+			</div>
+			<ul>
+				<li>Jakiej zmiany teraz szukasz?</li>
+				<li>Jakie zadania lubisz wykonywać, a które są trudne?</li>
+				<li>Jakiego wsparcia potrzebujesz w rozmowie, dojeździe lub wykonywaniu zadań?</li>
+				<li>Czy uczestniczysz już w projekcie, WTZ albo innej formie wsparcia?</li>
+			</ul>
+		</div>
+	</section>
+
+	<section class="contact-band" aria-labelledby="contact-title">
+		<div class="container contact-band-grid">
+			<div>
+				<p class="eyebrow">Porozmawiajmy</p>
+				<h2 id="contact-title">Zacznij od krótkiej rozmowy z zespołem FAZ</h2>
+				<p>Opowiedz o swojej sytuacji. Sprawdzimy, jaki pierwszy krok jest obecnie możliwy.</p>
+			</div>
+			<div class="contact-actions">
+				<a class="button button-primary" href="/kontakt/">Przejdź do strony kontaktowej</a>
+				<p><a href="mailto:biuro@faz.org.pl">biuro@faz.org.pl</a><br /><a href="tel:+48736858551">736 858 551</a><br />poniedziałek–piątek, 8:00–16:00</p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.page-top { padding-top: 1.25rem; }
+	.breadcrumb { display: flex; flex-wrap: wrap; gap: .45rem .7rem; align-items: center; color: var(--color-muted); font-size: .9rem; }
+	.detail-hero { padding-block: clamp(2.5rem, 7vw, 6.5rem); }
+	.hero-grid, .questions-grid { display: grid; gap: 2.5rem clamp(2rem, 8vw, 7rem); align-items: center; }
+	.hero-intro { max-width: 48rem; margin-block: 1.5rem 2rem; color: var(--color-muted); font-size: clamp(1.12rem, 2vw, 1.4rem); }
+	.agency-note { padding: clamp(1.4rem, 4vw, 2.2rem); border-left: 5px solid var(--color-blue); border-radius: 0 var(--radius-md) var(--radius-md) 0; background: var(--color-blue-pale); }
+	.agency-note h2 { font-size: clamp(1.5rem, 3vw, 2.1rem); }
+	.agency-note p { margin-top: 1rem; color: var(--color-muted); }
+	.journey-section { background: var(--color-white); }
+	.journey-list { display: grid; gap: 1rem; list-style: none; counter-reset: journey; }
+	.journey-list li { position: relative; padding: 1.5rem 1.4rem 1.5rem 4.25rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-paper); counter-increment: journey; }
+	.journey-list li::before { position: absolute; left: 1.35rem; top: 1.35rem; content: counter(journey); display: grid; width: 2rem; height: 2rem; place-items: center; border-radius: 50%; background: var(--color-blue-dark); color: white; font-weight: 800; }
+	.journey-list p { margin-top: .7rem; color: var(--color-muted); }
+	.questions-section { background: var(--color-green-pale); }
+	.questions-grid > div > p:last-child { max-width: 40rem; margin-top: 1.2rem; color: var(--color-muted); }
+	.questions-grid ul { padding: 1.5rem 1.5rem 1.5rem 3rem; border-radius: var(--radius-md); background: rgb(255 255 255 / .75); }
+	.questions-grid li + li { margin-top: .8rem; }
+	@media (min-width: 50rem) {
+		.hero-grid, .questions-grid { grid-template-columns: minmax(0, 1.15fr) minmax(18rem, .85fr); }
+		.journey-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	}
+</style>

@@ -1,0 +1,12 @@
+{
+  "name": "faz-contact",
+  "main": "index.ts",
+  "compatibility_date": "2026-09-02",
+  "secrets": {
+    "required": [
+      "RESEND_API_KEY",
+      "CONTACT_RECIPIENT",
+      "CONTACT_FROM"
+    ]
+  }
+}

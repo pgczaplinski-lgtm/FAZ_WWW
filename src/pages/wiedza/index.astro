@@ -1,0 +1,46 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Wiedza — Fundacja Aktywności Zawodowej" description="Publikacje, materiały i odpowiedzi FAZ o aktywizacji zawodowej, WTZ i dostępności.">
+	<section class="section">
+		<div class="container">
+			<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> Wiedza</nav>
+			<div class="section-intro">
+				<p class="eyebrow">Biblioteka praktyki</p>
+				<h1>Wiedza</h1>
+				<p>Materiały porządkują doświadczenia FAZ w aktywizacji zawodowej, pracy WTZ i dostępności. Wybierz publikację, krótszy materiał albo odpowiedź na podstawowe pytanie.</p>
+			</div>
+			<div class="knowledge-grid">
+				<article>
+					<p class="card-index">01</p><h2>Publikacje</h2>
+					<p>Dłuższe opracowania do czytania w HTML lub pobrania jako dokument.</p>
+					<a class="text-link" href="/wiedza/publikacje/wtz-w-dobrych-rekach/">Poznaj publikację „WTZ w dobrych rękach”</a>
+				</article>
+				<article>
+					<p class="card-index">02</p><h2>Artykuły i materiały</h2>
+					<p>Najważniejsze założenia metody FAZ i historie pokazujące ją w praktyce.</p>
+					<ul><li><a href="/jak-dzialamy/">Jak działa metoda FAZ</a></li><li><a href="/historie-zmiany/">Historie zmiany z praktyki FAZ</a></li></ul>
+				</article>
+				<article>
+					<p class="card-index">03</p><h2>Pytania i odpowiedzi</h2>
+					<p>Krótkie, napisane prostym językiem wyjaśnienia podstawowych pojęć.</p>
+					<a class="text-link" href="/wiedza/pytania-i-odpowiedzi/">Przejdź do pytań i odpowiedzi</a>
+				</article>
+			</div>
+			<section class="next" aria-labelledby="next-title"><h2 id="next-title">Potrzebujesz materiału w innym formacie?</h2><p>Skontaktuj się z Fundacją i opisz, jakiej treści lub formatu potrzebujesz.</p><a class="button button-primary" href="/kontakt/">Poproś o dostępny materiał</a></section>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.knowledge-grid { display: grid; gap: 1rem; }
+	.knowledge-grid article { padding: 1.6rem; border: 1px solid var(--color-line); border-radius: var(--radius-sm); background: var(--color-white); }
+	.knowledge-grid h2 { font-size: 1.7rem; }
+	.knowledge-grid p:not(.card-index) { margin-block: 1rem; }
+	.knowledge-grid ul { margin: 1rem 0 0 1.2rem; }
+	.knowledge-grid li + li { margin-top: .5rem; }
+	.next { max-width: 52rem; margin-top: 4rem; padding-top: 2rem; border-top: 2px solid var(--color-line); }
+	.next p { margin-block: 1rem 1.5rem; }
+	@media (min-width: 52rem) { .knowledge-grid { grid-template-columns: repeat(3, 1fr); } }
+</style>

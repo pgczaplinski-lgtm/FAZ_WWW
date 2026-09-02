@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const questions = [
+	{
+		question: 'Co oznacza tożsamość zawodowa?',
+		answer: 'To sposób, w jaki człowiek widzi siebie w roli osoby pracującej: wie, co potrafi zrobić, w jakich warunkach pracuje najlepiej i czego jeszcze się uczy. Powstaje dzięki realnym, powtarzanym doświadczeniom, a nie samej rozmowie o pracy.',
+	},
+	{
+		question: 'Dlaczego warto wybrać jeden kierunek zawodowy?',
+		answer: 'Różne zadania pomagają na etapie rozpoznawania możliwości. Potem jeden kierunek pozwala regularnie ćwiczyć podobne czynności, zwiększać trudność i zauważać własny postęp. Kierunek można zmienić, gdy doświadczenie pokaże, że inne zadania są lepiej dopasowane.',
+	},
+	{
+		question: 'Jak niepowodzenie wspiera uczenie się?',
+		answer: 'Błąd pokazuje, co trzeba poprawić. Gdy zadanie jest bezpieczne, a informacja zwrotna konkretna, osoba może spróbować ponownie i zobaczyć skutek zmiany. Niepowodzenie staje się wtedy etapem nauki, a nie oceną człowieka.',
+	},
+	{
+		question: 'Co to jest diagnoza funkcjonalna?',
+		answer: 'To rozpoznawanie możliwości i potrzeb podczas wykonywania konkretnych zadań. Zespół obserwuje między innymi sposób rozumienia instrukcji, tempo, dokładność, warunki sprzyjające pracy i potrzebne wsparcie. Wnioski służą lepszemu dopasowaniu kolejnych doświadczeń.',
+	},
+	{
+		question: 'Jak pracodawca może zacząć współpracę?',
+		answer: 'Najlepiej zacząć od rozmowy o rzeczywistych zadaniach i warunkach w firmie. FAZ może pomóc rozpoznać stanowisko, przygotować zespół i ustalić pierwszy bezpieczny krok współpracy. Zakres wsparcia należy potwierdzić bezpośrednio z Fundacją.',
+	},
+];
+---
+
+<BaseLayout title="Pytania i odpowiedzi — wiedza FAZ" description="Proste odpowiedzi o tożsamości zawodowej, diagnozie funkcjonalnej i współpracy z pracodawcą.">
+	<section class="section">
+		<div class="container content">
+			<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> <a href="/wiedza/">Wiedza</a> <span aria-hidden="true">/</span> Pytania i odpowiedzi</nav>
+			<div class="section-intro"><p class="eyebrow">Prostym językiem</p><h1>Pytania i odpowiedzi</h1><p>Podstawowe pojęcia związane z metodą FAZ. Każdą odpowiedź można rozwinąć klawiaturą lub myszą.</p></div>
+			<div class="questions">
+				{questions.map(({ question, answer }) => <details><summary>{question}</summary><p>{answer}</p></details>)}
+			</div>
+			<section class="next" aria-labelledby="question-contact"><h2 id="question-contact">Masz pytanie o swoją sytuację?</h2><p>Ogólna odpowiedź nie zastąpi rozmowy o konkretnych potrzebach.</p><a class="button button-primary" href="/kontakt/">Zadaj pytanie zespołowi FAZ</a></section>
+		</div>
+	</section>
+</BaseLayout>
+
+<style>
+	.content { max-width: 58rem; }
+	.questions { border-top: 1px solid var(--color-line); }
+	details { border-bottom: 1px solid var(--color-line); }
+	summary { min-height: 3.5rem; padding: 1rem .25rem; cursor: pointer; color: var(--color-navy); font-size: 1.2rem; font-weight: 800; }
+	details p { padding: 0 .25rem 1.4rem; color: var(--color-muted); }
+	.next { margin-top: 4rem; padding: 2rem; border-radius: var(--radius-sm); background: var(--color-blue-pale); }
+	.next p { margin-block: 1rem 1.5rem; }
+</style>

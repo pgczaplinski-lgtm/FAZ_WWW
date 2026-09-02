@@ -1,0 +1,98 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { activeProjects, type Project } from '../../data/site';
+
+interface ProjectDetails {
+	facts: string[];
+	audience: string;
+	location: string;
+	period: string;
+	nextStep: string;
+}
+
+const details: Record<string, ProjectDetails> = {
+	'inspiratorium-zawodowe': {
+		facts: ['Wsparcie obejmuje 480 osób.', 'Działania są prowadzone w województwach pomorskim i śląskim.', 'Celem jest zatrudnienie 60 osób w każdym roku.', 'Projekt jest współfinansowany ze środków PFRON.'],
+		audience: 'Osoby z niepełnosprawnościami', location: 'Województwa pomorskie i śląskie', period: '2024–2027', nextStep: 'O aktualne zasady udziału i dostępność wsparcia zapytaj zespół projektu.',
+	},
+	'inspiratorium-kariery-iii': {
+		facts: ['Projekt zapewnia intensywne, indywidualne wsparcie trenera pracy na drodze do zatrudnienia.', 'Projekt jest współfinansowany ze środków PFRON.'],
+		audience: 'Osoby wymagające intensywnego wsparcia', location: 'Lokalizację wsparcia potwierdza zespół projektu', period: '2025–2027', nextStep: 'O kryteria udziału i miejsce realizacji zapytaj zespół projektu.',
+	},
+	'inspiratorium-wspolpracy': {
+		facts: ['Celem projektu jest zatrudnienie co najmniej 55 osób.', 'Zaplanowano 48 staży.', 'Rekrutacja jest prowadzona w sposób ciągły.'],
+		audience: 'Osoby przygotowujące się do wejścia na rynek pracy', location: 'Lokalizację wsparcia potwierdza zespół projektu', period: '2026–2029', nextStep: 'Skontaktuj się z zespołem, aby potwierdzić możliwość udziału w trwającej rekrutacji.',
+	},
+	'wtz-w-dobrych-rekach': {
+		facts: ['192 osoby mają ukończyć szkolenie, kurs lub warsztat.', 'Projekt jest współfinansowany ze środków PFRON.'],
+		audience: 'Osoby związane z działalnością warsztatów terapii zajęciowej', location: 'Lokalizację działań potwierdza zespół projektu', period: '2026–2027', nextStep: 'O grupy objęte poszczególnymi działaniami i zasady udziału zapytaj zespół projektu.',
+	},
+	'dyrektywa-eaa': {
+		facts: ['Projekt obejmuje szkolenia i doradztwo dotyczące prawnych wymagań dostępności cyfrowej.', 'Działania są kierowane do personelu firm.', 'Zakładana grupa odbiorców to 1300 pracowników.'],
+		audience: 'Pracownicy firm', location: 'Formę i miejsce udziału potwierdza zespół projektu', period: 'Okres realizacji potwierdza zespół projektu', nextStep: 'O możliwość udziału firmy i zakres doradztwa zapytaj zespół projektu.',
+	},
+	'dostep-do-wiedzy-iii': {
+		facts: ['Projekt zapewnia szkolenia z dostępności i projektowania uniwersalnego.', 'W razie potrzeby szkolenia uzupełnia indywidualne doradztwo.'],
+		audience: 'Osoby i organizacje zainteresowane dostępnością oraz projektowaniem uniwersalnym', location: 'Formę i miejsce udziału potwierdza zespół projektu', period: 'Trzecia edycja; daty potwierdza zespół projektu', nextStep: 'O odbiorców, terminy i zasady udziału zapytaj zespół projektu.',
+	},
+};
+
+export function getStaticPaths() {
+	return activeProjects.map((project) => {
+		const slug = project.href.split('/').filter(Boolean).at(-1)!;
+		return { params: { slug }, props: { project, projectDetails: details[slug] } };
+	});
+}
+
+interface Props { project: Project; projectDetails: ProjectDetails; }
+const { project, projectDetails } = Astro.props;
+---
+
+<BaseLayout title={`${project.title} — projekty FAZ`} description={project.summary}>
+	<article>
+		<header class="section project-header">
+			<div class="container">
+				<nav aria-label="Okruszki"><a href="/">Strona główna</a> <span aria-hidden="true">/</span> <a href="/projekty/">Projekty</a> <span aria-hidden="true">/</span> {project.title}</nav>
+				<p class="eyebrow">Aktywny projekt</p>
+				<h1>{project.title}</h1>
+				<p class="hero-intro">{project.summary}</p>
+			</div>
+		</header>
+		<div class="container detail-grid">
+			<section aria-labelledby="facts-title">
+				<h2 id="facts-title">Najważniejsze informacje</h2>
+				<ul>{projectDetails.facts.map((fact) => <li>{fact}</li>)}</ul>
+			</section>
+			<aside aria-label="Informacje organizacyjne">
+				<dl>
+					<div><dt>Dla kogo</dt><dd>{projectDetails.audience}</dd></div>
+					<div><dt>Gdzie</dt><dd>{projectDetails.location}</dd></div>
+					<div><dt>Okres</dt><dd>{projectDetails.period}</dd></div>
+				</dl>
+			</aside>
+		</div>
+		<section class="section">
+			<div class="container cta">
+				<h2>Sprawdź, czy możesz skorzystać</h2>
+				<p>{projectDetails.nextStep}</p>
+				<div class="button-row"><a class="button button-primary" href="/kontakt/">Skontaktuj się w sprawie projektu</a><a class="text-link" href="/projekty/">Wróć do wszystkich projektów</a></div>
+			</div>
+		</section>
+	</article>
+</BaseLayout>
+
+<style>
+	.project-header { padding-bottom: 3rem; background: var(--color-blue-pale); }
+	.project-header nav { margin-bottom: 2rem; }
+	.detail-grid { display: grid; gap: 2rem 5rem; padding-block: 4rem; }
+	.detail-grid h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+	.detail-grid ul { margin: 1.5rem 0 0 1.4rem; }
+	.detail-grid li + li { margin-top: .7rem; }
+	.detail-grid aside { padding: 1.5rem; border-radius: var(--radius-sm); background: var(--color-white); }
+	.detail-grid dl div + div { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--color-line); }
+	dt { color: var(--color-blue-dark); font-size: .78rem; font-weight: 800; text-transform: uppercase; }
+	dd { margin-top: .25rem; }
+	.cta { max-width: 58rem; }
+	.cta p { margin-block: 1rem 1.5rem; }
+	@media (min-width: 48rem) { .detail-grid { grid-template-columns: minmax(0, 2fr) minmax(17rem, 1fr); } }
+</style>
