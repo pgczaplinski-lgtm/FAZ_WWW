@@ -10,6 +10,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "check": "astro check",
+    "test": "playwright test",
+    "test:a11y": "playwright test tests/site.spec.ts",
     "astro": "astro"
   },
   "dependencies": {
@@ -20,6 +22,8 @@
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.10",
+    "@axe-core/playwright": "^4.13.0",
+    "@playwright/test": "^1.62.1",
     "typescript": "^6.0.3"
   }
 }
