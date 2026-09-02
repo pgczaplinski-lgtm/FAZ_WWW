@@ -1,17 +1,155 @@
 ---
-
+import MethodDiagram from '../components/MethodDiagram.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import SectionIntro from '../components/SectionIntro.astro';
+import StatBand from '../components/StatBand.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { activeProjects, audiences, stories, teamLeadership } from '../data/site';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<BaseLayout
+	title="Fundacja Aktywności Zawodowej — praca zaczyna się od tożsamości"
+	description="Pomagamy osobom z niepełnosprawnościami budować tożsamość zawodową przez doświadczenie, odpowiedzialność i realną pracę."
+>
+	<section class="hero">
+		<div class="container hero-grid">
+			<div class="hero-copy">
+				<p class="eyebrow">Praktycy aktywizacji zawodowej od 2008 roku</p>
+				<h1>Praca zaczyna się od tego, jak widzisz siebie.</h1>
+				<p class="hero-intro">Pomagamy osobom z niepełnosprawnościami budować tożsamość zawodową — przez doświadczenie, odpowiedzialność i małe sukcesy, które prowadzą do realnej pracy.</p>
+				<div class="button-row">
+					<a class="button button-primary" href="/dla-ciebie/">Znajdź wsparcie</a>
+					<a class="button button-secondary" href="/jak-dzialamy/">Poznaj naszą metodę</a>
+				</div>
+			</div>
+			<figure class="hero-media">
+				<img src="/images/praca-z-uczestnikami.jpg" alt="Uczestnicy i trenerzy Fundacji podczas wspólnej pracy warsztatowej" width="1500" height="1000" />
+				<figcaption>Doświadczenie zawodowe powstaje w działaniu — przy realnych zadaniach i w relacji opartej na zaufaniu.</figcaption>
+			</figure>
+		</div>
+	</section>
+
+	<StatBand />
+
+	<section class="section method-section" aria-labelledby="method-title">
+		<div class="container">
+			<div class="method-heading">
+				<div class="section-intro">
+					<p class="eyebrow">Jak działamy</p>
+					<h2 id="method-title">Od zaufania do tożsamości zawodowej</h2>
+					<p>Nie uczymy pracy w teorii. Budujemy warunki, w których kolejne doświadczenia stają się częścią profesjonalnej tożsamości.</p>
+				</div>
+				<p class="method-note">To proces długofalowy: oparty na jednym kierunku, odpowiedzialności i powtarzaniu działań wystarczająco długo, by sukces nie był przypadkiem.</p>
+			</div>
+			<MethodDiagram />
+			<div class="resource-links">
+				<a class="text-link" href="/jak-dzialamy/">Poznaj pełny opis metody</a>
+				<a class="download-link" href="/downloads/metodologia-faz.pdf" type="application/pdf">Pobierz metodologię FAZ <span>PDF, około 92 KB</span></a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section audience-section" aria-labelledby="audience-title">
+		<div class="container">
+			<SectionIntro headingId="audience-title" eyebrow="Wybierz swoją drogę" title="Wsparcie zaczyna się od właściwego pytania" description="Pracujemy z osobami szukającymi zatrudnienia, zespołami instytucji i pracodawcami. Każda z tych dróg prowadzi do bardziej dostępnego rynku pracy." />
+			<div class="audience-grid">
+				{audiences.map((audience, index) => (
+					<article class="audience-card">
+						<p class="card-index" aria-hidden="true">0{index + 1}</p>
+						<h3><a href={audience.href}>{audience.title}</a></h3>
+						<p>{audience.description}</p>
+					</article>
+				))}
+			</div>
+		</div>
+	</section>
+
+	<section class="section stories-section" aria-labelledby="stories-title">
+		<div class="container">
+			<div class="stories-heading">
+				<div>
+					<p class="eyebrow">Historie praktyki</p>
+					<h2 id="stories-title">Zmiana widoczna w codziennej pracy</h2>
+				</div>
+				<p>To zanonimizowane historie praktyki opublikowane przez FAZ w książce „WTZ w dobrych rękach”. Nie są to wymyślone opinie ani cytaty uczestników.</p>
+			</div>
+			<div class="story-grid">
+				{stories.map((story) => (
+					<article class="story-card">
+						<h3>{story.name}</h3>
+						<dl>
+							<div><dt>Punkt wyjścia</dt><dd>{story.before}</dd></div>
+							<div><dt>Proces</dt><dd>{story.process}</dd></div>
+							<div><dt>Zmiana</dt><dd>{story.outcome}</dd></div>
+						</dl>
+						<p class="story-insight">{story.insight}</p>
+					</article>
+				))}
+			</div>
+			<p class="section-link"><a class="text-link" href="/historie-zmiany/">Poznaj historie zmiany opublikowane przez FAZ</a></p>
+		</div>
+	</section>
+
+	<section class="section projects-section" aria-labelledby="projects-title">
+		<div class="container">
+			<SectionIntro headingId="projects-title" eyebrow="Działamy teraz" title="Aktywne projekty" description="Programy dla osób z niepełnosprawnościami, kadr WTZ, instytucji i pracodawców — od indywidualnego wsparcia po dostępność cyfrową." />
+			<div class="project-grid">
+				{activeProjects.map((project) => <ProjectCard project={project} />)}
+			</div>
+			<p class="section-link"><a class="text-link" href="/projekty/">Zobacz wszystkie projekty Fundacji</a></p>
+		</div>
+	</section>
+
+	<section class="section practitioner-section" aria-labelledby="team-title">
+		<div class="container practitioner-grid">
+			<div class="practitioner-media">
+				<img src="/images/zespol-faz.jpg" alt="Zespół Fundacji Aktywności Zawodowej podczas wspólnego spotkania" width="1152" height="864" loading="lazy" />
+			</div>
+			<div>
+				<p class="eyebrow">Zespół praktyków</p>
+				<h2 id="team-title">Wiedza sprawdzona w tysiącach godzin pracy</h2>
+				<p>Metodę rozwijamy w codziennej pracy z ludźmi i instytucjami. Łączymy perspektywę społeczną, prawną, doradczą i doświadczenie trenera pracy.</p>
+				<ul class="leader-list">
+					{teamLeadership.map((leader) => (
+						<li>
+							<h3>{leader.name}</h3>
+							<p><strong>{leader.role}.</strong> {leader.expertise}</p>
+						</li>
+					))}
+				</ul>
+				<a class="text-link" href="/o-fundacji/">Poznaj Fundację i jej zespół</a>
+			</div>
+		</div>
+	</section>
+
+	<section class="section publication-section" aria-labelledby="publication-title">
+		<div class="container publication-grid">
+			<div class="publication-cover">
+				<img src="/images/wtz-w-dobrych-rekach.png" alt="Okładka publikacji WTZ w dobrych rękach" width="300" height="300" loading="lazy" />
+			</div>
+			<div>
+				<p class="eyebrow">Publikacja FAZ</p>
+				<h2 id="publication-title">WTZ w dobrych rękach</h2>
+				<p class="publication-lead">Praktyczny przewodnik dla osób pracujących w Warsztatach Terapii Zajęciowej. Rozdziały 39–40 pokazują, jak poprzez doświadczenie budować tożsamość zawodową.</p>
+				<div class="resource-links">
+					<a class="button button-secondary" href="/wiedza/publikacje/wtz-w-dobrych-rekach/">Zobacz opis publikacji</a>
+					<a class="download-link" href="/downloads/wtz-w-dobrych-rekach.pdf" type="application/pdf">Pobierz książkę <span>PDF, około 1,9 MB</span></a>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="contact-band" aria-labelledby="contact-title">
+		<div class="container contact-band-grid">
+			<div>
+				<p class="eyebrow">Zacznijmy od rozmowy</p>
+				<h2 id="contact-title">Szukasz wsparcia albo chcesz działać z nami?</h2>
+				<p>Opowiedz nam, czego potrzebujesz. Wspólnie ustalimy pierwszy realny krok.</p>
+			</div>
+			<div class="contact-actions">
+				<a class="button button-primary" href="/kontakt/">Skontaktuj się z Fundacją</a>
+				<p><a href="mailto:biuro@faz.org.pl">biuro@faz.org.pl</a><br /><a href="tel:+48736858551">736 858 551</a></p>
+			</div>
+		</div>
+	</section>
+</BaseLayout>
