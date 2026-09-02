@@ -4,36 +4,38 @@ import { activeProjects, type Project } from '../../data/site';
 
 interface ProjectDetails {
 	facts: string[];
-	audience: string;
-	location: string;
-	period: string;
 	nextStep: string;
+	applicationSteps?: string[];
+	projectUrl?: string;
 }
 
 const details: Record<string, ProjectDetails> = {
 	'inspiratorium-zawodowe': {
 		facts: ['Wsparcie obejmuje 480 osób.', 'Działania są prowadzone w województwach pomorskim i śląskim.', 'Celem jest zatrudnienie 60 osób w każdym roku.', 'Projekt jest współfinansowany ze środków PFRON.'],
-		audience: 'Osoby z niepełnosprawnościami', location: 'Województwa pomorskie i śląskie', period: '2024–2027', nextStep: 'O aktualne zasady udziału i dostępność wsparcia zapytaj zespół projektu.',
+		nextStep: 'Kryteria udziału nie zostały tu ustalone. Skontaktuj się z zespołem projektu, aby sprawdzić możliwość skorzystania ze wsparcia.',
 	},
 	'inspiratorium-kariery-iii': {
-		facts: ['Projekt zapewnia intensywne, indywidualne wsparcie trenera pracy na drodze do zatrudnienia.', 'Projekt jest współfinansowany ze środków PFRON.'],
-		audience: 'Osoby wymagające intensywnego wsparcia', location: 'Lokalizację wsparcia potwierdza zespół projektu', period: '2025–2027', nextStep: 'O kryteria udziału i miejsce realizacji zapytaj zespół projektu.',
+		facts: ['Projekt zapewnia intensywne, indywidualne wsparcie trenera pracy na drodze do zatrudnienia.', 'Wsparcie jest dostępne w całej Polsce.', 'Projekt jest współfinansowany ze środków PFRON.'],
+		nextStep: 'Jeśli masz niepełnosprawność i jesteś studentem ostatniego roku lub osobą, która ukończyła studia w ciągu ostatnich 5 lat, rozpocznij od złożenia deklaracji.',
+		applicationSteps: ['Złożenie deklaracji udziału.', 'Przekazanie orzeczenia o niepełnosprawności.', 'Spotkanie służące formalnej weryfikacji.', 'Podpisanie umowy uczestnictwa.', 'Rozpoczęcie indywidualnego wsparcia trenera pracy.'],
 	},
 	'inspiratorium-wspolpracy': {
-		facts: ['Celem projektu jest zatrudnienie co najmniej 55 osób.', 'Zaplanowano 48 staży.', 'Rekrutacja jest prowadzona w sposób ciągły.'],
-		audience: 'Uczestnicy projektu', location: 'Lokalizację wsparcia potwierdza zespół projektu', period: '2026–2029', nextStep: 'Skontaktuj się z zespołem, aby potwierdzić możliwość udziału w trwającej rekrutacji.',
+		facts: ['Celem projektu jest zatrudnienie co najmniej 55 osób.', 'Zaplanowano 48 staży.', 'Rekrutacja jest prowadzona w sposób ciągły.', 'Działania są prowadzone w województwach pomorskim i śląskim.'],
+		nextStep: 'Osoby z niepełnosprawnością wymagające wsparcia trenera pracy mogą zgłaszać się w ramach rekrutacji ciągłej.',
+		applicationSteps: ['Złożenie deklaracji udziału.', 'Formalna weryfikacja zgłoszenia.'],
 	},
 	'wtz-w-dobrych-rekach': {
-		facts: ['192 osoby mają ukończyć szkolenie, kurs lub warsztat.', 'Projekt jest współfinansowany ze środków PFRON.'],
-		audience: '192 osoby uczestniczące w szkoleniach', location: 'Lokalizację działań potwierdza zespół projektu', period: '2026–2027', nextStep: 'O grupy objęte poszczególnymi działaniami i zasady udziału zapytaj zespół projektu.',
+		facts: ['192 pracowników, opiekunów, członków rodzin i wolontariuszy bezpośrednio zaangażowanych w rehabilitację ma ukończyć szkolenie, kurs lub warsztat.', 'Projekt jest współfinansowany ze środków PFRON.'],
+		nextStep: 'Miejsce działań i szczegółowe zasady udziału nie zostały tu ustalone. Zapytaj zespół o możliwość udziału.',
 	},
 	'dyrektywa-eaa': {
-		facts: ['Projekt obejmuje szkolenia i doradztwo dotyczące prawnych wymagań dostępności cyfrowej.', 'Działania są kierowane do personelu firm.', 'Zakładana grupa odbiorców to 1300 pracowników.'],
-		audience: 'Pracownicy firm', location: 'Formę i miejsce udziału potwierdza zespół projektu', period: 'Okres realizacji potwierdza zespół projektu', nextStep: 'O możliwość udziału firmy i zakres doradztwa zapytaj zespół projektu.',
+		facts: ['Projekt obejmuje szkolenia i doradztwo dotyczące prawnych wymagań dostępności cyfrowej.', 'Wsparcie jest kierowane do pracowników przedsiębiorstw objętych ustawą o dostępności produktów i usług oraz firm planujących działalność objętą tą ustawą.', 'Wsparciem ma zostać objętych 1300 pracowników.'],
+		nextStep: 'Informacje o udziale i działaniach projektu są dostępne w jego serwisie.',
+		projectUrl: 'https://cyfrowadostepnosc.eu/',
 	},
 	'dostep-do-wiedzy-iii': {
-		facts: ['Projekt zapewnia szkolenia z dostępności i projektowania uniwersalnego.', 'W razie potrzeby szkolenia uzupełnia indywidualne doradztwo.'],
-		audience: 'Odbiorców projektu potwierdza zespół', location: 'Formę i miejsce udziału potwierdza zespół projektu', period: 'Trzecia edycja; daty potwierdza zespół projektu', nextStep: 'O odbiorców, terminy i zasady udziału zapytaj zespół projektu.',
+		facts: ['Projekt zapewnia szkolenia z dostępności i projektowania uniwersalnego.', 'W razie potrzeby szkolenia uzupełnia indywidualne doradztwo.', 'Wsparciem ma zostać objętych 1190 osób, w tym co najmniej 1072 spełniające warunki udziału.'],
+		nextStep: 'Małe, średnie i duże przedsiębiorstwa zainteresowane dostępnymi produktami lub usługami mogą zapytać zespół o udział w szkoleniu i indywidualnym doradztwie.',
 	},
 };
 
@@ -67,17 +69,29 @@ const projectDetails = details[slug];
 			</section>
 			<aside aria-label="Informacje organizacyjne">
 				<dl>
-					<div><dt>Dla kogo</dt><dd>{projectDetails.audience}</dd></div>
-					<div><dt>Gdzie</dt><dd>{projectDetails.location}</dd></div>
-					<div><dt>Okres</dt><dd>{projectDetails.period}</dd></div>
+					<div><dt>Dla kogo</dt><dd>{project.audience}</dd></div>
+					<div><dt>Gdzie</dt><dd>{project.location}</dd></div>
+					<div><dt>Okres</dt><dd>{project.period}</dd></div>
 				</dl>
 			</aside>
 		</div>
+		{projectDetails.applicationSteps && (
+			<section class="application-section" aria-labelledby="application-title">
+				<div class="container application-content">
+					<h2 id="application-title">Jak wygląda zgłoszenie</h2>
+					<ol>{projectDetails.applicationSteps.map((step) => <li>{step}</li>)}</ol>
+				</div>
+			</section>
+		)}
 		<section class="section">
 			<div class="container cta">
 				<h2>Sprawdź, czy możesz skorzystać</h2>
 				<p>{projectDetails.nextStep}</p>
-				<div class="button-row"><a class="button button-primary" href="/kontakt/">Skontaktuj się w sprawie projektu</a><a class="text-link" href="/projekty/">Wróć do wszystkich projektów</a></div>
+				<div class="button-row">
+					{projectDetails.projectUrl && <a class="button button-primary" href={projectDetails.projectUrl} rel="external">Przejdź do serwisu CyfrowaDostepnosc.eu</a>}
+					<a class={projectDetails.projectUrl ? 'button button-secondary' : 'button button-primary'} href="/kontakt/">Skontaktuj się w sprawie projektu</a>
+					<a class="text-link" href="/projekty/">Wróć do wszystkich projektów</a>
+				</div>
 			</div>
 		</section>
 	</article>
@@ -94,6 +108,11 @@ const projectDetails = details[slug];
 	.detail-grid dl div + div { margin-top: 1.2rem; padding-top: 1.2rem; border-top: 1px solid var(--color-line); }
 	dt { color: var(--color-blue-dark); font-size: .78rem; font-weight: 800; text-transform: uppercase; }
 	dd { margin-top: .25rem; }
+	.application-section { padding-block: 3.5rem; background: var(--color-green-pale); }
+	.application-content { max-width: 58rem; }
+	.application-content h2 { font-size: clamp(1.8rem, 4vw, 2.8rem); }
+	.application-content ol { margin: 1.5rem 0 0 1.4rem; }
+	.application-content li + li { margin-top: .7rem; }
 	.cta { max-width: 58rem; }
 	.cta p { margin-block: 1rem 1.5rem; }
 	@media (min-width: 48rem) { .detail-grid { grid-template-columns: minmax(0, 2fr) minmax(17rem, 1fr); } }
