@@ -32,81 +32,71 @@ export function Home() {
 
   return (
     <>
-      <section aria-label="Aktualności" className="relative">
-        {current ? (
-          <div className="relative overflow-hidden bg-brand-light">
-            {current.image ? (
-              <>
-                <img
-                  src={current.image}
-                  alt=""
-                  className="absolute inset-0 h-full w-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
-              </>
-            ) : null}
-            <Container className="relative flex min-h-[22rem] flex-col items-start justify-center py-16 sm:min-h-[28rem] sm:py-24">
-              <p
-                className={`text-sm font-semibold uppercase tracking-wide ${
-                  current.image ? "text-white" : "text-brand"
-                }`}
-              >
-                Aktualności
-              </p>
-              <h1
-                className={`mt-3 max-w-2xl text-[1.3125rem] font-extrabold leading-snug tracking-tight sm:text-[2.1rem] ${
-                  current.image ? "text-white" : "text-ink"
-                }`}
-              >
-                {current.title}
-              </h1>
-              <div className="mt-8">
-                <ButtonLink to={`/aktualnosci/${current.slug}`} variant="solid">
-                  Dowiedz się więcej
-                </ButtonLink>
-              </div>
-            </Container>
-            {count > 1 && (
-              <>
-                <button
-                  type="button"
-                  aria-label="Poprzedni slajd"
-                  onClick={() => go(-1)}
-                  className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-sm hover:bg-white sm:left-6"
-                >
-                  ‹
-                </button>
-                <button
-                  type="button"
-                  aria-label="Następny slajd"
-                  onClick={() => go(1)}
-                  className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-sm hover:bg-white sm:right-6"
-                >
-                  ›
-                </button>
-                <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2" role="tablist" aria-label="Slajdy">
-                  {slides.map((post, i) => (
-                    <button
-                      key={post.slug}
-                      type="button"
-                      role="tab"
-                      aria-selected={i === index}
-                      aria-label={`Slajd ${i + 1}: ${post.title}`}
-                      onClick={() => setIndex(i)}
-                      className={`h-2.5 rounded-full transition-all ${
-                        i === index ? "w-8 bg-brand" : "w-2.5 bg-brand/40"
-                      }`}
-                    />
-                  ))}
+      <section aria-label="Aktualności">
+        <Container className="pt-4">
+          {current ? (
+            <div className="relative overflow-hidden rounded-xl bg-brand-light">
+              {current.image ? (
+                <>
+                  <img
+                    src={current.image}
+                    alt=""
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-r from-white from-15% via-white/80 via-45% to-transparent" />
+                </>
+              ) : null}
+              <div className="relative flex min-h-[22rem] flex-col items-start justify-center px-14 py-16 sm:min-h-[28rem] sm:px-16 sm:py-24">
+                <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
+                <h1 className="mt-3 max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
+                  {current.title}
+                </h1>
+                <div className="mt-8">
+                  <ButtonLink to={`/aktualnosci/${current.slug}`} variant="solid">
+                    Dowiedz się więcej
+                  </ButtonLink>
                 </div>
-              </>
-            )}
-          </div>
-        ) : null}
-        <Container>
+              </div>
+              {count > 1 && (
+                <>
+                  <button
+                    type="button"
+                    aria-label="Poprzedni slajd"
+                    onClick={() => go(-1)}
+                    className="absolute left-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-sm hover:bg-white"
+                  >
+                    ‹
+                  </button>
+                  <button
+                    type="button"
+                    aria-label="Następny slajd"
+                    onClick={() => go(1)}
+                    className="absolute right-3 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white/80 text-brand shadow-sm hover:bg-white"
+                  >
+                    ›
+                  </button>
+                  <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2" role="tablist" aria-label="Slajdy">
+                    {slides.map((post, i) => (
+                      <button
+                        key={post.slug}
+                        type="button"
+                        role="tab"
+                        aria-selected={i === index}
+                        aria-label={`Slajd ${i + 1}: ${post.title}`}
+                        onClick={() => setIndex(i)}
+                        className={`h-2.5 rounded-full transition-all ${
+                          i === index ? "w-8 bg-brand" : "w-2.5 bg-brand/40"
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+          ) : null}
           <Link
             to="/aktualnosci"
-            className="block rounded-xl bg-brand py-3 text-center text-sm font-bold tracking-widest text-white hover:bg-brand-dark"
+            className="mt-3 block rounded-xl bg-brand py-3 text-center text-sm font-bold tracking-widest text-white hover:bg-brand-dark"
           >
             POZOSTAŁE AKTUALNOŚCI
           </Link>
