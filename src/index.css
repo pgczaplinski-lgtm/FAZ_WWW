@@ -1,0 +1,58 @@
+/* Fonts: Red Hat Display (headings) + Open Sans (body) — as on the original site */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Red+Hat+Display:ital,wght@0,300..900;1,300..900&display=swap");
+@import "tailwindcss";
+
+@theme {
+  /* Brand color — the single source of truth.
+     Formerly crimson #f6144a on faz.org.pl; now the Instytut blue. */
+  --color-brand: #3d65a6;
+  --color-brand-dark: #2f4f85;
+  --color-brand-light: #e8eef7;
+  --color-brand-50: #f3f5f8;
+
+  --color-ink: #1b2430;
+  --color-ink-soft: #3d3f57;
+  --color-muted: #5b6573;
+  --color-line: #e6eaf0;
+  --color-surface: #f5f6f8;
+
+  --font-sans: "Open Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Red Hat Display", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: var(--color-ink);
+    background: #ffffff;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 700;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+/* Accessibility toolbar states (toggled on <html>) */
+html.a11y-contrast {
+  filter: contrast(1.35) saturate(1.2);
+}
+html.a11y-contrast body {
+  background: #ffffff;
+}
+html.a11y-fs-1 {
+  font-size: 112.5%;
+}
+html.a11y-fs-2 {
+  font-size: 125%;
+}
+html.a11y-underline a {
+  text-decoration: underline;
+}
