@@ -35,27 +35,30 @@ export function Home() {
       <section aria-label="Aktualności">
         <Container className="pt-4">
           {current ? (
-            <div className="relative overflow-hidden rounded-xl bg-brand-light">
-              {current.image ? (
-                <>
-                  <img
-                    src={current.image}
-                    alt=""
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-r from-white from-15% via-white/80 via-45% to-transparent" />
-                </>
-              ) : null}
-              <div className="relative flex min-h-[22rem] flex-col items-start justify-center px-14 py-16 sm:min-h-[28rem] sm:px-16 sm:py-24">
-                <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
-                <h1 className="mt-3 max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
-                  {current.title}
-                </h1>
-                <div className="mt-8">
-                  <ButtonLink to={`/aktualnosci/${current.slug}`} variant="solid">
-                    Dowiedz się więcej
-                  </ButtonLink>
+            <div className="relative overflow-hidden rounded-xl bg-white">
+              <div className="grid min-h-[22rem] md:grid-cols-2 sm:min-h-[28rem]">
+                <div className="relative z-10 flex flex-col items-start justify-center px-14 py-16 sm:px-16">
+                  <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
+                  <h1 className="mt-3 max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
+                    {current.title}
+                  </h1>
+                  <div className="mt-8">
+                    <ButtonLink to={`/aktualnosci/${current.slug}`} variant="solid">
+                      Dowiedz się więcej
+                    </ButtonLink>
+                  </div>
                 </div>
+                {current.image ? (
+                  <div className="relative min-h-[16rem] md:min-h-full">
+                    <img
+                      src={current.image}
+                      alt=""
+                      className="absolute inset-0 h-full w-full object-cover object-center"
+                    />
+                  </div>
+                ) : (
+                  <div className="min-h-[8rem] bg-brand-light md:min-h-full" />
+                )}
               </div>
               {count > 1 && (
                 <>
