@@ -36,24 +36,24 @@ export function Home() {
         <Container className="pt-4">
           {current ? (
             <div className="relative overflow-hidden rounded-xl bg-white">
-              <div className="grid min-h-[22rem] md:grid-cols-2 sm:min-h-[28rem]">
-                <div className="relative z-10 flex flex-col items-start justify-center px-14 py-16 sm:px-16">
+              <div className="grid min-h-[13.2rem] md:grid-cols-2 sm:min-h-[16.8rem]">
+                <div className="relative z-10 flex flex-col items-start justify-center px-14 py-8 sm:px-16 sm:py-10">
                   <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
                   <h1 className="mt-3 max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
                     {current.title}
                   </h1>
-                  <div className="mt-8">
+                  <div className="mt-5">
                     <ButtonLink to={`/aktualnosci/${current.slug}`} variant="solid">
                       Dowiedz się więcej
                     </ButtonLink>
                   </div>
                 </div>
                 {current.image ? (
-                  <div className="relative min-h-[16rem] md:min-h-full">
+                  <div className="relative min-h-[9.6rem] overflow-hidden md:min-h-full">
                     <img
                       src={current.image}
                       alt=""
-                      className="absolute inset-0 h-full w-full object-cover object-center"
+                      className="absolute left-0 right-0 -top-1/3 h-[166.67%] w-full object-cover object-center"
                     />
                     <div className="pointer-events-none absolute inset-y-0 left-0 w-[38%] bg-gradient-to-r from-white from-25% to-transparent" />
                   </div>
