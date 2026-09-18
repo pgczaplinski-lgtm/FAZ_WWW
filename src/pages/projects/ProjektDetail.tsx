@@ -83,15 +83,13 @@ export function ProjektDetail() {
                 </dl>
               )}
             </div>
-            <div className="rounded-xl bg-brand p-6 text-white">
-              <h2 className="text-lg font-bold">Chcesz wziąć udział w projekcie?</h2>
-              <p className="mt-2 text-sm text-white/90">
+            <div className="rounded-xl bg-brand-light p-6">
+              <h2 className="text-lg font-bold text-ink">Chcesz wziąć udział w projekcie?</h2>
+              <p className="mt-2 text-sm text-muted">
                 Napisz do nas — chętnie opowiemy o rekrutacji i warunkach udziału.
               </p>
               <div className="mt-4">
-                <ButtonLink to="/kontakt" className="bg-white text-brand hover:bg-brand-light">
-                  Skontaktuj się z nami
-                </ButtonLink>
+                <ButtonLink to="/kontakt">Skontaktuj się z nami</ButtonLink>
               </div>
             </div>
           </aside>
