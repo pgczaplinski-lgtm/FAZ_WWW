@@ -46,6 +46,11 @@ export function Darowizna() {
             FAZ jest organizacją pożytku publicznego. Możesz też przekazać 1,5% podatku, wpisując
             numer KRS {org.krs}.
           </p>
+          <img
+            src="/images/org/1-5-procent.png"
+            alt="Przekaż 1,5% podatku"
+            className="h-16 w-auto"
+          />
 
           <a
             href="#"

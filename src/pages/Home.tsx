@@ -34,8 +34,18 @@ export function Home() {
     <>
       <section aria-label="Aktualności" className="relative">
         {current ? (
-          <div className="relative bg-brand-light">
-            <Container className="flex min-h-[22rem] flex-col items-start justify-center py-16 sm:min-h-[28rem] sm:py-24">
+          <div className="relative overflow-hidden bg-brand-light">
+            {current.image ? (
+              <>
+                <img
+                  src={current.image}
+                  alt=""
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/35" />
+              </>
+            ) : null}
+            <Container className="relative flex min-h-[22rem] flex-col items-start justify-center py-16 sm:min-h-[28rem] sm:py-24">
               <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
               <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight text-ink sm:text-5xl">
                 {current.title}
@@ -93,7 +103,11 @@ export function Home() {
 
       <Section>
         <div className="grid items-center gap-10 lg:grid-cols-2">
-          <div className="aspect-[4/3] rounded-xl bg-surface" aria-hidden="true" />
+          <img
+            src="/images/home/kim-jestesmy.jpg"
+            alt="Zespół Fundacji Aktywności Zawodowej"
+            className="aspect-[4/3] w-full rounded-xl object-cover"
+          />
           <div>
             <SectionTitle>Kim jesteśmy?</SectionTitle>
             <div className="mt-6 space-y-4 text-muted leading-relaxed">
@@ -152,20 +166,27 @@ export function Home() {
 
       <Section muted>
         <SectionTitle centered>Poznaj historie uczestników projektów</SectionTitle>
-        <div className="mt-10 grid gap-6 md:grid-cols-3">
-          {stories.map((story) => (
-            <blockquote
-              key={story.name}
-              className="flex flex-col rounded-xl border border-line bg-white p-6 shadow-sm"
-            >
-              {story.photo ? (
-                <img src={story.photo} alt="" className="mb-4 h-16 w-16 rounded-full object-cover" />
-              ) : null}
-              <p className="text-sm font-bold text-ink">{story.name}</p>
-              <p className="mt-1 text-xs font-semibold text-brand">{story.tags}</p>
-              <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">„{story.quote}”</p>
-            </blockquote>
-          ))}
+        <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
+          <img
+            src="/images/home/historie-uczestnikow.jpg"
+            alt=""
+            className="w-full rounded-xl object-cover"
+          />
+          <div className="grid gap-6">
+            {stories.map((story) => (
+              <blockquote
+                key={story.name}
+                className="flex flex-col rounded-xl border border-line bg-white p-6 shadow-sm"
+              >
+                {story.photo ? (
+                  <img src={story.photo} alt="" className="mb-4 h-16 w-16 rounded-full object-cover" />
+                ) : null}
+                <p className="text-sm font-bold text-ink">{story.name}</p>
+                <p className="mt-1 text-xs font-semibold text-brand">{story.tags}</p>
+                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">„{story.quote}”</p>
+              </blockquote>
+            ))}
+          </div>
         </div>
       </Section>
 
