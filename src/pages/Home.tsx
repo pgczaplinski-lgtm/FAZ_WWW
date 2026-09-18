@@ -42,12 +42,22 @@ export function Home() {
                   alt=""
                   className="absolute inset-0 h-full w-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-white/90 to-white/35" />
+                <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
               </>
             ) : null}
             <Container className="relative flex min-h-[22rem] flex-col items-start justify-center py-16 sm:min-h-[28rem] sm:py-24">
-              <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
-              <h1 className="mt-3 max-w-3xl text-3xl font-extrabold tracking-tight text-ink sm:text-5xl">
+              <p
+                className={`text-sm font-semibold uppercase tracking-wide ${
+                  current.image ? "text-white" : "text-brand"
+                }`}
+              >
+                Aktualności
+              </p>
+              <h1
+                className={`mt-3 max-w-2xl text-[1.3125rem] font-extrabold leading-snug tracking-tight sm:text-[2.1rem] ${
+                  current.image ? "text-white" : "text-ink"
+                }`}
+              >
                 {current.title}
               </h1>
               <div className="mt-8">
@@ -93,12 +103,14 @@ export function Home() {
             )}
           </div>
         ) : null}
-        <Link
-          to="/aktualnosci"
-          className="block bg-brand py-3 text-center text-sm font-bold tracking-widest text-white hover:bg-brand-dark"
-        >
-          POZOSTAŁE AKTUALNOŚCI
-        </Link>
+        <Container>
+          <Link
+            to="/aktualnosci"
+            className="block rounded-xl bg-brand py-3 text-center text-sm font-bold tracking-widest text-white hover:bg-brand-dark"
+          >
+            POZOSTAŁE AKTUALNOŚCI
+          </Link>
+        </Container>
       </section>
 
       <Section>
@@ -190,24 +202,28 @@ export function Home() {
         </div>
       </Section>
 
-      <section className="bg-brand py-14 text-white sm:py-20">
-        <Container className="flex flex-col items-center text-center">
-          <h2 className="text-3xl font-extrabold tracking-tight sm:text-4xl">Wesprzyj naszą działalność</h2>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <ButtonLink
-              to="/przekaz-darowizne"
-              variant="solid"
-              className="bg-white text-brand hover:bg-brand-light hover:text-brand"
-            >
-              Przekaż darowiznę
-            </ButtonLink>
-            <ButtonLink
-              to="/kontakt"
-              variant="outline"
-              className="border-white text-white hover:bg-white hover:text-brand"
-            >
-              Kontakt
-            </ButtonLink>
+      <section className="py-8 sm:py-10">
+        <Container>
+          <div className="flex flex-col items-center rounded-xl bg-brand px-6 py-14 text-center text-white sm:px-10 sm:py-20">
+            <h2 className="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+              Wesprzyj naszą działalność
+            </h2>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <ButtonLink
+                to="/przekaz-darowizne"
+                variant="solid"
+                className="bg-white text-brand hover:bg-brand-light hover:text-brand"
+              >
+                Przekaż darowiznę
+              </ButtonLink>
+              <ButtonLink
+                to="/kontakt"
+                variant="outline"
+                className="border-white text-white hover:bg-white hover:text-brand"
+              >
+                Kontakt
+              </ButtonLink>
+            </div>
           </div>
         </Container>
       </section>
