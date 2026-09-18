@@ -106,7 +106,7 @@ export function Kontakt() {
                     required
                     checked={consent}
                     onChange={(e) => setConsent(e.target.checked)}
-                    className="mt-1 accent-brand"
+                    className="mt-1"
                   />
                   <label htmlFor={`${id}-consent`} className="text-sm text-muted">
                     Wyrażam zgodę na przetwarzanie danych zawartych w formularzu w celu kontaktu,
