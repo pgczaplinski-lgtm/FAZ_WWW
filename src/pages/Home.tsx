@@ -55,6 +55,7 @@ export function Home() {
                       alt=""
                       className="absolute inset-0 h-full w-full object-cover object-center"
                     />
+                    <div className="pointer-events-none absolute inset-y-0 left-0 w-[38%] bg-gradient-to-r from-white from-25% to-transparent" />
                   </div>
                 ) : (
                   <div className="min-h-[8rem] bg-brand-light md:min-h-full" />
