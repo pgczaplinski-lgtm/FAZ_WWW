@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { content } from "../lib/content/index.ts";
 import { ProjectCard } from "../components/ui/cards.tsx";
+import { StatsStrip } from "../components/ui/StatsStrip.tsx";
 import { ButtonLink, Container, Section, SectionTitle } from "../components/ui/primitives.tsx";
 
 const HERO_COUNT = 4;
@@ -148,21 +149,7 @@ export function Home() {
 
       <Section muted>
         <SectionTitle centered>Nasze sukcesy</SectionTitle>
-        <div className="mt-12 space-y-12">
-          {statGroups.map((group) => (
-            <div key={group.period}>
-              <h3 className="text-center text-lg font-semibold text-ink">{group.period}</h3>
-              <div className="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-4">
-                {group.stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="text-4xl font-extrabold text-brand sm:text-5xl">{stat.value}</p>
-                    <p className="mt-2 text-sm text-muted">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        <StatsStrip groups={statGroups} />
       </Section>
 
       <Section>

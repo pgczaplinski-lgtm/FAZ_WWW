@@ -5,10 +5,10 @@ import { content } from "../../lib/content/index.ts";
 
 export function Historia() {
   const stats = content.getStats();
-  const year2024 = stats.find((g) => /2024/.test(g.period));
+  const currentYear = stats.find((g) => /bieżącym/i.test(g.period));
   const since2008 = stats.find((g) => /2008/.test(g.period));
-  const employed2024 = year2024?.stats.find((s) => /zatrudn/i.test(s.label))?.value ?? "127";
-  const participants2024 = year2024?.stats.find((s) => /uczestnik/i.test(s.label))?.value ?? "240";
+  const employed2024 = currentYear?.stats.find((s) => /zatrudn/i.test(s.label))?.value ?? "127";
+  const participants2024 = currentYear?.stats.find((s) => /uczestnik/i.test(s.label))?.value ?? "240";
   const employedTotal = since2008?.stats.find((s) => /zatrudn/i.test(s.label))?.value ?? "435";
   const participantsTotal = since2008?.stats.find((s) => /uczestnik/i.test(s.label))?.value ?? "643";
 
@@ -24,7 +24,7 @@ export function Historia() {
       text: "Rozwijamy programy i projekty, które pomagają uczestnikom odnaleźć swoją drogę zawodową — doradztwo, szkolenia, staże i współpracę z pracodawcami.",
     },
     {
-      year: year2024?.period ?? "2024",
+      year: currentYear?.period ?? "W bieżącym roku",
       title: "Rok pełen rezultatów",
       text: `W jednym roku ${employed2024} osób znalazło zatrudnienie, a ${participants2024} uczestniczyło w naszych działaniach.`,
     },

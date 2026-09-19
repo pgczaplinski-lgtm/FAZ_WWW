@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { PageHeader } from "../../components/ui/PageHeader.tsx";
 import { Section, SectionTitle } from "../../components/ui/primitives.tsx";
+import { StatsStrip } from "../../components/ui/StatsStrip.tsx";
 import { content } from "../../lib/content/index.ts";
 
 const mission = [
@@ -56,21 +57,7 @@ export function ONas() {
 
       <Section muted>
         <SectionTitle>Nasze sukcesy</SectionTitle>
-        <div className="mt-10 grid gap-10">
-          {stats.map((group) => (
-            <div key={group.period}>
-              <p className="text-sm font-semibold uppercase tracking-wide text-brand">{group.period}</p>
-              <ul className="mt-4 grid grid-cols-2 gap-4 sm:grid-cols-4">
-                {group.stats.map((stat) => (
-                  <li key={stat.label} className="rounded-xl bg-white p-5 text-center">
-                    <p className="text-3xl font-extrabold text-brand">{stat.value}</p>
-                    <p className="mt-1 text-sm text-muted">{stat.label}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
+        <StatsStrip groups={stats} />
       </Section>
 
       <Section>

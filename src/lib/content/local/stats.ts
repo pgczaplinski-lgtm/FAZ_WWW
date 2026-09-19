@@ -2,7 +2,7 @@ import type { Stat } from "../types.ts";
 
 export const statGroups: { period: string; stats: Stat[] }[] = [
   {
-    period: "W 2024",
+    period: "W bieżącym roku",
     stats: [
       { value: "127", label: "zatrudnionych" },
       { value: "55", label: "staży" },
@@ -11,7 +11,7 @@ export const statGroups: { period: string; stats: Stat[] }[] = [
     ],
   },
   {
-    period: "od 2008",
+    period: "Od 2008 roku",
     stats: [
       { value: "435", label: "zatrudnionych" },
       { value: "161", label: "staży" },
