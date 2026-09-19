@@ -6,6 +6,15 @@ import { ButtonLink, Container, Section, SectionTitle } from "../components/ui/p
 
 const HERO_COUNT = 4;
 const SLIDE_MS = 6000;
+const SLIDE_TITLE_MAX = 78;
+
+function clipSlideTitle(title: string) {
+  if (title.length <= SLIDE_TITLE_MAX) return title;
+  const cut = title.slice(0, SLIDE_TITLE_MAX - 1);
+  const lastSpace = cut.lastIndexOf(" ");
+  const base = (lastSpace > 40 ? cut.slice(0, lastSpace) : cut).trimEnd();
+  return `${base}…`;
+}
 
 export function Home() {
   const slides = content.getNews().slice(0, HERO_COUNT);
@@ -40,7 +49,7 @@ export function Home() {
                 <div className="relative z-10 flex flex-col items-start justify-center px-14 py-8 sm:px-16 sm:py-10">
                   <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
                   <h1 className="mt-3 max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
-                    {current.title}
+                    {clipSlideTitle(current.title)}
                   </h1>
                   <div className="mt-5">
                     <ButtonLink to={`/aktualnosci/${current.slug}`} variant="solid">
