@@ -46,6 +46,13 @@ export function ProjektDetail() {
       <Section>
         <div className="grid gap-10 lg:grid-cols-3">
           <div className="lg:col-span-2">
+            {project.image ? (
+              <img
+                src={project.image}
+                alt=""
+                className="mb-8 w-full max-h-[28rem] rounded-xl object-cover"
+              />
+            ) : null}
             <RichText blocks={project.body} />
           </div>
           <aside className="space-y-6">

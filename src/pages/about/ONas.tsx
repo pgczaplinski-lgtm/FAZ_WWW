@@ -40,6 +40,11 @@ export function ONas() {
 
       <Section>
         <SectionTitle>Kim jesteśmy</SectionTitle>
+        <img
+          src="/images/home/kim-jestesmy.jpg"
+          alt="Zespół Fundacji Aktywności Zawodowej"
+          className="mt-8 aspect-[16/7] w-full rounded-xl object-cover"
+        />
         <div className="mt-8 grid gap-6 md:grid-cols-3">
           {mission.map((text) => (
             <p key={text} className="rounded-xl border border-brand bg-surface p-6 leading-relaxed text-muted">

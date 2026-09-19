@@ -10,6 +10,7 @@ export const news: NewsPost[] = [
     date: "2025-09-15",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/szkolenie-wtz-w-dobrych-rekach-w-chociwlu.jpeg",
     excerpt:
       "W dniach 14-15 września w Pałacu nad Jeziorem w Chociwlu odbyło się kolejne szkolenie w ramach projektu „WTZ w dobrych rękach”. Głównym tematem spotkania była nowa koncepcja funkcjonowania WTZ.",
     body: p(
@@ -22,6 +23,7 @@ export const news: NewsPost[] = [
     date: "2025-09-10",
     categories: ["Artykuły", "Rynek pracy"],
     isArticle: true,
+    image: "/images/news/jak-poradzic-sobie-z-odrzuceniem-w-procesie-rekrutacji.jpg",
     excerpt:
       "Proces poszukiwania pracy to często czasochłonny i wymagający okres. Warto pamiętać, że każda porażka może zostać przekuta w cenną lekcję.",
     body: p(
@@ -34,6 +36,7 @@ export const news: NewsPost[] = [
     date: "2025-08-31",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/podsumowanie-miesiaca-sierpien.svg",
     excerpt:
       "Sierpień za nami i mimo urlopowego zwolnienia tempa u innych, u nas działo się naprawdę dużo. Nowe zatrudnienia, staże, wizyty studyjne i mnóstwo spotkań.",
     body: p(
@@ -46,6 +49,7 @@ export const news: NewsPost[] = [
     date: "2025-08-31",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/spotkanie-w-ministerstwie-rodziny-pracy-i-polityki-spolecznej.jpg",
     excerpt:
       "Odbyło się spotkanie w Ministerstwie Rodziny, Pracy i Polityki Społecznej poświęcone potrzebom i zmianom w obszarze zatrudnienia wspomaganego oraz jego standaryzacji.",
     body: p(
@@ -59,6 +63,7 @@ export const news: NewsPost[] = [
     date: "2025-09-02",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/szkolenie-ai-w-ipr-w-wtz-w-chojnowie.jpeg",
     excerpt:
       "Za nami dwa dni intensywnego szkolenia w WTZ Chojnów o tematyce wykorzystania sztucznej inteligencji w tworzeniu indywidualnych programów rehabilitacji.",
     body: p(
@@ -71,6 +76,7 @@ export const news: NewsPost[] = [
     date: "2025-08-28",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/szkolenie-wtz-w-dobrych-rekach-w-opatowie.jpeg",
     excerpt:
       "27 i 28 sierpnia w Hotelu Miodowy Młyn w Opatowie prowadziliśmy szkolenie dla 21 przedstawicieli warsztatów terapii zajęciowej z województwa świętokrzyskiego i lubelskiego.",
     body: p(
@@ -83,6 +89,7 @@ export const news: NewsPost[] = [
     date: "2025-08-25",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/sukcesy-w-inspiratorium-wspolpracy.jpeg",
     excerpt:
       "Świętujemy sukces uczestnika projektu Inspiratorium Współpracy! Po kilku latach przerwy w zatrudnieniu Pan Karol powrócił na rynek pracy.",
     body: p(
@@ -95,6 +102,7 @@ export const news: NewsPost[] = [
     date: "2025-08-19",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/wizyta-studyjna-wfosigw-w-gdansku.jpeg",
     excerpt:
       "W ramach projektu Inspiratorium Zawodowe odwiedziliśmy WFOŚiGW w Gdańsku, by przyjrzeć się z bliska pracy w instytucji zajmującej się ochroną środowiska.",
     body: p(
@@ -107,6 +115,7 @@ export const news: NewsPost[] = [
     date: "2025-08-18",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/spotkanie-z-biznesem-label-poland.jpeg",
     excerpt:
       "Gościliśmy przedstawicielkę firmy Label Poland Szkolenia Graficzne, specjalizującej się w szkoleniach z grafiki komputerowej i kompetencji cyfrowych.",
     body: p(
@@ -119,6 +128,7 @@ export const news: NewsPost[] = [
     date: "2025-08-13",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/wizyta-studyjna-urzad-miasta-w-gdansku.jpeg",
     excerpt:
       "Przedstawiciele naszej Fundacji wzięli udział w wizycie studyjnej w Urzędzie Miejskim w Gdańsku wraz z Urzędem Pracy, MOPR i PFRON.",
     body: p(
@@ -131,6 +141,7 @@ export const news: NewsPost[] = [
     date: "2025-08-05",
     categories: ["Aktualności"],
     isArticle: false,
+    image: "/images/news/1-miejsce-w-rankingu-czytelnikow-trojmiasto-pl.jpg",
     excerpt:
       "Nasza Fundacja zajęła 1. miejsce w Rankingu Czytelników 2026 portalu trójmiasto.pl w kategorii „Fundacje i ośrodki”! Nasza aktualna ocena to 9.3!",
     body: p(
@@ -144,6 +155,7 @@ export const news: NewsPost[] = [
     date: "2025-09-01",
     categories: ["Artykuły"],
     isArticle: true,
+    image: "/images/news/powrot-z-wakacji-powrot-do-pracy.jpg",
     excerpt:
       "Koniec wakacji dla wielu osób oznacza moment refleksji nad swoją sytuacją zawodową. Jak wrócić do aktywnego poszukiwania pracy?",
     body: p(
@@ -156,6 +168,7 @@ export const news: NewsPost[] = [
     date: "2025-08-20",
     categories: ["Artykuły", "Aktualności"],
     isArticle: true,
+    image: "/images/news/jak-zorganizowac-swoj-dzien-gdy-szukasz-pracy.svg",
     excerpt:
       "Poszukiwanie pracy to proces, który wymaga planowania, konsekwencji oraz umiejętnego zarządzania czasem. Warto potraktować je jak pełnoetatową pracę.",
     body: p(
@@ -168,6 +181,7 @@ export const news: NewsPost[] = [
     date: "2025-08-10",
     categories: ["Artykuły"],
     isArticle: true,
+    image: "/images/news/od-marzen-do-planu-realny-cel-zawodowy.png",
     excerpt:
       "Każda zawodowa droga zaczyna się od marzenia. Marzenia pokazują kierunek, ale samo marzenie nie wystarczy, by osiągnąć sukces.",
     body: p(
@@ -180,6 +194,7 @@ export const news: NewsPost[] = [
     date: "2025-07-28",
     categories: ["Artykuły", "Rynek pracy"],
     isArticle: true,
+    image: "/images/news/5-sposobow-jak-wykorzystac-ai-podczas-poszukiwania-pracy.png",
     excerpt:
       "Sztuczna inteligencja może pomóc w przygotowaniu dokumentów aplikacyjnych, analizie ofert pracy czy przygotowaniu się do rozmowy kwalifikacyjnej.",
     body: p(
@@ -192,6 +207,7 @@ export const news: NewsPost[] = [
     date: "2025-07-15",
     categories: ["Artykuły", "Rynek pracy"],
     isArticle: true,
+    image: "/images/news/kompetencje-przyszlosci.png",
     excerpt:
       "Automatyzacja, sztuczna inteligencja i transformacja cyfrowa powodują, że wiele zawodów ewoluuje. Które kompetencje warto rozwijać?",
     body: p(

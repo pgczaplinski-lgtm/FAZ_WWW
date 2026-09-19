@@ -62,6 +62,13 @@ export function AktualnoscDetail() {
             ))}
           </div>
         )}
+        {post.image ? (
+          <img
+            src={post.image}
+            alt=""
+            className="mt-8 w-full max-h-[28rem] rounded-xl object-cover"
+          />
+        ) : null}
         <div className="mt-8">
           <RichText blocks={post.body} />
         </div>

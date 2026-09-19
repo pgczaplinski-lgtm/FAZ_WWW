@@ -4,6 +4,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-zawodowe",
     title: "Inspiratorium Zawodowe",
+    image: "/images/projects/inspiratorium-zawodowe.png",
     status: "active",
     funder: "PFRON",
     region: "Województwo pomorskie i śląskie",
@@ -32,6 +33,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-kariery-iii",
     title: "Inspiratorium Kariery III",
+    image: "/images/projects/inspiratorium-kariery-iii.png",
     status: "active",
     funder: "PFRON",
     region: "Cała Polska",
@@ -57,6 +59,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-wspolpracy",
     title: "Inspiratorium Współpracy",
+    image: "/images/projects/inspiratorium-wspolpracy.png",
     status: "active",
     region: "Cała Polska",
     period: "01.03.2026 – 28.02.2029",
@@ -82,6 +85,7 @@ export const projects: Project[] = [
   {
     slug: "wtz-w-dobrych-rekach",
     title: "WTZ w dobrych rękach",
+    image: "/images/projects/wtz-w-dobrych-rekach.png",
     status: "active",
     funder: "PFRON",
     region: "Cała Polska",
@@ -119,6 +123,7 @@ export const projects: Project[] = [
   {
     slug: "dyrektywa-eaa-przystepnie-o-dostepnosci-cyfrowej",
     title: "Dyrektywa EAA – przystępnie o dostępności cyfrowej",
+    image: "/images/projects/dyrektywa-eaa-przystepnie-o-dostepnosci-cyfrowej.jpg",
     status: "active",
     region: "Cała Polska",
     excerpt:
@@ -145,6 +150,7 @@ export const projects: Project[] = [
   {
     slug: "dostep-do-wiedzy-kluczem-do-zwiekszenia-dostepnosci-edycja-iii",
     title: "Dostęp do wiedzy kluczem do zwiększenia Dostępności – edycja III",
+    image: "/images/projects/dostep-do-wiedzy-kluczem-do-zwiekszenia-dostepnosci-edycja-iii.jpg",
     status: "active",
     region: "Cała Polska",
     excerpt:
@@ -173,6 +179,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-aktywnosci-zawodowej-plus",
     title: "Inspiratorium Aktywności Zawodowej +",
+    image: "/images/projects/inspiratorium-aktywnosci-zawodowej-plus.jpg",
     status: "finished",
     region: "Województwo pomorskie i śląskie",
     excerpt: "Kompleksowy projekt aktywizacji zawodowej osób z niepełnosprawnościami.",
@@ -187,6 +194,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-kariery-ii",
     title: "Inspiratorium Kariery II",
+    image: "/images/projects/inspiratorium-kariery-ii.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt:
@@ -202,6 +210,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-aktywnosci-zawodowej",
     title: "Inspiratorium Aktywności Zawodowej",
+    image: "/images/projects/inspiratorium-aktywnosci-zawodowej.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Projekt aktywizacji zawodowej osób z niepełnosprawnościami.",
@@ -211,6 +220,7 @@ export const projects: Project[] = [
   {
     slug: "latarnik-2023",
     title: "Latarnik 2023",
+    image: "/images/projects/latarnik-2023.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Projekt wspierający aktywizację zawodową i społeczną.",
@@ -220,6 +230,7 @@ export const projects: Project[] = [
   {
     slug: "inspiratorium-kariery",
     title: "Inspiratorium Kariery",
+    image: "/images/projects/inspiratorium-kariery.jpg",
     status: "finished",
     region: "Województwo pomorskie",
     excerpt: "Projekt aktywizacji zawodowej realizowany w województwie pomorskim.",
@@ -229,6 +240,7 @@ export const projects: Project[] = [
   {
     slug: "latarnik-2022",
     title: "Latarnik 2022",
+    image: "/images/projects/latarnik-2022.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Projekt wspierający aktywizację zawodową i społeczną.",
@@ -238,6 +250,7 @@ export const projects: Project[] = [
   {
     slug: "reintegrator-zawodowy-2021",
     title: "Reintegrator Zawodowy 2021",
+    image: "/images/projects/reintegrator-zawodowy-2021.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Projekt reintegracji zawodowej osób z niepełnosprawnościami.",
@@ -247,6 +260,7 @@ export const projects: Project[] = [
   {
     slug: "reintegrator-zawodowy-szkolenia-dla-kadry",
     title: "Reintegrator zawodowy – szkolenia dla kadry",
+    image: "/images/projects/reintegrator-zawodowy-szkolenia-dla-kadry.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Szkolenia dla kadry wspierającej reintegrację zawodową.",
@@ -256,6 +270,7 @@ export const projects: Project[] = [
   {
     slug: "przystan",
     title: "Przystań",
+    image: "/images/projects/przystan.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Projekt wsparcia osób z niepełnosprawnościami.",
@@ -265,6 +280,7 @@ export const projects: Project[] = [
   {
     slug: "dlon-staze-dla-osob-niepelnosprawnych",
     title: "Dłoń – staże dla osób niepełnosprawnych",
+    image: "/images/projects/dlon-staze-dla-osob-niepelnosprawnych.jpg",
     status: "finished",
     region: "Cała Polska",
     excerpt: "Program staży zawodowych dla osób z niepełnosprawnościami.",

@@ -31,12 +31,20 @@ export function Zespol() {
               key={member.name}
               className="flex items-center gap-4 rounded-xl border border-brand bg-white p-5"
             >
-              <div
-                className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-light text-sm font-bold text-brand"
-                aria-hidden
-              >
-                {initials(member.name)}
-              </div>
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt=""
+                  className="h-14 w-14 shrink-0 rounded-full object-cover object-top"
+                />
+              ) : (
+                <div
+                  className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-brand-light text-sm font-bold text-brand"
+                  aria-hidden
+                >
+                  {initials(member.name)}
+                </div>
+              )}
               <div>
                 <p className="font-bold text-ink">{member.name}</p>
                 <p className="text-sm text-muted">{member.role}</p>

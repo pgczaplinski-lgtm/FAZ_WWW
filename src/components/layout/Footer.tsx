@@ -13,6 +13,11 @@ export function Footer() {
         <div>
           <img src="/logo-white.svg" alt="Fundacja Aktywności Zawodowej" className="h-14 w-auto" />
           <p className="mt-4 text-sm">{org.tagline}</p>
+          <img
+            src="/images/org/1-5-procent.png"
+            alt="Przekaż 1,5% podatku na rzecz Fundacji"
+            className="mt-4 h-14 w-auto"
+          />
           <div className="mt-4 flex gap-2">
             {org.social.instagram && (
               <a href={org.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className="flex h-9 w-9 items-center justify-center rounded-full bg-white/10 text-white hover:bg-brand">
