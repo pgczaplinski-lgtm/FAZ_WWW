@@ -143,7 +143,7 @@ export function Home() {
               </p>
             </div>
             <div className="mt-8">
-              <ButtonLink to="/historia" variant="outline">
+              <ButtonLink to="/o-nas#historia" variant="outline">
                 Poznaj naszą historię
               </ButtonLink>
             </div>
