@@ -6,21 +6,19 @@ export function StatsStrip({
   groups: { period: string; stats: Stat[] }[];
 }) {
   return (
-    <div className="mt-8 divide-y divide-line overflow-hidden rounded-xl border border-line bg-white">
+    <div className="mt-4 divide-y divide-line overflow-hidden rounded-xl border border-line bg-white">
       {groups.map((group) => (
         <div
           key={group.period}
-          className="grid items-center gap-4 px-5 py-5 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-8 sm:px-8 sm:py-6"
+          className="grid items-baseline gap-2 px-5 py-2.5 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-6 sm:px-8 sm:py-3"
         >
           <h3 className="text-sm font-semibold tracking-wide text-brand">{group.period}:</h3>
-          <div className="grid grid-cols-2 gap-x-4 gap-y-3 sm:grid-cols-4 sm:gap-6">
+          <div className="flex flex-wrap gap-x-6 gap-y-1 sm:gap-x-8">
             {group.stats.map((stat) => (
-              <div key={stat.label} className="min-w-0">
-                <p className="text-2xl font-extrabold tabular-nums leading-none text-brand sm:text-[1.75rem]">
-                  {stat.value}
-                </p>
-                <p className="mt-1 text-xs text-muted sm:text-sm">{stat.label}</p>
-              </div>
+              <p key={stat.label} className="min-w-0">
+                <span className="text-lg font-extrabold tabular-nums text-brand sm:text-xl">{stat.value}</span>
+                <span className="ml-1.5 text-xs text-muted sm:text-sm">{stat.label}</span>
+              </p>
             ))}
           </div>
         </div>

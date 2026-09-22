@@ -151,8 +151,10 @@ export function Home() {
         </div>
       </Section>
 
-      <Section muted>
-        <SectionTitle centered>Nasze sukcesy</SectionTitle>
+      <Section muted className="!py-7 sm:!py-10">
+        <SectionTitle centered className="!text-2xl sm:!text-3xl">
+          Nasze sukcesy
+        </SectionTitle>
         <StatsStrip groups={statGroups} />
       </Section>
 
