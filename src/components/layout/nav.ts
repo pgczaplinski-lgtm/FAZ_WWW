@@ -14,10 +14,12 @@ export const navItems: NavItem[] = [
   { label: "O nas", to: "/o-nas" },
   {
     label: "Działalność",
-    to: "/projekty",
+    to: "/dzialalnosc",
     children: [
-      { label: "Projekty", to: "/projekty" },
-      { label: "Aktualności", to: "/aktualnosci" },
+      { label: "Wszystkie informacje", to: "/dzialalnosc" },
+      { label: "Projekty aktualne", to: "/dzialalnosc#projekty-aktualne" },
+      { label: "Projekty zrealizowane", to: "/dzialalnosc#projekty-zrealizowane" },
+      { label: "Aktualności", to: "/dzialalnosc#aktualnosci" },
     ],
   },
   { label: "Baza wiedzy", to: "/baza-wiedzy" },

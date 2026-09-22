@@ -23,7 +23,7 @@ export function AktualnoscDetail() {
           Nie udało się odnaleźć wpisu o podanym adresie.
         </p>
         <p className="mt-6">
-          <Link to="/aktualnosci" className="font-semibold text-brand">
+          <Link to="/dzialalnosc#aktualnosci" className="font-semibold text-brand">
             Wróć do aktualności
           </Link>
         </p>
@@ -42,7 +42,7 @@ export function AktualnoscDetail() {
         title={post.title}
         crumbs={[
           { label: "Strona główna", to: "/" },
-          { label: "Aktualności", to: "/aktualnosci" },
+          { label: "Aktualności", to: "/dzialalnosc#aktualnosci" },
           { label: post.title },
         ]}
       />

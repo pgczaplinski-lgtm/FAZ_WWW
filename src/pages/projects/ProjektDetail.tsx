@@ -17,7 +17,7 @@ export function ProjektDetail() {
           Nie udało się odnaleźć projektu o podanym adresie.
         </p>
         <p className="mt-6">
-          <Link to="/projekty" className="font-semibold text-brand">
+          <Link to="/dzialalnosc" className="font-semibold text-brand">
             Wróć do listy projektów
           </Link>
         </p>
@@ -39,7 +39,7 @@ export function ProjektDetail() {
         intro={project.excerpt}
         crumbs={[
           { label: "Strona główna", to: "/" },
-          { label: "Projekty", to: "/projekty" },
+          { label: "Działalność", to: "/dzialalnosc" },
           { label: project.title },
         ]}
       />

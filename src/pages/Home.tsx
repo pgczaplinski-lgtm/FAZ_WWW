@@ -109,7 +109,7 @@ export function Home() {
             </div>
           ) : null}
           <Link
-            to="/aktualnosci"
+            to="/dzialalnosc#aktualnosci"
             className="mt-3 block rounded-xl bg-brand py-3 text-center text-sm font-bold tracking-widest text-white hover:bg-brand-dark"
           >
             POZOSTAŁE AKTUALNOŚCI
@@ -166,7 +166,7 @@ export function Home() {
           ))}
         </div>
         <div className="mt-10 flex justify-center">
-          <ButtonLink to="/projekty" variant="solid">
+          <ButtonLink to="/dzialalnosc#projekty-aktualne" variant="solid">
             Zobacz wszystkie projekty
           </ButtonLink>
         </div>

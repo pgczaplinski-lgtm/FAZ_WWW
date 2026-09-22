@@ -41,8 +41,8 @@ export function Footer() {
           <h2 className="mb-4 text-sm font-bold uppercase tracking-wide text-white">Menu</h2>
           <ul className="space-y-2 text-sm">
             <li><Link to="/o-nas" className="hover:text-white">O nas</Link></li>
-            <li><Link to="/projekty" className="hover:text-white">Projekty</Link></li>
-            <li><Link to="/aktualnosci" className="hover:text-white">Aktualności</Link></li>
+            <li><Link to="/dzialalnosc" className="hover:text-white">Działalność</Link></li>
+            <li><Link to="/dzialalnosc#aktualnosci" className="hover:text-white">Aktualności</Link></li>
             <li><Link to="/baza-wiedzy" className="hover:text-white">Baza wiedzy</Link></li>
             <li><Link to="/kontakt" className="hover:text-white">Kontakt</Link></li>
             <li><Link to="/przekaz-darowizne" className="hover:text-white">Przekaż darowiznę</Link></li>
