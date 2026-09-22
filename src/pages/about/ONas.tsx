@@ -5,9 +5,9 @@ import { StatsStrip } from "../../components/ui/StatsStrip.tsx";
 import { content } from "../../lib/content/index.ts";
 
 const mission = [
-  "Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z niepełnosprawnościami w rozwoju zawodowym, rehabilitacji oraz pełniejszym uczestnictwie w życiu społecznym.",
-  "Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i prawne oraz szkolenia dla pracodawców i Warsztatów Terapii Zajęciowej.",
-  "Jesteśmy organizacją pożytku publicznego. Działamy non profit i nie prowadzimy działalności gospodarczej.",
+  "Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z\u00a0niepełnosprawnościami w\u00a0rozwoju zawodowym, rehabilitacji oraz\u00a0pełniejszym uczestnictwie w\u00a0życiu społecznym.",
+  "Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i\u00a0prawne oraz\u00a0szkolenia dla pracodawców i\u00a0Warsztatów Terapii Zajęciowej.",
+  "Jesteśmy organizacją pożytku publicznego. Działamy non profit i\u00a0nie\u00a0prowadzimy działalności gospodarczej.",
 ];
 
 const subpages = [

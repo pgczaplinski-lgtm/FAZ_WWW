@@ -128,15 +128,19 @@ export function Home() {
             <SectionTitle>Kim jesteśmy?</SectionTitle>
             <div className="mt-6 space-y-4 text-muted leading-relaxed">
               <p>
-                Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z niepełnosprawnościami w
-                rozwoju zawodowym, rehabilitacji oraz pełniejszym uczestnictwie w życiu społecznym.
+                Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z{"\u00a0"}niepełnosprawnościami
+                w{"\u00a0"}rozwoju zawodowym, rehabilitacji oraz{"\u00a0"}pełniejszym uczestnictwie
+                w{"\u00a0"}życiu społecznym.
               </p>
               <p>
-                Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i prawne oraz szkolenia dla
-                pracodawców i Warsztatów Terapii Zajęciowej. Angażujemy się także w działania dobroczynne i
-                humanitarne.
+                Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i{"\u00a0"}prawne oraz{"\u00a0"}szkolenia
+                dla pracodawców i{"\u00a0"}Warsztatów Terapii Zajęciowej. Angażujemy się także w{"\u00a0"}działania
+                dobroczynne i{"\u00a0"}humanitarne.
               </p>
-              <p>Jesteśmy organizacją pożytku publicznego. Działamy non profit i nie prowadzimy działalności gospodarczej.</p>
+              <p>
+                Jesteśmy organizacją pożytku publicznego. Działamy non profit i{"\u00a0"}nie{"\u00a0"}prowadzimy
+                działalności gospodarczej.
+              </p>
             </div>
             <div className="mt-8">
               <ButtonLink to="/historia" variant="outline">
