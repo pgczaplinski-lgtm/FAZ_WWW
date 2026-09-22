@@ -191,8 +191,8 @@ export function ONas() {
       />
 
       <div className="border-b border-line bg-white">
-        <Container className="flex flex-wrap gap-2 py-4">
-          <div role="group" aria-label="Tematy" className="flex flex-wrap gap-2">
+        <Container className="py-4">
+          <div role="group" aria-label="Tematy" className="grid grid-cols-9 gap-1.5 sm:gap-2">
             {TOPICS.map((opt) => {
               const selected = topic === opt.id;
               return (
@@ -203,8 +203,8 @@ export function ONas() {
                   onClick={() => selectTopic(opt.id)}
                   className={
                     selected
-                      ? "rounded-full bg-brand px-4 py-2 text-sm font-semibold text-white"
-                      : "rounded-full border border-line bg-surface px-4 py-2 text-sm font-semibold text-ink"
+                      ? "flex min-h-[3.5rem] items-center justify-center rounded-lg bg-brand px-1.5 py-2 text-center text-[11px] font-semibold leading-tight text-white sm:px-2 sm:text-sm"
+                      : "flex min-h-[3.5rem] items-center justify-center rounded-lg border border-line bg-surface px-1.5 py-2 text-center text-[11px] font-semibold leading-tight text-ink sm:px-2 sm:text-sm"
                   }
                 >
                   {opt.label}
