@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout/Layout.tsx";
 import { Home } from "./pages/Home.tsx";
 import { ONas } from "./pages/about/ONas.tsx";
@@ -14,9 +14,6 @@ import { ProjektDetail } from "./pages/projects/ProjektDetail.tsx";
 import { Aktualnosci } from "./pages/news/Aktualnosci.tsx";
 import { AktualnoscDetail } from "./pages/news/AktualnoscDetail.tsx";
 import { BazaWiedzy } from "./pages/knowledge/BazaWiedzy.tsx";
-import { Artykuly } from "./pages/knowledge/Artykuly.tsx";
-import { PytaniaOdpowiedzi } from "./pages/knowledge/PytaniaOdpowiedzi.tsx";
-import { Linki } from "./pages/knowledge/Linki.tsx";
 import { Kontakt } from "./pages/Kontakt.tsx";
 import { Darowizna } from "./pages/Darowizna.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
@@ -39,9 +36,9 @@ export const router = createBrowserRouter([
       { path: "/aktualnosci", element: <Aktualnosci /> },
       { path: "/aktualnosci/:slug", element: <AktualnoscDetail /> },
       { path: "/baza-wiedzy", element: <BazaWiedzy /> },
-      { path: "/artykuly", element: <Artykuly /> },
-      { path: "/pytania-i-odpowiedzi", element: <PytaniaOdpowiedzi /> },
-      { path: "/linki", element: <Linki /> },
+      { path: "/artykuly", element: <Navigate to="/baza-wiedzy" replace /> },
+      { path: "/pytania-i-odpowiedzi", element: <Navigate to="/baza-wiedzy" replace /> },
+      { path: "/linki", element: <Navigate to="/baza-wiedzy" replace /> },
       { path: "/kontakt", element: <Kontakt /> },
       { path: "/przekaz-darowizne", element: <Darowizna /> },
       { path: "*", element: <NotFound /> },

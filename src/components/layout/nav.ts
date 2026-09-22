@@ -33,16 +33,7 @@ export const navItems: NavItem[] = [
       { label: "Aktualności", to: "/aktualnosci" },
     ],
   },
-  {
-    label: "Baza wiedzy",
-    to: "/baza-wiedzy",
-    children: [
-      { label: "Baza wiedzy", to: "/baza-wiedzy" },
-      { label: "Artykuły", to: "/artykuly" },
-      { label: "Pytania i odpowiedzi", to: "/pytania-i-odpowiedzi" },
-      { label: "Linki", to: "/linki" },
-    ],
-  },
+  { label: "Baza wiedzy", to: "/baza-wiedzy" },
   { label: "Instytut", to: "https://instytut.faz.org.pl/", external: true },
   { label: "Kontakt", to: "/kontakt" },
 ];

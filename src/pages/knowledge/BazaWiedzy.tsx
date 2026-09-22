@@ -3,12 +3,12 @@ import { content } from "../../lib/content/index.ts";
 import { PageHeader } from "../../components/ui/PageHeader.tsx";
 import { RichText } from "../../components/ui/RichText.tsx";
 import { NewsCard } from "../../components/ui/cards.tsx";
-import { ButtonLink, Section, SectionTitle } from "../../components/ui/primitives.tsx";
+import { Section, SectionTitle } from "../../components/ui/primitives.tsx";
 
 export function BazaWiedzy() {
-  const articles = content.getArticles().slice(0, 6);
-  const faqs = content.getFaqs().slice(0, 3);
-  const links = content.getLinks().slice(0, 3);
+  const articles = content.getArticles();
+  const faqs = content.getFaqs();
+  const links = content.getLinks();
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   return (
@@ -28,11 +28,6 @@ export function BazaWiedzy() {
           {articles.map((post) => (
             <NewsCard key={post.slug} post={post} />
           ))}
-        </div>
-        <div className="mt-8">
-          <ButtonLink to="/artykuly" variant="outline">
-            Wszystkie artykuły
-          </ButtonLink>
         </div>
       </Section>
 
@@ -59,12 +54,7 @@ export function BazaWiedzy() {
                   </span>
                 </button>
                 {isOpen && (
-                  <div
-                    id={panelId}
-                    role="region"
-                    aria-labelledby={buttonId}
-                    className="px-5 pb-5"
-                  >
+                  <div id={panelId} role="region" aria-labelledby={buttonId} className="px-5 pb-5">
                     <RichText blocks={faq.answer} />
                   </div>
                 )}
@@ -72,21 +62,13 @@ export function BazaWiedzy() {
             );
           })}
         </ul>
-        <div className="mt-8">
-          <ButtonLink to="/pytania-i-odpowiedzi" variant="outline">
-            Wszystkie pytania
-          </ButtonLink>
-        </div>
       </Section>
 
       <Section>
         <SectionTitle>Przydatne linki</SectionTitle>
         <ul className="mt-8 grid gap-4 sm:grid-cols-3">
           {links.map((link) => (
-            <li
-              key={link.url}
-              className="rounded-xl border border-line bg-surface p-5 shadow-sm"
-            >
+            <li key={link.url} className="rounded-xl border border-line bg-surface p-5 shadow-sm">
               <a
                 href={link.url}
                 target="_blank"
@@ -102,11 +84,6 @@ export function BazaWiedzy() {
             </li>
           ))}
         </ul>
-        <div className="mt-8">
-          <ButtonLink to="/linki" variant="outline">
-            Wszystkie linki
-          </ButtonLink>
-        </div>
       </Section>
     </>
   );
