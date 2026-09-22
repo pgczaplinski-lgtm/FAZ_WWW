@@ -13,7 +13,7 @@ export function StatsStrip({
           className="grid items-baseline gap-2 px-5 py-2.5 sm:grid-cols-[11rem_minmax(0,1fr)] sm:gap-6 sm:px-8 sm:py-3"
         >
           <h3 className="text-sm font-semibold tracking-wide text-brand">{group.period}:</h3>
-          <div className="flex flex-wrap gap-x-6 gap-y-1 sm:gap-x-8">
+          <div className="flex flex-wrap gap-x-[1.65rem] gap-y-1 sm:gap-x-[2.2rem]">
             {group.stats.map((stat) => (
               <p key={stat.label} className="min-w-0">
                 <span className="text-lg font-extrabold tabular-nums text-brand sm:text-xl">{stat.value}</span>

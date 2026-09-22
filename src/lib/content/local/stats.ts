@@ -8,6 +8,7 @@ export const statGroups: { period: string; stats: Stat[] }[] = [
       { value: "55", label: "staży" },
       { value: "63", label: "szkolenia" },
       { value: "240", label: "uczestników" },
+      { value: "2", label: "startupów" },
     ],
   },
   {
@@ -17,6 +18,7 @@ export const statGroups: { period: string; stats: Stat[] }[] = [
       { value: "161", label: "staży" },
       { value: "204", label: "szkoleń" },
       { value: "643", label: "uczestników" },
+      { value: "11", label: "startupów" },
     ],
   },
 ];
