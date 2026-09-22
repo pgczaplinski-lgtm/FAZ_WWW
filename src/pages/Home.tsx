@@ -187,7 +187,7 @@ export function Home() {
                 className="flex flex-col rounded-xl border border-line bg-white p-6 shadow-sm"
               >
                 {story.photo ? (
-                  <img src={story.photo} alt="" className="mb-4 h-16 w-16 rounded-full object-cover" />
+                  <img src={story.photo} alt="" className="mb-4 h-16 w-16 rounded-full object-cover object-top" />
                 ) : null}
                 <p className="text-sm font-bold text-ink">{story.name}</p>
                 <p className="mt-1 text-xs font-semibold text-brand">{story.tags}</p>
