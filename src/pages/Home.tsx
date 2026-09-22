@@ -174,27 +174,26 @@ export function Home() {
 
       <Section muted>
         <SectionTitle centered>Poznaj historie uczestników projektów</SectionTitle>
-        <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-          <img
-            src="/images/home/historie-uczestnikow.jpg"
-            alt=""
-            className="w-full rounded-xl object-cover"
-          />
-          <div className="grid gap-6">
-            {stories.map((story) => (
-              <blockquote
-                key={story.name}
-                className="flex flex-col rounded-xl border border-line bg-white p-6 shadow-sm"
-              >
-                {story.photo ? (
-                  <img src={story.photo} alt="" className="mb-4 h-16 w-16 rounded-full object-cover object-top" />
-                ) : null}
+        <div className="mt-10 grid gap-6">
+          {stories.map((story) => (
+            <blockquote
+              key={story.name}
+              className="flex flex-col gap-4 rounded-xl border border-line bg-white p-6 shadow-sm sm:flex-row sm:items-start sm:gap-6"
+            >
+              {story.photo ? (
+                <img
+                  src={story.photo}
+                  alt=""
+                  className="h-16 w-16 shrink-0 rounded-full object-cover object-top"
+                />
+              ) : null}
+              <div className="min-w-0">
                 <p className="text-sm font-bold text-ink">{story.name}</p>
                 <p className="mt-1 text-xs font-semibold text-brand">{story.tags}</p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">„{story.quote}”</p>
-              </blockquote>
-            ))}
-          </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted">„{story.quote}”</p>
+              </div>
+            </blockquote>
+          ))}
         </div>
       </Section>
 
