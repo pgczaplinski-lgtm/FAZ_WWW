@@ -15,7 +15,7 @@ export function BazaWiedzy() {
     <>
       <PageHeader
         title="Baza wiedzy"
-        intro="Śledź wydarzenia, czytaj artykuły, stosuj porady. Bądź na bieżąco z przepisami i odkrywaj nowe zasoby online."
+        intro={"Poznaj rynek pracy, rozwijaj swoje kompetencje zawodowe i\u00a0bądź na bieżąco z\u00a0przepisami"}
         crumbs={[
           { label: "Strona główna", to: "/" },
           { label: "Baza wiedzy" },
@@ -23,8 +23,7 @@ export function BazaWiedzy() {
       />
 
       <Section>
-        <SectionTitle>Artykuły</SectionTitle>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {articles.map((post) => (
             <NewsCard key={post.slug} post={post} />
           ))}
