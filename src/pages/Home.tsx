@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { content } from "../lib/content/index.ts";
 import { ProjectCard } from "../components/ui/cards.tsx";
+import { StatsStrip } from "../components/ui/StatsStrip.tsx";
 import { ButtonLink, Container, Section, SectionTitle } from "../components/ui/primitives.tsx";
 
 const HERO_COUNT = 4;
@@ -127,18 +128,22 @@ export function Home() {
             <SectionTitle>Kim jesteśmy?</SectionTitle>
             <div className="mt-6 space-y-4 text-muted leading-relaxed">
               <p>
-                Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z niepełnosprawnościami w
-                rozwoju zawodowym, rehabilitacji oraz pełniejszym uczestnictwie w życiu społecznym.
+                Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z{"\u00a0"}niepełnosprawnościami
+                w{"\u00a0"}rozwoju zawodowym, rehabilitacji oraz{"\u00a0"}pełniejszym uczestnictwie
+                w{"\u00a0"}życiu społecznym.
               </p>
               <p>
-                Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i prawne oraz szkolenia dla
-                pracodawców i Warsztatów Terapii Zajęciowej. Angażujemy się także w działania dobroczynne i
-                humanitarne.
+                Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i{"\u00a0"}prawne oraz{"\u00a0"}szkolenia
+                dla pracodawców i{"\u00a0"}Warsztatów Terapii Zajęciowej. Angażujemy się także w{"\u00a0"}działania
+                dobroczynne i{"\u00a0"}humanitarne.
               </p>
-              <p>Jesteśmy organizacją pożytku publicznego. Działamy non profit i nie prowadzimy działalności gospodarczej.</p>
+              <p>
+                Jesteśmy organizacją pożytku publicznego. Działamy non profit i{"\u00a0"}nie{"\u00a0"}prowadzimy
+                działalności gospodarczej.
+              </p>
             </div>
             <div className="mt-8">
-              <ButtonLink to="/historia" variant="outline">
+              <ButtonLink to="/o-nas#historia" variant="outline">
                 Poznaj naszą historię
               </ButtonLink>
             </div>
@@ -146,23 +151,11 @@ export function Home() {
         </div>
       </Section>
 
-      <Section muted>
-        <SectionTitle centered>Nasze sukcesy</SectionTitle>
-        <div className="mt-12 space-y-12">
-          {statGroups.map((group) => (
-            <div key={group.period}>
-              <h3 className="text-center text-lg font-semibold text-ink">{group.period}</h3>
-              <div className="mt-6 grid grid-cols-2 gap-8 sm:grid-cols-4">
-                {group.stats.map((stat) => (
-                  <div key={stat.label} className="text-center">
-                    <p className="text-4xl font-extrabold text-brand sm:text-5xl">{stat.value}</p>
-                    <p className="mt-2 text-sm text-muted">{stat.label}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+      <Section muted className="!py-7 sm:!py-10">
+        <SectionTitle centered className="!text-2xl sm:!text-3xl">
+          Nasze sukcesy
+        </SectionTitle>
+        <StatsStrip groups={statGroups} />
       </Section>
 
       <Section>
@@ -181,27 +174,26 @@ export function Home() {
 
       <Section muted>
         <SectionTitle centered>Poznaj historie uczestników projektów</SectionTitle>
-        <div className="mt-10 grid items-start gap-8 lg:grid-cols-[minmax(0,2fr)_minmax(0,3fr)]">
-          <img
-            src="/images/home/historie-uczestnikow.jpg"
-            alt=""
-            className="w-full rounded-xl object-cover"
-          />
-          <div className="grid gap-6">
-            {stories.map((story) => (
-              <blockquote
-                key={story.name}
-                className="flex flex-col rounded-xl border border-line bg-white p-6 shadow-sm"
-              >
-                {story.photo ? (
-                  <img src={story.photo} alt="" className="mb-4 h-16 w-16 rounded-full object-cover" />
-                ) : null}
+        <div className="mt-10 grid gap-6">
+          {stories.map((story) => (
+            <blockquote
+              key={story.name}
+              className="flex flex-col gap-4 rounded-xl border border-line bg-white p-6 shadow-sm sm:flex-row sm:items-start sm:gap-6"
+            >
+              {story.photo ? (
+                <img
+                  src={story.photo}
+                  alt=""
+                  className="h-16 w-16 shrink-0 rounded-full object-cover object-top"
+                />
+              ) : null}
+              <div className="min-w-0">
                 <p className="text-sm font-bold text-ink">{story.name}</p>
                 <p className="mt-1 text-xs font-semibold text-brand">{story.tags}</p>
-                <p className="mt-4 flex-1 text-sm leading-relaxed text-muted">„{story.quote}”</p>
-              </blockquote>
-            ))}
-          </div>
+                <p className="mt-3 text-sm leading-relaxed text-muted">„{story.quote}”</p>
+              </div>
+            </blockquote>
+          ))}
         </div>
       </Section>
 
