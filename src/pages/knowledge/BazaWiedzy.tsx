@@ -15,7 +15,8 @@ export function BazaWiedzy() {
     <>
       <PageHeader
         title="Baza wiedzy"
-        intro={"Poznaj rynek pracy, rozwijaj swoje kompetencje zawodowe i\u00a0bądź na bieżąco z\u00a0przepisami"}
+        intro="Poznaj rynek pracy, rozwijaj swoje kompetencje zawodowe i bądź na bieżąco z przepisami"
+        introClassName="max-w-none"
         crumbs={[
           { label: "Strona główna", to: "/" },
           { label: "Baza wiedzy" },

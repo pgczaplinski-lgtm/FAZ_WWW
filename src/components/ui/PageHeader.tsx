@@ -5,11 +5,13 @@ import { Breadcrumbs, type Crumb } from "./Breadcrumbs.tsx";
 export function PageHeader({
   title,
   intro,
+  introClassName,
   crumbs,
   children,
 }: {
   title: string;
   intro?: string;
+  introClassName?: string;
   crumbs?: Crumb[];
   children?: ReactNode;
 }) {
@@ -23,7 +25,9 @@ export function PageHeader({
             </div>
           )}
           <h1 className="max-w-3xl text-4xl font-extrabold tracking-tight text-white sm:text-5xl">{title}</h1>
-          {intro && <p className="mt-3 max-w-2xl text-lg text-white/90">{intro}</p>}
+          {intro && (
+            <p className={`mt-3 text-lg text-white/90 ${introClassName ?? "max-w-2xl"}`}>{intro}</p>
+          )}
           {children}
         </div>
       </Container>
