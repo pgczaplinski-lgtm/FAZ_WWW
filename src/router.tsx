@@ -2,9 +2,8 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 import { Layout } from "./components/layout/Layout.tsx";
 import { Home } from "./pages/Home.tsx";
 import { ONas } from "./pages/about/ONas.tsx";
-import { Projekty } from "./pages/projects/Projekty.tsx";
+import { Dzialalnosc } from "./pages/activity/Dzialalnosc.tsx";
 import { ProjektDetail } from "./pages/projects/ProjektDetail.tsx";
-import { Aktualnosci } from "./pages/news/Aktualnosci.tsx";
 import { AktualnoscDetail } from "./pages/news/AktualnoscDetail.tsx";
 import { BazaWiedzy } from "./pages/knowledge/BazaWiedzy.tsx";
 import { Kontakt } from "./pages/Kontakt.tsx";
@@ -24,9 +23,10 @@ export const router = createBrowserRouter([
       { path: "/deklaracja-roznorodnosci", element: <Navigate to="/o-nas#deklaracja-roznorodnosci" replace /> },
       { path: "/deklaracja-dostepnosci", element: <Navigate to="/o-nas#deklaracja-dostepnosci" replace /> },
       { path: "/dolacz-do-nas", element: <Navigate to="/o-nas#dolacz-do-nas" replace /> },
-      { path: "/projekty", element: <Projekty /> },
+      { path: "/dzialalnosc", element: <Dzialalnosc /> },
+      { path: "/projekty", element: <Navigate to="/dzialalnosc" replace /> },
       { path: "/projekt/:slug", element: <ProjektDetail /> },
-      { path: "/aktualnosci", element: <Aktualnosci /> },
+      { path: "/aktualnosci", element: <Navigate to="/dzialalnosc#aktualnosci" replace /> },
       { path: "/aktualnosci/:slug", element: <AktualnoscDetail /> },
       { path: "/baza-wiedzy", element: <BazaWiedzy /> },
       { path: "/artykuly", element: <Navigate to="/baza-wiedzy" replace /> },
