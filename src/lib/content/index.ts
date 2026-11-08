@@ -2,12 +2,14 @@ import type { ContentSource } from "./types.ts";
 import { localContentSource } from "./local/index.ts";
 
 /**
- * The active content source for the whole site.
- *
- * Swap this single binding to point the site at FundacjaERP once its adapter
- * exists (e.g. `export const content = erpContentSource;`). Nothing else in the
- * app imports a concrete adapter — pages depend only on `ContentSource`.
+ * The active content source for the whole site — a live binding, so pages
+ * always read whichever source `setContentSource` installed before the first
+ * render (PanelORG content, or the local seed data as fallback).
  */
-export const content: ContentSource = localContentSource;
+export let content: ContentSource = localContentSource;
+
+export function setContentSource(source: ContentSource) {
+  content = source;
+}
 
 export type * from "./types.ts";
