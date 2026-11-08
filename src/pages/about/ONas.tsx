@@ -5,12 +5,6 @@ import { StatsStrip } from "../../components/ui/StatsStrip.tsx";
 import { ButtonLink, Container, Section, SectionTitle } from "../../components/ui/primitives.tsx";
 import { content } from "../../lib/content/index.ts";
 
-const mission = [
-  "Fundacja Aktywności Zawodowej wspiera przede wszystkim osoby z\u00a0niepełnosprawnościami w\u00a0rozwoju zawodowym, rehabilitacji oraz\u00a0pełniejszym uczestnictwie w\u00a0życiu społecznym.",
-  "Organizujemy giełdy pracy, prowadzimy doradztwo zawodowe i\u00a0prawne oraz\u00a0szkolenia dla pracodawców i\u00a0Warsztatów Terapii Zajęciowej.",
-  "Jesteśmy organizacją pożytku publicznego. Działamy non profit i\u00a0nie\u00a0prowadzimy działalności gospodarczej.",
-];
-
 const TOPICS = [
   { id: "all", label: "Wszystkie" },
   { id: "kim-jestesmy", label: "Kim jesteśmy" },
@@ -37,40 +31,6 @@ function initials(name: string) {
     .join("")
     .toLocaleUpperCase("pl-PL");
 }
-
-const statuteBlocks = [
-  { type: "heading" as const, text: "Postanowienia ogólne" },
-  {
-    type: "paragraph" as const,
-    text: "Statut określa nazwę, siedzibę i charakter Fundacji Aktywności Zawodowej jako niezależnej organizacji non profit, działającej na rzecz osób zagrożonych wykluczeniem na rynku pracy. Fundacja nie prowadzi działalności gospodarczej i działa jako organizacja pożytku publicznego.",
-  },
-  { type: "heading" as const, text: "Cele Fundacji" },
-  {
-    type: "paragraph" as const,
-    text: "Celem jest aktywizacja zawodowa i społeczna osób z niepełnosprawnościami oraz innych osób w trudnej sytuacji na rynku pracy. Fundacja dąży do zwiększenia ich samodzielności, udziału w życiu społecznym i szans na godne zatrudnienie.",
-  },
-  { type: "heading" as const, text: "Sposoby realizacji celów" },
-  {
-    type: "paragraph" as const,
-    text: "Cele realizowane są przez doradztwo zawodowe i prawne, szkolenia, staże, giełdy pracy, współpracę z pracodawcami i Warsztatami Terapii Zajęciowej oraz projekty finansowane ze środków publicznych i prywatnych. Działania prowadzone są z poszanowaniem godności uczestników i zasady równego traktowania.",
-  },
-  { type: "heading" as const, text: "Organy Fundacji" },
-  {
-    type: "paragraph" as const,
-    text: "Statut przewiduje Zarząd, który prowadzi sprawy Fundacji i reprezentuje ją na zewnątrz, oraz Radę Fundacji, która sprawuje nadzór i wspiera strategię. Skład organów i zasady ich powoływania określa pełny tekst statutu.",
-  },
-  { type: "heading" as const, text: "Majątek Fundacji" },
-  {
-    type: "paragraph" as const,
-    text: "Majątek tworzą środki przekazane przez fundatorów, darowizny, dotacje, 1,5% podatku oraz inne wpływy zgodne z prawem. Środki przeznaczane są wyłącznie na cele statutowe. Zasady gospodarki finansowej i sprawozdawczości wynikają z przepisów o organizacjach pożytku publicznego.",
-  },
-];
-
-const reports = [
-  { year: "2023", title: "Sprawozdanie za 2023" },
-  { year: "2022", title: "Sprawozdanie za 2022" },
-  { year: "2021", title: "Sprawozdanie za 2021" },
-];
 
 const ways = [
   {
@@ -102,58 +62,11 @@ export function ONas() {
   const team = content.getTeam();
   const org = content.getOrgInfo();
   const phone = org.phones[0];
-
-  const currentYear = stats.find((g) => /bieżącym/i.test(g.period));
-  const since2008 = stats.find((g) => /2008/.test(g.period));
-  const employed2024 = currentYear?.stats.find((s) => /zatrudn/i.test(s.label))?.value ?? "127";
-  const participants2024 = currentYear?.stats.find((s) => /uczestnik/i.test(s.label))?.value ?? "240";
-  const employedTotal = since2008?.stats.find((s) => /zatrudn/i.test(s.label))?.value ?? "435";
-  const participantsTotal = since2008?.stats.find((s) => /uczestnik/i.test(s.label))?.value ?? "643";
-
-  const milestones = [
-    {
-      year: "2008",
-      title: "Powstanie Fundacji",
-      text: "Fundacja Aktywności Zawodowej rozpoczyna działalność. Od początku stawiamy na indywidualne podejście do osób w trudnej sytuacji na rynku pracy, zwłaszcza osób z niepełnosprawnościami.",
-    },
-    {
-      year: "2015",
-      title: "Rozwój programów aktywizacji",
-      text: "Rozwijamy programy i projekty, które pomagają uczestnikom odnaleźć swoją drogę zawodową — doradztwo, szkolenia, staże i współpracę z pracodawcami.",
-    },
-    {
-      year: currentYear?.period ?? "W bieżącym roku",
-      title: "Rok pełen rezultatów",
-      text: `W jednym roku ${employed2024} osób znalazło zatrudnienie, a ${participants2024} uczestniczyło w naszych działaniach.`,
-    },
-    {
-      year: since2008?.period ?? "od 2008",
-      title: "Łączny bilans",
-      text: `Od początku działalności łącznie ${employedTotal} zatrudnionych i ${participantsTotal} uczestników programów Fundacji.`,
-    },
-  ];
-
-  const accessibilityBlocks = [
-    {
-      type: "paragraph" as const,
-      text: `Serwis internetowy ${org.name} stara się spełniać wymagania WCAG 2.1 na poziomie AA. Strona jest zbudowana semantycznie, działa z klawiatury i nie opiera komunikacji wyłącznie na kolorze.`,
-    },
-    { type: "heading" as const, text: "Ułatwienia na tej stronie" },
-    {
-      type: "list" as const,
-      items: [
-        "Pasek dostępności: zmiana kontrastu, powiększenie czcionki i podkreślenie odnośników.",
-        "Nawigacja z klawiatury — logiczna kolejność fokusu i widoczny stan focus.",
-        "Nagłówki, listy i etykiety formularzy zgodne z rolą treści.",
-        "Teksty alternatywne przy treściach graficznych, gdy obraz niesie informację.",
-      ],
-    },
-    { type: "heading" as const, text: "Zgłoś problem z dostępnością" },
-    {
-      type: "paragraph" as const,
-      text: `Jeśli natrafisz na barierę, napisz na ${org.email}${phone ? ` lub zadzwoń pod ${phone}` : ""}. Opisz stronę, urządzenie i to, co utrudnia korzystanie — odpowiemy i poprawimy serwis, gdy to możliwe.`,
-    },
-  ];
+  const about = content.getAbout();
+  const history = content.getHistory();
+  const statute = content.getStatute();
+  const reports = content.getReports();
+  const accessibility = content.getAccessibility();
 
   const selectTopic = (id: TopicId) => {
     navigate({ pathname: "/o-nas", hash: id === "all" ? "" : id }, { replace: true });
@@ -202,7 +115,7 @@ export function ONas() {
               className="mt-8 aspect-[16/7] w-full rounded-xl object-cover"
             />
             <div className="mt-8 grid gap-6 md:grid-cols-3">
-              {mission.map((text) => (
+              {about.map((text) => (
                 <p key={text} className="rounded-xl border border-brand bg-surface p-6 leading-relaxed text-muted">
                   {text}
                 </p>
@@ -250,20 +163,13 @@ export function ONas() {
         <Section muted={topic === "all"}>
           <SectionTitle>Historia</SectionTitle>
           <div className="mt-6 max-w-3xl">
-            <RichText
-              blocks={[
-                {
-                  type: "paragraph",
-                  text: "Działamy od 2008 roku, wspierając osoby w trudnej sytuacji na rynku pracy, zwłaszcza osoby z niepełnosprawnościami. Od początku stawiamy na indywidualne podejście, rozwijając programy i projekty, które pomagają uczestnikom odnaleźć swoją drogę zawodową. Po ponad 15 latach działalności nadal realizujemy naszą misję, wspierając aktywizację zawodową i społeczną.",
-                },
-              ]}
-            />
+            <RichText blocks={[{ type: "paragraph", text: history.intro }]} />
           </div>
           <ol className="relative mt-12 space-y-8 border-l-2 border-brand pl-8">
-            {milestones.map((item) => (
-              <li key={item.year} className="relative">
+            {history.events.map((item) => (
+              <li key={`${item.date}-${item.title}`} className="relative">
                 <span className="absolute -left-[2.45rem] top-1.5 h-4 w-4 rounded-full bg-brand" aria-hidden />
-                <p className="text-sm font-semibold uppercase tracking-wide text-brand">{item.year}</p>
+                <p className="text-sm font-semibold uppercase tracking-wide text-brand">{item.date.slice(0, 4)}</p>
                 <h3 className="mt-1 text-xl font-bold text-ink">{item.title}</h3>
                 <p className="mt-2 leading-relaxed text-muted">{item.text}</p>
               </li>
@@ -280,18 +186,34 @@ export function ONas() {
             się aktywizacją zawodową osób z niepełnosprawnościami. Nie zastępuje pełnego dokumentu prawnego.
           </p>
           <div className="mt-8 max-w-3xl">
-            <RichText blocks={statuteBlocks} />
+            <RichText
+              blocks={statute.sections.flatMap((s) => [
+                { type: "heading" as const, text: s.title },
+                { type: "paragraph" as const, text: s.text },
+              ])}
+            />
           </div>
           <p className="mt-10">
-            <a
-              href="#"
-              title="Dokument będzie dostępny wkrótce"
-              aria-disabled="true"
-              className="inline-flex cursor-not-allowed items-center justify-center rounded-md border-2 border-brand px-6 py-3 text-sm font-semibold text-brand opacity-60"
-              onClick={(e) => e.preventDefault()}
-            >
-              Pobierz pełny statut (PDF)
-            </a>
+            {statute.pdfUrl ? (
+              <a
+                href={statute.pdfUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center rounded-md border-2 border-brand px-6 py-3 text-sm font-semibold text-brand hover:bg-brand hover:text-white"
+              >
+                Pobierz pełny statut (PDF)
+              </a>
+            ) : (
+              <a
+                href="#"
+                title="Dokument będzie dostępny wkrótce"
+                aria-disabled="true"
+                className="inline-flex cursor-not-allowed items-center justify-center rounded-md border-2 border-brand px-6 py-3 text-sm font-semibold text-brand opacity-60"
+                onClick={(e) => e.preventDefault()}
+              >
+                Pobierz pełny statut (PDF)
+              </a>
+            )}
           </p>
         </Section>
       )}
@@ -301,29 +223,48 @@ export function ONas() {
           <SectionTitle>Sprawozdania</SectionTitle>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted">
             Fundacja Aktywności Zawodowej jest organizacją pożytku publicznego. Co roku składamy sprawozdania
-            merytoryczne i finansowe z działalności — poniżej zestawienie ostatnich lat. Pliki PDF zostaną
-            uzupełnione, gdy będą dostępne na tej stronie.
+            merytoryczne i finansowe z działalności — poniżej zestawienie ostatnich lat.
           </p>
-          <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-            {reports.map((report) => (
-              <li key={report.year} className="flex flex-col rounded-xl border border-brand bg-white p-6">
-                <p className="text-sm font-semibold uppercase tracking-wide text-brand">OPP · {report.year}</p>
-                <h3 className="mt-2 text-lg font-bold text-ink">{report.title}</h3>
-                <p className="mt-2 flex-1 text-sm text-muted">
-                  Sprawozdanie merytoryczne i finansowe organizacji pożytku publicznego za rok {report.year}.
-                </p>
-                <a
-                  href="#"
-                  title="Dokument będzie dostępny wkrótce"
-                  aria-disabled="true"
-                  className="mt-4 text-sm font-semibold text-brand"
-                  onClick={(e) => e.preventDefault()}
+          {reports.length === 0 ? (
+            <p className="mt-8 rounded-xl border border-line bg-white p-6 text-muted">
+              Sprawozdania zostaną opublikowane na tej stronie wkrótce.
+            </p>
+          ) : (
+            <ul className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {reports.map((report) => (
+                <li
+                  key={`${report.year}-${report.title}`}
+                  className="flex flex-col rounded-xl border border-brand bg-white p-6"
                 >
-                  Pobierz PDF
-                </a>
-              </li>
-            ))}
-          </ul>
+                  <p className="text-sm font-semibold uppercase tracking-wide text-brand">OPP · {report.year}</p>
+                  <h3 className="mt-2 text-lg font-bold text-ink">{report.title}</h3>
+                  <p className="mt-2 flex-1 text-sm text-muted">
+                    Sprawozdanie merytoryczne i finansowe organizacji pożytku publicznego za rok {report.year}.
+                  </p>
+                  {report.pdfUrl ? (
+                    <a
+                      href={report.pdfUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 text-sm font-semibold text-brand underline"
+                    >
+                      Pobierz PDF
+                    </a>
+                  ) : (
+                    <a
+                      href="#"
+                      title="Dokument będzie dostępny wkrótce"
+                      aria-disabled="true"
+                      className="mt-4 text-sm font-semibold text-brand"
+                      onClick={(e) => e.preventDefault()}
+                    >
+                      Pobierz PDF
+                    </a>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
         </Section>
       )}
 
@@ -331,7 +272,7 @@ export function ONas() {
         <Section>
           <SectionTitle>Deklaracja dostępności</SectionTitle>
           <div className="mt-6 max-w-3xl">
-            <RichText blocks={accessibilityBlocks} />
+            <RichText blocks={accessibility} />
             <p className="mt-6 text-muted">
               E-mail:{" "}
               <a className="font-semibold text-brand underline" href={`mailto:${org.email}`}>

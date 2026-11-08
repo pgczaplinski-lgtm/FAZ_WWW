@@ -4,8 +4,7 @@
  * Every piece of variable content (news, projects, articles, FAQ, team,
  * participant stories, external links) is described here once. Pages read it
  * through the `ContentSource` interface, never from a hard-coded array, so the
- * data can later come from the FundacjaERP system by swapping the adapter
- * behind `ContentSource` — with no change to the pages.
+ * backend can be swapped behind `ContentSource` with no change to the pages.
  */
 
 export type ProjectStatus = "active" | "finished";
@@ -106,10 +105,34 @@ export interface OrgInfo {
   social: { instagram?: string; facebook?: string; linkedin?: string };
 }
 
+export interface HistoryEvent {
+  /** YYYY-MM-DD; the year is shown as the label. */
+  date: string;
+  title: string;
+  text: string;
+}
+
+export interface History {
+  intro: string;
+  /** Ascending by date. */
+  events: HistoryEvent[];
+}
+
+export interface Statute {
+  sections: { title: string; text: string }[];
+  pdfUrl: string | null;
+}
+
+export interface Report {
+  year: string;
+  title: string;
+  pdfUrl: string | null;
+}
+
 /**
  * The single seam between the website and its content backend.
- * Today: a local adapter with seed data extracted from the live site.
- * Later: a FundacjaERP adapter implementing this same interface.
+ * The panel adapter serves content published in PanelORG (Promocja → WWW);
+ * the local adapter serves seed data and is the fallback when PanelORG is unreachable.
  */
 export interface ContentSource {
   getOrgInfo(): OrgInfo;
@@ -123,4 +146,10 @@ export interface ContentSource {
   getTeam(): TeamMember[];
   getStories(): ParticipantStory[];
   getStats(): { period: string; stats: Stat[] }[];
+  getAbout(): string[];
+  getHistory(): History;
+  getStatute(): Statute;
+  /** Descending by year. */
+  getReports(): Report[];
+  getAccessibility(): RichBlock[];
 }
