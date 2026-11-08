@@ -20,7 +20,6 @@ export const router = createBrowserRouter([
       { path: "/historia", element: <Navigate to="/o-nas#historia" replace /> },
       { path: "/statut-fundacji", element: <Navigate to="/o-nas#statut-fundacji" replace /> },
       { path: "/sprawozdania", element: <Navigate to="/o-nas#sprawozdania" replace /> },
-      { path: "/deklaracja-roznorodnosci", element: <Navigate to="/o-nas#deklaracja-roznorodnosci" replace /> },
       { path: "/deklaracja-dostepnosci", element: <Navigate to="/o-nas#deklaracja-dostepnosci" replace /> },
       { path: "/dolacz-do-nas", element: <Navigate to="/o-nas#dolacz-do-nas" replace /> },
       { path: "/dzialalnosc", element: <Dzialalnosc /> },

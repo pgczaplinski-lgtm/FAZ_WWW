@@ -18,7 +18,6 @@ const TOPICS = [
   { id: "historia", label: "Historia" },
   { id: "statut-fundacji", label: "Statut" },
   { id: "sprawozdania", label: "Sprawozdania" },
-  { id: "deklaracja-roznorodnosci", label: "Deklaracja różnorodności" },
   { id: "deklaracja-dostepnosci", label: "Deklaracja dostępności" },
   { id: "dolacz-do-nas", label: "Dołącz do nas" },
 ] as const;
@@ -71,28 +70,6 @@ const reports = [
   { year: "2023", title: "Sprawozdanie za 2023" },
   { year: "2022", title: "Sprawozdanie za 2022" },
   { year: "2021", title: "Sprawozdanie za 2021" },
-];
-
-const diversityBlocks = [
-  {
-    type: "paragraph" as const,
-    text: "Fundacja Aktywności Zawodowej stoi po stronie różnorodności, równych szans i niedyskryminacji — zarówno w projektach dla uczestników, jak i wewnątrz własnego zespołu. Włączanie osób z niepełnosprawnościami jest częścią naszej misji, a nie dodatkiem do niej.",
-  },
-  {
-    type: "paragraph" as const,
-    text: "Odrzucamy dyskryminację ze względu na niepełnosprawność, stan zdrowia, wiek, płeć, pochodzenie, religię, orientację seksualną, sytuację rodzinną czy status na rynku pracy. Każda osoba ma prawo do szacunku, rzetelnej informacji i realnej szansy na rozwój zawodowy.",
-  },
-  { type: "heading" as const, text: "Nasze zobowiązania" },
-  {
-    type: "list" as const,
-    items: [
-      "Tworzymy zespół i programy otwarte na osoby z różnymi rodzajami niepełnosprawności i doświadczeniem życiowym.",
-      "Dbamy o równy dostęp do rekrutacji, szkoleń, staży i ofert pracy — bez barier formalnych, które nie wynikają z wymagań stanowiska.",
-      "Przeciwdziałamy dyskryminacji i mobbingowi; zgłoszenia traktujemy poważnie i poufnie.",
-      "Współpracujemy z pracodawcami tak, by miejsca pracy były dostępne i przyjazne.",
-      "Uczymy się i poprawiamy praktyki, gdy ktoś wskaże nam lukę lub barierę.",
-    ],
-  },
 ];
 
 const ways = [
@@ -192,7 +169,7 @@ export function ONas() {
 
       <div className="border-b border-line bg-white">
         <Container className="py-4">
-          <div role="group" aria-label="Tematy" className="grid grid-cols-9 gap-1.5 sm:gap-2">
+          <div role="group" aria-label="Tematy" className="grid grid-cols-8 gap-1.5 sm:gap-2">
             {TOPICS.map((opt) => {
               const selected = topic === opt.id;
               return (
@@ -350,17 +327,8 @@ export function ONas() {
         </Section>
       )}
 
-      {show("deklaracja-roznorodnosci") && (
-        <Section>
-          <SectionTitle>Deklaracja różnorodności</SectionTitle>
-          <div className="mt-6 max-w-3xl">
-            <RichText blocks={diversityBlocks} />
-          </div>
-        </Section>
-      )}
-
       {show("deklaracja-dostepnosci") && (
-        <Section muted={topic === "all"}>
+        <Section>
           <SectionTitle>Deklaracja dostępności</SectionTitle>
           <div className="mt-6 max-w-3xl">
             <RichText blocks={accessibilityBlocks} />
@@ -384,7 +352,7 @@ export function ONas() {
       )}
 
       {show("dolacz-do-nas") && (
-        <Section>
+        <Section muted={topic === "all"}>
           <SectionTitle>Dołącz do nas</SectionTitle>
           <p className="mt-4 max-w-3xl leading-relaxed text-muted">
             Fundacja Aktywności Zawodowej rośnie razem z ludźmi, którzy wierzą, że każdy zasługuje na szansę
