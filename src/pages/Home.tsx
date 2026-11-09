@@ -24,24 +24,27 @@ export function Home() {
   const stories = content.getStories();
 
   const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
   const count = slides.length;
 
   useEffect(() => {
-    if (count < 2) return;
+    if (count < 2 || paused) return;
     const id = window.setInterval(() => {
       setIndex((i) => (i + 1) % count);
     }, SLIDE_MS);
     return () => window.clearInterval(id);
-  }, [count]);
+  }, [count, paused]);
 
   const current = slides[index];
   const go = (delta: number) => {
     if (count === 0) return;
+    setPaused(true);
     setIndex((i) => (i + delta + count) % count);
   };
 
   return (
     <>
+      <title>Fundacja Aktywności Zawodowej – FAZ</title>
       <section aria-label="Aktualności">
         <Container className="pt-4">
           {current ? (
@@ -89,6 +92,14 @@ export function Home() {
                   >
                     ›
                   </button>
+                  <button
+                    type="button"
+                    aria-pressed={paused}
+                    onClick={() => setPaused((p) => !p)}
+                    className="absolute bottom-2 right-3 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-semibold text-brand shadow-sm hover:bg-white"
+                  >
+                    {paused ? "Wznów" : "Zatrzymaj"}
+                  </button>
                   <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2" role="tablist" aria-label="Slajdy">
                     {slides.map((post, i) => (
                       <button
@@ -97,7 +108,10 @@ export function Home() {
                         role="tab"
                         aria-selected={i === index}
                         aria-label={`Slajd ${i + 1}: ${post.title}`}
-                        onClick={() => setIndex(i)}
+                        onClick={() => {
+                          setPaused(true);
+                          setIndex(i);
+                        }}
                         className={`h-2.5 rounded-full transition-all ${
                           i === index ? "w-8 bg-brand" : "w-2.5 bg-brand/40"
                         }`}
@@ -204,13 +218,12 @@ export function Home() {
               Wesprzyj naszą działalność
             </h2>
             <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-              <ButtonLink
+              <Link
                 to="/przekaz-darowizne"
-                variant="solid"
-                className="bg-white text-brand hover:bg-brand-light hover:text-brand"
+                className="inline-flex items-center justify-center rounded-md bg-white px-6 py-3 text-sm font-semibold text-brand transition-colors hover:bg-brand-light focus-visible:outline-white"
               >
                 Przekaż darowiznę
-              </ButtonLink>
+              </Link>
               <ButtonLink
                 to="/kontakt"
                 variant="outline"
