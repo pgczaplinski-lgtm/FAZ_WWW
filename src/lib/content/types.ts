@@ -50,6 +50,8 @@ export interface NewsPost {
   /** True for evergreen advice articles surfaced under "Baza wiedzy / Artykuły". */
   isArticle: boolean;
   body: RichBlock[];
+  /** Absolute image URLs shown as a gallery under the body, in display order. */
+  gallery?: string[];
 }
 
 export interface Faq {
