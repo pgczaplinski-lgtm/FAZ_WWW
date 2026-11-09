@@ -17,6 +17,7 @@ export function PageHeader({
 }) {
   return (
     <header>
+      <title>{`${title} – Fundacja Aktywności Zawodowej`}</title>
       <Container className="pt-6 sm:pt-8">
         <div className="rounded-xl bg-brand px-6 py-6 text-white sm:px-10 sm:py-8">
           {crumbs && crumbs.length > 0 && (

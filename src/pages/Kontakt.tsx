@@ -4,7 +4,7 @@ import { PageHeader } from "../components/ui/PageHeader.tsx";
 import { Button, Section } from "../components/ui/primitives.tsx";
 
 const fieldClass =
-  "mt-1 w-full rounded-md border border-line bg-surface px-3 py-2 text-ink focus-visible:outline-brand";
+  "mt-1 w-full rounded-md border border-muted bg-white px-3 py-2 text-ink focus-visible:outline-brand";
 
 export function Kontakt() {
   const org = content.getOrgInfo();
@@ -106,7 +106,7 @@ export function Kontakt() {
                     required
                     checked={consent}
                     onChange={(e) => setConsent(e.target.checked)}
-                    className="mt-1"
+                    className="mt-1 h-4 w-4 accent-brand"
                   />
                   <label htmlFor={`${id}-consent`} className="text-sm text-muted">
                     Wyrażam zgodę na przetwarzanie danych zawartych w formularzu w celu kontaktu,
