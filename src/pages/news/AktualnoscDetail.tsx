@@ -4,6 +4,7 @@ import { PageHeader } from "../../components/ui/PageHeader.tsx";
 import { RichText } from "../../components/ui/RichText.tsx";
 import { Section, SectionTitle } from "../../components/ui/primitives.tsx";
 import { NewsCard } from "../../components/ui/cards.tsx";
+import { Gallery } from "../../components/ui/Gallery.tsx";
 
 const dateFmt = new Intl.DateTimeFormat("pl-PL", {
   day: "numeric",
@@ -72,6 +73,7 @@ export function AktualnoscDetail() {
         <div className="mt-8">
           <RichText blocks={post.body} />
         </div>
+        {post.gallery?.length ? <Gallery images={post.gallery} title={post.title} /> : null}
       </Section>
       {others.length > 0 && (
         <Section muted>
