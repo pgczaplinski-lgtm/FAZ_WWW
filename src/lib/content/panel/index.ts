@@ -26,7 +26,7 @@ interface PublicWebsiteContent {
   offices: OfficeLocation[];
 }
 
-const PANEL_URL = import.meta.env.VITE_PANELORG_URL ?? "https://panelorg.pl";
+export const PANEL_URL = import.meta.env.VITE_PANELORG_URL ?? "https://panelorg.pl";
 const TIMEOUT_MS = 5000;
 
 const byDateDesc = <T extends { date: string }>(a: T, b: T) => b.date.localeCompare(a.date);

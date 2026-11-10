@@ -52,7 +52,7 @@ export function Home() {
               <div className="grid min-h-[13.2rem] md:grid-cols-2 sm:min-h-[16.8rem]">
                 <div className="relative z-10 flex flex-col items-start justify-center px-14 py-8 sm:px-16 sm:py-10">
                   <p className="text-sm font-semibold uppercase tracking-wide text-brand">Aktualności</p>
-                  <h1 className="mt-3 line-clamp-3 h-[4.125em] max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
+                  <h1 className="mt-3 min-h-[4.125em] break-words max-w-xl text-[1.3125rem] font-extrabold leading-snug tracking-tight text-ink sm:text-[2.1rem]">
                     {clipSlideTitle(current.title)}
                   </h1>
                   <div className="mt-5">

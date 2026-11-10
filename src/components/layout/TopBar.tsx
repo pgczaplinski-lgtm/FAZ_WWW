@@ -24,7 +24,7 @@ export function TopBar() {
       <Container className="pt-2">
         <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-brand px-4 py-2 text-white sm:px-6">
           <p className="text-sm font-semibold">{org.tagline}</p>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <div className="flex items-center gap-1.5">
               {org.social.instagram && (
                 <a href={org.social.instagram} target="_blank" rel="noreferrer" aria-label="Instagram" className={iconBtn}>
@@ -43,7 +43,7 @@ export function TopBar() {
               )}
             </div>
             <div className="mx-1 h-5 w-px bg-white/30" aria-hidden />
-            <div className="flex items-center gap-1.5" role="group" aria-label="Narzędzia dostępności">
+            <div className="flex flex-wrap items-center gap-1.5" role="group" aria-label="Narzędzia dostępności">
               <button onClick={a11y.toggleContrast} aria-pressed={a11y.state.contrast} aria-label="Wysoki kontrast" className={iconBtn}>
                 <ContrastIcon className="h-4 w-4" />
               </button>

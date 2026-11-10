@@ -26,9 +26,22 @@ export const news: NewsPost[] = [
     image: "/images/news/jak-poradzic-sobie-z-odrzuceniem-w-procesie-rekrutacji.jpg",
     excerpt:
       "Proces poszukiwania pracy to często czasochłonny i wymagający okres. Warto pamiętać, że każda porażka może zostać przekuta w cenną lekcję.",
-    body: p(
-      "Proces poszukiwania pracy to często czasochłonny i wymagający okres. W trakcie spotkań z pracodawcami można spotkać się z wieloma odpowiedziami odmownymi. Powodować mogą zniechęcenie i wątpliwości co do jakości własnych umiejętności zawodowych. Warto jednak pamiętać, że każda porażka może zostać przekuta w cenną lekcję. Odmowa ze strony pracodawcy może pomóc zrozumieć własne mocne, jak i słabsze strony.",
-    ),
+    body: [
+      ...p(
+        "Proces poszukiwania pracy to często czasochłonny i wymagający okres. W trakcie spotkań z pracodawcami można spotkać się z wieloma odpowiedziami odmownymi. Powodować mogą zniechęcenie i wątpliwości co do jakości własnych umiejętności zawodowych. Warto jednak pamiętać, że każda porażka może zostać przekuta w cenną lekcję. Odmowa ze strony pracodawcy może pomóc zrozumieć własne mocne, jak i słabsze strony.",
+      ),
+      { type: "heading", text: "Nie traktuj odmowy jako porażki – potraktuj ją jak informację" },
+      {
+        type: "list",
+        ordered: true,
+        items: [
+          "analiza CV – zweryfikuj dopasowanie aplikacji do wybranego stanowiska, przedstaw swoje kompetencje i zasoby oraz upewnij się, że CV nie zawiera błędnych informacji;",
+          "analiza pytań i odpowiedzi podczas interview – zastanów się, na które pytania odpowiedziałeś dobrze, a które sprawiły Ci trudność;",
+          "dopytaj o informację zwrotną – poproś pracodawcę lub rekrutera o feedback na temat Twojej kandydatury; sprecyzuj te obszary, które możesz poprawić w przyszłych rekrutacjach;",
+          "wprowadzenie zmian – uzupełnij brakujące kompetencje i umiejętności oraz wykorzystaj zdobytą wiedzę podczas kolejnych rekrutacji.",
+        ],
+      },
+    ],
   },
   {
     slug: "podsumowanie-miesiaca-sierpien",
