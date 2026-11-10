@@ -46,6 +46,7 @@ export function Footer() {
             <li><Link to="/baza-wiedzy" className="hover:text-white">Baza wiedzy</Link></li>
             <li><Link to="/kontakt" className="hover:text-white">Kontakt</Link></li>
             <li><Link to="/przekaz-darowizne" className="hover:text-white">Przekaż darowiznę</Link></li>
+            <li><Link to="/deklaracja-dostepnosci" className="hover:text-white">Deklaracja dostępności</Link></li>
           </ul>
         </div>
 

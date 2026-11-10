@@ -9,11 +9,13 @@
 
 export type ProjectStatus = "active" | "finished";
 
+/** Mirrors `PublicRichBlock` in PanelORG `src/websiteContent.ts`. */
 export interface RichBlock {
-  /** A paragraph of body text. */
   type: "paragraph" | "heading" | "list";
   text?: string;
   items?: string[];
+  /** For `list`: numbered steps (`ol`) rather than bullets (`ul`). */
+  ordered?: boolean;
 }
 
 export interface ProjectFact {

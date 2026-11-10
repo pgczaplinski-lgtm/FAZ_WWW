@@ -8,6 +8,7 @@ import { AktualnoscDetail } from "./pages/news/AktualnoscDetail.tsx";
 import { BazaWiedzy } from "./pages/knowledge/BazaWiedzy.tsx";
 import { Kontakt } from "./pages/Kontakt.tsx";
 import { Darowizna } from "./pages/Darowizna.tsx";
+import { Deklaracja } from "./pages/Deklaracja.tsx";
 import { NotFound } from "./pages/NotFound.tsx";
 
 export const router = createBrowserRouter([
@@ -20,7 +21,7 @@ export const router = createBrowserRouter([
       { path: "/historia", element: <Navigate to="/o-nas#historia" replace /> },
       { path: "/statut-fundacji", element: <Navigate to="/o-nas#statut-fundacji" replace /> },
       { path: "/sprawozdania", element: <Navigate to="/o-nas#sprawozdania" replace /> },
-      { path: "/deklaracja-dostepnosci", element: <Navigate to="/o-nas#deklaracja-dostepnosci" replace /> },
+      { path: "/deklaracja-dostepnosci", element: <Deklaracja /> },
       { path: "/dolacz-do-nas", element: <Navigate to="/o-nas#dolacz-do-nas" replace /> },
       { path: "/dzialalnosc", element: <Dzialalnosc /> },
       { path: "/projekty", element: <Navigate to="/dzialalnosc" replace /> },

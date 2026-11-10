@@ -55,7 +55,7 @@ export function BazaWiedzy() {
                 </button>
                 {isOpen && (
                   <div id={panelId} role="region" aria-labelledby={buttonId} className="px-5 pb-5">
-                    <RichText blocks={faq.answer} />
+                    <RichText blocks={faq.answer} headingLevel={3} />
                   </div>
                 )}
               </li>

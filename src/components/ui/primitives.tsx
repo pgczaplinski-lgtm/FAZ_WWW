@@ -86,14 +86,17 @@ export function Button({
   variant = "solid",
   type = "button",
   className = "",
+  ariaDisabled,
 }: {
   children: ReactNode;
   variant?: ButtonVariant;
   type?: "button" | "submit";
   className?: string;
+  /** Marks the button unavailable while keeping it focusable. */
+  ariaDisabled?: boolean;
 }) {
   return (
-    <button type={type} className={`${buttonClasses(variant)} ${className}`}>
+    <button type={type} aria-disabled={ariaDisabled || undefined} className={`${buttonClasses(variant)} ${className}`}>
       {children}
     </button>
   );

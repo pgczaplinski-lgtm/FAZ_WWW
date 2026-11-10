@@ -12,7 +12,7 @@ export function Breadcrumbs({ crumbs, light = false }: { crumbs: Crumb[]; light?
         {crumbs.map((c, i) => (
           <li key={i} className="flex items-center gap-2">
             {c.to && i < crumbs.length - 1 ? (
-              <Link to={c.to} className={light ? "hover:underline" : "text-brand hover:underline"}>
+              <Link to={c.to} className={light ? "text-white underline hover:no-underline" : "text-brand hover:underline"}>
                 {c.label}
               </Link>
             ) : (

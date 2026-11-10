@@ -1,4 +1,4 @@
-import { useNavigate, useLocation } from "react-router-dom";
+import { Link, Navigate, useNavigate, useLocation } from "react-router-dom";
 import { PageHeader } from "../../components/ui/PageHeader.tsx";
 import { RichText } from "../../components/ui/RichText.tsx";
 import { StatsStrip } from "../../components/ui/StatsStrip.tsx";
@@ -12,7 +12,6 @@ const TOPICS = [
   { id: "historia", label: "Historia" },
   { id: "statut-fundacji", label: "Statut" },
   { id: "sprawozdania", label: "Sprawozdania" },
-  { id: "deklaracja-dostepnosci", label: "Deklaracja dostępności" },
   { id: "dolacz-do-nas", label: "Dołącz do nas" },
 ] as const;
 
@@ -61,16 +60,16 @@ export function ONas() {
   const stats = content.getStats();
   const team = content.getTeam();
   const org = content.getOrgInfo();
-  const phone = org.phones[0];
   const about = content.getAbout();
   const history = content.getHistory();
   const statute = content.getStatute();
   const reports = content.getReports();
-  const accessibility = content.getAccessibility();
 
   const selectTopic = (id: TopicId) => {
     navigate({ pathname: "/o-nas", hash: id === "all" ? "" : id }, { replace: true });
   };
+
+  if (hash === "deklaracja-dostepnosci") return <Navigate to="/deklaracja-dostepnosci" replace />;
 
   return (
     <>
@@ -101,6 +100,12 @@ export function ONas() {
                 </button>
               );
             })}
+            <Link
+              to="/deklaracja-dostepnosci"
+              className="flex min-h-[3.5rem] items-center justify-center rounded-lg border border-line bg-surface px-1.5 py-2 text-center text-[11px] font-semibold leading-tight text-ink underline sm:px-2 sm:text-sm"
+            >
+              Deklaracja dostępności
+            </Link>
           </div>
         </Container>
       </div>
@@ -187,6 +192,7 @@ export function ONas() {
           </p>
           <div className="mt-8 max-w-3xl">
             <RichText
+              headingLevel={3}
               blocks={statute.sections.flatMap((s) => [
                 { type: "heading" as const, text: s.title },
                 { type: "paragraph" as const, text: s.text },
@@ -265,30 +271,6 @@ export function ONas() {
               ))}
             </ul>
           )}
-        </Section>
-      )}
-
-      {show("deklaracja-dostepnosci") && (
-        <Section>
-          <SectionTitle>Deklaracja dostępności</SectionTitle>
-          <div className="mt-6 max-w-3xl">
-            <RichText blocks={accessibility} />
-            <p className="mt-6 text-muted">
-              E-mail:{" "}
-              <a className="font-semibold text-brand underline" href={`mailto:${org.email}`}>
-                {org.email}
-              </a>
-              {phone ? (
-                <>
-                  {" "}
-                  · telefon:{" "}
-                  <a className="font-semibold text-brand underline" href={`tel:${phone.replace(/\s+/g, "")}`}>
-                    {phone}
-                  </a>
-                </>
-              ) : null}
-            </p>
-          </div>
         </Section>
       )}
 
