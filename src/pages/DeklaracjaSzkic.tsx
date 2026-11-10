@@ -9,7 +9,7 @@ import { content } from "../lib/content/index.ts";
  * `PUBLISH_DRAFT_DECLARATION` in `Deklaracja.tsx` is enabled.
  */
 
-const SITE_URL = "https://faz.panel.org.pl";
+const SITE_URL = "https://faz.org.pl";
 
 function Missing({ children }: { children: ReactNode }) {
   return (
