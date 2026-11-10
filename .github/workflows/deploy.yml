@@ -1,0 +1,58 @@
+name: Build and deploy
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - if: github.event_name == 'push'
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-production
+      cancel-in-progress: false
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: dist
+          path: dist
+      - name: Configure SSH
+        env:
+          FAZ_DEPLOY_SSH_KEY: ${{ secrets.FAZ_DEPLOY_SSH_KEY }}
+        run: |
+          install -d -m 700 ~/.ssh
+          printf '%s\n' "$FAZ_DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          echo 'crm.faz.org.pl ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGfmtY5C7DNTgwZX/Ja05wsO45GE2lRdFLyKUAbTbEP5' > ~/.ssh/known_hosts
+      - name: Upload release to faz.panel.org.pl
+        run: |
+          set -o pipefail
+          tar -czf - -C dist . | ssh -i ~/.ssh/deploy_key -o IdentitiesOnly=yes -o StrictHostKeyChecking=yes fazdeploy@crm.faz.org.pl "${GITHUB_SHA::7}"
+      - name: Check the live site serves this build
+        run: |
+          expected=$(grep -oE '/assets/index-[A-Za-z0-9_-]+\.js' dist/index.html)
+          curl -fsS https://faz.panel.org.pl/ | grep -qF "$expected"
+          echo "live: $expected"
